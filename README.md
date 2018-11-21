@@ -23,20 +23,37 @@
 ### Lenguajes y Guías incluídas actualmente
 
 - C
+- QT
+- Xen
 - C++
-- HTML
 - PHP
-- Python
 - Ruby
-- Django
-- JavaScript
-- Jquery
-- MySQL
-- PostgreSQL
+- Ionic
+- SCSS
 - Nginx
+- Uwsgi
+- HTML
+- HAML
+- Jquery
 - Apache
+- MySQL
+- Docker
+- Django
+- Python
 - Laravel
-- Comandos de GNU/Linux
+- JavaScript
+- AngularJS
+- Markdown
+- WordPress
+- Git/GitHub
+- Bash Script
+- PostgreSQL
+- Ruby on Rails
+- Windows Bash script
+- Mezzanine CMS basado en Django
+- Manual del Administrador de Debian 8
+- Empaquetamiento en GNU/Linux Debian
+- Comandos de GNU/Linux y muchos más para practicar y aprender.
 
 #
 ### Información ampliada
