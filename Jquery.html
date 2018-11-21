@@ -1,0 +1,5672 @@
+<!-- Guía Jquery -->
+
+<html>
+  <head>
+      <title>XXX</title>
+      <!--script src="jquery-1.9.1.js" type="text/javascript"></script-->
+      <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+      <meta charset="UTF-8">
+  </head>
+  <script type="text/javascript"> 
+    $("document").ready(function () {
+    });
+  </script>
+<body>
+</body>
+</html>
+
+--- ¿Qué es JQuery? ---
+
+jQuery es una biblioteca de JavaScript, permite simplificar la
+manera de interactuar con los documentos HTML, manipular el
+árbol DOM, manejar eventos, desarrollar animaciones y agregar
+interacción con la técnica AJAX a páginas web.
+
+Cada sentencia en JQuery contiene un "selector", para seleccionar
+uno o más elementos HTML del documento.
+
+-Ejemplo:
+$(selector).acccion();
+
+-Ejemplo:
+$(elemento).metodoAEjecutar();
+
+La función $() hace una petición al documento HTML para encontrar
+el elemento especificado por el selector, después regresa un objeto
+JQuery que es una colección de todos esos objetos que buscó.
+
+En este punto el evento "document ready" es disparado en el
+navegador para dar señal de que el documento esta listo para
+ser manipulado por JQuery.
+
+El documento puede ser reconocido especificando el documento como tal
+y mandando llamar la función ready(), es decir, que cuando el documento
+este listo entonces se disparen los eventos.
+
+$(document).ready()
+
+No es posible interactuar de forma segura con el contenido de una página
+hasta que el documento no se encuentre preparado para su manipulación.
+jQuery permite detectar dicho estado a través de la declaración
+$(document).ready() de forma tal que el bloque se ejecutará sólo una
+vez que la página este disponible.
+
+El bloque $(document).ready()
+
+<script>
+  $(document).ready(function() {
+      console.log('el documento está preparado');
+  });
+</script>
+
+
+Es buena practica especificar una función JavaScript anónima junto con
+los paréntesis de la función ready(), ejemplo:
+
+<script>
+    $(document).ready(function(){
+        alert("¡Hola esto es una alerta!");
+    });
+</script>
+
+En el caso de los eventos, ejemplo:
+
+<script>
+    $(elemento).click(function(){
+       //Código a ejecutar.
+    });
+</script>
+
+------------------------
+###### Selectores ######
+------------------------
+
+Los selectores nos permiten obtener contenido del documento
+para poder manipularlo. Digamos que es la parte query de jQuery.
+
+Al ser utilizados, los selectores retornan un array de objetos que
+coinciden con los criterios especificados. Este array no es un conjunto
+de objetos del DOM, más bien son objetos de Query con un gran número
+de funciones y propiedades predefinidas para realizar operaciones con
+los mismos.
+
+Selector  Descripción:
+
+- #id = Encuentra elementos por ID o identificador
+- .clase = Encuentra elementos por clase
+- etiqueta.clase = Encuentra elementos del tipo de la etiqueta que tengan
+la clase "clase"
+- etiqueta#id.clase = Encuentra elementos del tipo de la etiqueta que tienen
+el ID "id" y la clase "clase"
+- * = Encuentra todos los elementos de la página
+
+-Repaso:
+Existe algo llamado selectores, los selectores nos permiten
+levantar una etiqueta por su nombre, id e incluso por su class.
+Para levantar un elemento por su id. Primero que nada cuando
+usamos como en el ejemplo anterior:
+
+<script>
+    $(document).ready(function(){
+       //Código a ejecutar cuando se carga la página 
+    });
+</script>
+
+Lo que estamos haciendo es levantar un objeto document que es el
+padre de todos los elementos de html, ya sean h1, p, ul, div, span, etc.
+Lo que estamos diciendo con el evento ready() es que cuando toda la
+página esté lista, cuando todas las etiquetas se hayan cargado,
+ejecute el código que tiene dentro de la función.
+
+En el caso de que queramos levantar un elemento por su id deberíamos
+usar el caracter # seguido por el nombre del id de la siguiente forma:
+
+<script>
+    $("#id_del_elemento")
+</script>
+
+-------------------------------------
+
+<!-- Uso de selectores con etiquetas, id y class -->
+<!doctype html>
+<html lang="en">
+<head>  
+  <title>Prueba Selectores</title>
+  <meta charset="UTF-8">
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('p').click(function() {
+      alert("Es un párrafo");
+    });
+    $('b').click(function() {
+      alert("Está en negrita");
+    });
+    $('span').click(function() {
+      //alert("Está la etiqueta span");
+    });
+    $('#span_id').click(function() {
+      alert("Etiqueta span con id");
+    });
+    $('.span_class').click(function() {
+      alert("Etiqueta span con class");
+    });
+  });
+  </script>
+</head>
+<body>  
+  <p>Párrafo 1</p>
+  <b>Letra A</b>
+  <br />
+  <br />
+  <span>Etiqueta span</span>
+  <br />
+  <br />
+  <span id="span_id">Etiqueta span con id</span>
+  <br />
+  <br />
+  <span class="span_class">Etiqueta span con class</span>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Probando selectores, clases dentro de clases -->
+<!doctype html>
+<html lang="en">
+<head>  
+  <title>Prueba Selectores</title>
+  <meta charset="UTF-8">
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+  <style type="text/css">
+  .nivel_1 {
+    width: 500px;
+    height: 500px;
+    border: ridge 1px red;
+  }
+  .nivel_2 {
+    width: 450px;
+    height: 450px;
+    border: ridge 1px green;
+  }
+  .nivel_3 {
+    width: 400px;
+    height: 400px;
+    border: ridge 1px blue;
+  }
+  </style>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('.nivel_1').click(function() {
+      alert("Nivel_1");
+    });
+    $('.nivel_2').click(function() {
+      alert("Nivel_2");
+    });
+    $('.nivel_3').click(function() {
+      alert("Nivel_3");
+    });
+  });
+  </script>
+</head>
+<body>
+  <div class="nivel_1">Nivel_1
+    <div class="nivel_2">Nivel_2
+      <div class="nivel_3">Nivel_3
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+-------------------------------------
+
+*Dato: Los Jquery descargados como: jquery-1.9.1.js representan una librería que 
+se puede manipular para hacer modificaciones, el codigo viene indentado para ser mas 
+legible, a diferencia de las librerías con la extensión .min.js como: jquery-1.9.1.min.js
+que es una versión de la librería donde el codigo viene comprmido, sin indentación lo que 
+hace el fichero mas liviano al momento de descargarse, util cuando se hace el llamado a
+la librería desde un servidor externo.
+
+-------------------------------------
+
+<!--
+jQuery provee una manera de correr código cuando el DOM
+de una página ya fue descargado y esta listo para ser
+utilizado, éste es el evento document.ready, y así es
+como se escribe el manejador para este evento: 
+ -->
+<html>
+  <head>
+      <title>XXX</title>
+      <script src="jquery-1.9.1.js" type="text/javascript"></script>
+      <meta charset="UTF-8">
+  </head>
+  <script type="text/javascript"> 
+  $("document").ready(function () {
+    alert("¡La página acaba de cargar!");
+  });
+</script>
+<body>
+  XXXXXXXXXXXX  
+</body>
+</html>
+<!--
+El símbolo "$" indica que este es una sentencia de jQuery
+puede ser reemplazada por la palabra "jQuery" pero lo común
+es usar el símbolo de dólar ya que es lo más corto.
+-->
+
+-------------------------------------
+
+<!--
+Podemos crear contenido HTML pasando como parámetro el código a la función $().
+
+Por ejemplo:
+
+var p = $('<p>Nuevo Párrafo</p>');
+
+Adicionalmente podemos usar los métodos html() y text() para obtener y asignar contenido:
+
+html(): retorna el HTML contenido en el primer elemento seleccionado.
+html(htmlString): le asigna el valor de la variable htmlString como contenido HTML a todos los elementos encontrados.
+text(): retorna el texto contenido en el primer elemento seleccionado.
+text(htmlString): le asigna el valor de la variable htmlString como texto a todos los elementos encontrados.
+
+Si pasamos HTML la función text(), el código será escapado y mostrado como texto.
+
+Por ejemplo, partiendo del siguiente HTML:
+-->
+
+-------------------------------------
+
+<!-- Hola Mundo en Jquery
+imprimir en el documento -->
+<html>
+    <head>
+        <title>jQuery Hello World</title>
+        <script src="jquery-1.9.1.js" type="text/javascript"></script>
+        <meta charset="UTF-8">
+    </head>
+    <script type="text/javascript"> 
+        $(document).ready(function() {
+            $("#texto").html("Hola mundo con JQuery"); //Este texto se escribira en el documento en donde esta la etiqueta con el id especificado
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("p").html("Esto es un párrafo"); // El texto se escribirá en todas las etiquetas (<p>)
+        });
+    </script>
+<body>     
+<div id="texto"> <!-- Etiqueta con identificador donde se escribira el texto-->
+</div>
+<p></p> <!-- Aqui se imprime otro texto enviado en el script -->
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Escribir html en el documento, usando una función -->
+<head>
+  <meta charset="UTF-8">
+  <title>Prueba jQuery</title>
+  <script src="jquery-1.9.1.js" type="text/javascript"></script><html>
+  <script type="text/javascript">
+     $('document').ready(function() {
+      $("#boton1").click(function() {
+        $('.cosas').html('<li>Casa</li>');
+      });
+     });
+  </script>  
+</head>
+<body>  
+  <ul class="cosas">
+    <li>Puerta</li>
+    <li>Techo</li>
+    <li>Ventana</li>
+    <li>Piso</li>
+  </ul>
+</body>
+<button id="boton1">Activar</button>
+</html>
+
+-------------------------------------
+
+<!-- Hola Mundo con alerta js -->
+<html>
+    <head>
+        <title>jQuery Hello World</title>
+        <script src="jquery-1.9.1.js" type="text/javascript"></script>
+        <meta charset="UTF-8">
+    </head>
+    <script type="text/javascript"> 
+        $(document).ready(function() {
+            alert("Hola mundo");
+        });
+    </script>    
+<body>
+  xxxxxxxxxx
+</body>
+</html>
+
+-------------------------------------
+<!-- Funciones -->
+<html>
+    <head>    
+      <title>Prueba</title> 
+      <meta charset="UTF-8">        
+      <script src="jquery-1.9.1.js" type="text/javascript"></script>
+      <script>
+            $(document).ready(function() {
+              $("#boton1").click(function() {
+                  //alert("¡Alerta 1 Activada!");
+                  $("#x").html("Alerta 1 activada");
+              });
+              $("#boton2").click(function() {
+                  //alert("¡Alerta 2 Activada!");
+                  $("#x").html("Alerta 2 activada");
+              });
+            });
+        </script>
+    </head>
+<body>
+  <button id="boton1">Activar 1</button> <p />
+  <button id="boton2">Activar 2</button>
+  <div id="x"></div>
+</body>
+</html>
+
+-------------------------------------
+<!-- Mas ejemplos de funciones simples -->
+<html>
+ <head>
+    <meta charset="UTF-8">
+    <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+          $("#perro").click(function() {
+            $("#caja").html("Usted escogió un Perro");
+          });
+          $("#gato").click(function() {
+            $("#caja").html("Usted escogió un Gato");
+          });
+          $("#conejo").click(function() {
+            $("#caja").html("Usted escogió un Conejo");
+          });
+       });
+    </script>
+  </head>
+<body>
+  Por favor escoja un animal <p />
+  <button id="perro">Perro</button>
+  <button id="gato">Gato</button>
+  <button id="conejo">Conejo</button>
+  <p id="caja"> ... </p>  
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Activar funcion, funcion con Jquery activada desde un enlace o un botón
+el (id) define que funcion usará -->
+<html>
+    <head>    
+      <title>Prueba</title> 
+      <meta charset="UTF-8">        
+      <script src="jquery-1.9.1.js" type="text/javascript"></script>
+      <script>
+            $(document).ready(function() {
+                $("#h").click(function(){
+                    alert("Escribirá en el html un Hola Mundo ");
+                    $("p").html("Hola Mundo");
+                });
+                $('#btn').click(function () {
+                    alert("Activó la función");
+                });
+            });
+        </script>
+    </head>
+<body>
+    <div id="h">
+        <a href="#">Función Hola Mundo</a>
+    </div>
+    <br />
+    <button id="btn">Botón</button>
+    <br />
+    <p></p>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Activar una alerta en Jquery -->
+<html>
+    <head>    
+    	<title>Prueba</title> 
+    	<meta charset="UTF-8">        
+    	<script src="jquery-1.9.1.js" type="text/javascript"></script>
+    	<script>
+            $(document).ready(function(){
+                $("#h").click(function(evento){
+                    alert("Alerta activada!");
+                    evento.preventDefault();
+                });
+            });
+        </script>
+    </head>
+<body>
+    <div id="h">
+        <a href="#">Activar alerta</a>
+    </div>    
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Formulario y función con Jquery -->
+<html>
+ <head>
+   <title>prueba</title>
+   <script src="jquery-1.9.1.js" type="text/javascript"></script>
+   <script type="text/javascript"> 
+      $(document).ready(function(){ 
+         $("#boton").click(function(){
+            var nombre = $("#nombre").val();
+            $("#saludo").html('Hola ' + nombre);
+         }); 
+      }); 
+   </script>
+ </head>
+ <body>
+    <form action="javascript:void(0);">
+       <input type="text" id="nombre" />
+       <input type="button" id="boton" value="Enviar" />
+       <div id="saludo"></div>
+    </form>
+ </body>
+</html>
+
+-------------------------------------
+
+<!-- Capturar datos de un formulario y guardarlos en una variable -->
+<html>
+ <head>
+   <title>prueba</title>
+   <meta charset="UTF-8">
+   <script src="jquery-1.9.1.js" type="text/javascript"></script>
+   <script type="text/javascript"> 
+      $(document).ready(function(){ 
+         $("#boton").click(function(){
+            var nombre = $("#nombre").val();
+            alert(nombre);
+         });
+      }); 
+   </script>
+ </head>
+ <body>
+    <form action="javascript:void(0);">
+       <b>Nombre: </b><input type="text" id="nombre" />
+       <input type="button" id="boton" value="Enviar" />
+    </form>
+ </body>
+</html>
+
+-------------------------------------
+
+<!-- Capturar datos de un formulario y guardarlos en una variable, con button -->
+<html>
+ <head>
+   <title>prueba</title>
+   <meta charset="UTF-8">
+   <script src="jquery-1.9.1.js" type="text/javascript"></script>
+   <script type="text/javascript"> 
+      $(document).ready(function(){ 
+         $("button").click(function(){
+            var nombre = $("#nombre").val();
+            alert(nombre);
+         });
+      }); 
+   </script>
+ </head>
+ <body>
+   <b>Nombre: </b><input type="text" id="nombre" />
+   <button>Mostrar</button>
+ </body>
+</html>
+
+-------------------------------------
+
+<!-- Capturar datos de un formulario y guardarlos en una variable, otro ejemplo -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seleccion de campo de texto</title>
+        <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <form>
+            Usuario<input type="text" name="user">
+        </form>
+        <button id="btn">Mostrar</button>
+        <script type="text/javascript">
+            $(document).ready(function() {
+            $('#btn').click(function () {
+                var user = $("input[type='text']").eq(0).val();
+                alert(user);
+                });
+            });
+        </script>        
+    </body>
+</html>
+
+-------------------------------------
+
+<!-- Seleccionando campos de texto de un formulario, cambiando datos -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seleccion de campo de texto</title>
+        <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <form>
+            <input type="text" name="user" value="David">
+            <input type="text" name="addr" value="Caracas">
+            <input type="text" name="city" value="Venezuela">
+        </form>
+        <p>Output: <span id="out"></span></p>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                // Selecciono el primer iput(posicion 0) y obtengo su valor.
+                var user = $("input[type='text']").eq(0).val();
+                
+                //Una vez que obtengo el valor, lo imprimo en la etiqueta span.
+                $('#out').text(user);
+             
+                // Si queremos reemplazar el texto de un iput
+                $("input[type='text']").eq(1).val('Otro texto');
+            });
+        </script>        
+    </body>
+</html>
+
+-------------------------------------
+
+<!-- Validacion sencilla de campo vacío con alert -->
+<html>
+ <head>
+   <title>prueba</title>
+   <meta charset="UTF-8">
+   <script src="jquery-1.9.1.js" type="text/javascript"></script>
+   <script type="text/javascript"> 
+      $(document).ready(function(){ 
+         $("#boton").click(function(){
+            var nombre = $("#nombre").val();
+            //$("#saludo").html('Hola ' + nombre);
+            if (nombre == '') {
+              alert("El nombre es requerido");
+            }
+            else {
+              alert("¡Datos enviados!");
+            }
+         });          
+      }); 
+   </script>
+ </head>
+ <body>
+    <form action="javascript:void(0);">
+       <b>Nombre: </b><input type="text" id="nombre" />
+       <input type="button" id="boton" value="Enviar" />
+       <div id="saludo"></div>
+    </form>
+ </body>
+</html>
+
+-------------------------------------
+
+<!-- Validacion sencilla de un campo vacío con mensaje y estilo -->
+<html>
+ <head>
+    <title>prueba</title>
+    <meta charset="UTF-8">
+    <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    <script type="text/javascript"> 
+      $(document).ready(function(){ 
+         $("#boton").click(function(){
+            var nombre = $("#nombre").val();            
+            if (nombre == '') {
+              $("#error_mensaje").html('¡Campo requerido!');
+              //alert("El nombre es requerido");
+            }
+            else {
+              alert("¡Datos enviados!");
+            }
+         });          
+      }); 
+    </script>
+    <style type="text/css">
+      span#error_mensaje {
+        color: #FF0000;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="javascript:void(0);">
+      <b>Nombre: </b><input type="text" id="nombre" />
+      <span id="error_mensaje"></span>
+      <br />
+      <input type="button" id="boton" value="Enviar" />
+    </form>
+  </body>
+</html>
+
+-------------------------------------
+
+<!-- Copiar párrafo de un elemento a otro -->
+<html>
+ <head>
+    <title>prueba</title>
+    <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    <script type="text/javascript"> 
+       $(document).ready(function(){ 
+          $("#copiar").click(function(){
+             var parrafo = $("#parrafo1").html();
+             $("#parrafo2").html(parrafo);
+          });
+       }); 
+    </script>
+ </head>
+ <body>
+    <p id="parrafo1"> XXXXXXXXXX </p>
+    <a id="copiar" href="#"> Copiar </a>
+    <p id="parrafo2"> ... </p>
+ </body>
+</html>
+
+-------------------------------------
+
+<!-- Copiar cadena de un elemento a otro con keyup function -->
+<html>
+ <head>
+    <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    <script type="text/javascript"> 
+       $(document).ready(function(){
+          $("#valor_1").keyup(function(){
+             var valor = $(this).val();
+             $("#valor_2").val(valor);
+          });
+       }); 
+    </script>
+ </head>
+ <body>
+    <form action="javascript:void(0);">
+       Escribir algo
+       <input type="text" id="valor_1" />
+       <br />
+       <textarea id="valor_2" cols="40" rows="10"></textarea>
+    </form>
+ </body>
+</html>
+
+-------------------------------------
+
+<!-- keyup function, escribir en un campo y replicar los datos en un párrafo -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>val demo</title>  
+  <!--script src="https://code.jquery.com/jquery-1.10.2.js"></script-->
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+</head>
+<body>
+<input type="text" value="algun texto">
+<p></p> 
+<script>
+$( "input" ).keyup(function() {
+    var value = $( this ).val();
+    $( "p" ).text( value );
+  })
+  .keyup();
+</script>
+<style>
+  p {
+    color: blue;
+    margin: 8px;
+  }
+</style>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Contar el número de pulsaciones de teclas en un campo <input> keypress -->
+<!DOCTYPE html>
+<html>
+<head>
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script-->
+<script src="jquery-1.9.1.js" type="text/javascript"></script>
+<script>
+  i = 0;
+  $(document).ready(function(){
+      $("input").keypress(function(){
+          $("span").text(i += 1);
+      });
+  });
+</script>
+</head>
+<body>
+Nombre: <input type="text">
+<p>Keypresses: <span>0</span></p>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Cambiar una cadena por otra -->
+<html>
+ <head>
+    <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+          $("#cambiar").click(function() {
+            variable = "YYYYYYY";
+            $("#parrafo").html(variable);
+          });
+       });
+      </script>
+ </head>
+ <body>    
+    <a id="cambiar" href="#">
+      <button>cambiar</button>
+    </a>    
+    <p id="parrafo"> XXXXXXX </p>
+ </body>
+</html>
+
+-------------------------------------
+
+<!-- Método hover en Jquery -->
+<html>
+  <head>
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+  <script type="text/javascript"> 
+    $(document).ready(function() {
+      var texto = $("#caja").html();
+        $("#caja").hover(
+        function() {
+          $(this).html('XXXXX');//Mouse arriba del elemento          
+        },
+        function() {
+          $(this).html(texto);//Mouse fuera del elemento
+        }
+      );
+    });
+ </script>
+ <style type="text/css">
+   #caja {
+     background-color: #ccc;
+     width: 100px;
+     height: 100px;
+     padding: 10px;
+   }
+ </style>
+  </head>
+<body>
+  <div id="caja">
+    Posicione el mouse arriba
+  </div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- hover sobre una lista, agregar una cadena junto al elemento de la lista -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>hover demo</title>  
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+</head>
+<body> 
+<ul>
+  <li>Milk</li>
+  <li>Bread</li>
+  <li class="fade">Chips</li>
+  <li class="fade">Socks</li>
+</ul> 
+<script>
+$( "li" ).hover(
+  function() {
+    $( this ).append( $( "<span> ***</span>" ) );
+  }, function() {
+    $( this ).find( "span:last" ).remove();
+  }
+);
+</script>
+ 
+</body>
+</html>
+
+-------------------------------------
+
+<!--Syntaxis del método .attr
+
+Return the value of an attribute:
+$(selector).attr(attribute)
+
+Set the attribute and value:
+$(selector).attr(attribute,value)
+
+Set attribute and value using a function:
+$(selector).attr(attribute,function(index,currentvalue))
+
+Set multiple attributes and values:
+$(selector).attr({attribute:value, attribute:value,...})
+-->
+
+<!-- Cambiar los atributos de una imagen con el metodo .attr -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.9.1.js" type="text/javascript"></script>
+<script>
+  $(document).ready(function(){
+    $("#aumentar").click(function(){
+      $("img").attr("width", "200");
+    });
+    $("#normal").click(function(){
+      $("img").attr("width", "100");
+    });
+  });
+</script>
+</head>
+<body>
+<img src="firefox-icon.png" width="100"> <br />
+<button id="aumentar">Aumentar</button>
+<button id="normal">Normal</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Datepicker con Jquery -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+</head>
+<body> 
+<p>Date: <input type="text" id="datepicker"></p> 
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Datepicker con Jquery, editando atributos -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Seleccionar una fecha con jquery-ui</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#fecha").datepicker(
+                {
+                    dateFormat: "dd/mm/yy",
+                    dayNames: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
+                    dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+                    firstDay: 1,
+                    gotoCurrent: true,
+                    monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre" ]
+                }
+            );
+        });
+    </script>
+    <style>
+        #fecha {
+            width:100px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejemplo de seleccionar una fecha con jquery-ui</h1>
+    <form>
+        <p>Fecha: <input type="text" name="fecha" id="fecha" value=""></p>
+    </form>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Ejemplo de aplicación con un diálogo para entrada de textos
+  y fechas, mediante el componente jQuery UI Datepicker. -->
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jQuery UI Dialog - Dialogo para formulario simple</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<script src="jquery.ui.datepicker-es.js"></script>
+<link rel="stylesheet" href="jquery-ui-1.10.2.sunny.css" />
+  <script>
+    $(function () {
+    $(function () {
+    $.datepicker.setDefaults($.datepicker.regional["es"]);
+    $("#datepicker").datepicker({
+    firstDay: 1
+    });
+    });
+    $("#dialog").dialog({
+    autoOpen: false,
+    modal: true,
+    buttons: {
+    "Aceptar": function () {
+    var texto1 = document.getElementById('nombre').firstChild;
+    var newText1 = document.createTextNode(el_nombre.value);
+    texto1.parentNode.replaceChild(newText1, texto1);
+    var texto2 = document.getElementById('fecha').firstChild;
+    var newText2 = document.createTextNode(datepicker.value);
+    texto2.parentNode.replaceChild(newText2, texto2);
+    $(this).dialog("close");
+    },
+    "Cerrar": function () {
+    $(this).dialog("close");
+    }
+    }
+    });
+    $("#abrir")
+    .button()
+    .click(function () {
+    el_nombre.value = document.getElementById('nombre').firstChild.nodeValue;
+    datepicker.value = document.getElementById('fecha').firstChild.nodeValue;
+    $("#dialog").dialog("option", "width", 600);
+    $("#dialog").dialog("option", "height", 300);
+    $("#dialog").dialog("option", "resizable", false);
+    $("#dialog").dialog("open");
+    });
+    });
+  </script>
+</head>
+<body>
+  <div id="dialog" title="Formulario simple">
+  Nombre:<input type="text" id="el_nombre" value="" /><br />
+  Fecha:<input type="text" id="datepicker" />
+  </div>
+  Nombre: <strong id="nombre">Julio</strong><br />
+  Fecha: <strong id="fecha">11/07/1975</strong><br />
+  <hr />
+  <button id="abrir">Abrir diálogo</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Validación con jQuery.validate, mensaje de alerta junto al campo -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Validación con jQuery.validate</title>
+  <script src="js/jquery-1.9.1.js" type="text/javascript"></script>
+  <script src="js/jquery.validate.js" type="text/javascript"></script>
+  <script>
+  $(document).ready(function () {
+    $("#form1").validate();
+    
+    $("#txtNombre").rules("add", {
+        required: true,
+        messages: {
+            required: "<span>El campo nombre es obligatorio</span>"
+        }
+    });
+
+    $("#txtPwd").rules("add", {
+        required: true,
+        minlength: 6,
+        messages: {
+            required: "<span>El password no puede ser nulo.</span>",
+            minlength: $.validator.format("<span>El largo mínimo permitido es {0} caracteres.</span>")
+        }
+    });
+
+    $("#txtEdad").rules("add", {
+        required: true,
+        min: 18,
+        messages: {
+            required: "<span>Debe entrar una edad.</span>",
+            min: $.validator.format("<span>La edad mínima debe ser {0} años.</span>"),
+            max: $.validator.format("<span>La edad máxima debe ser {0} años.</span>")
+        }
+    });
+
+    $("#txtEmail").rules("add", {
+        email: true,
+        messages: {
+            email:"<span>Debe ingresar un email válido o dejarlo en blanco</span>"
+        }
+    });
+
+    $('#btn').click(function () {
+        $("#form1").valid();
+        $("#form1").submit();
+    });
+  });
+  </script>
+  <style>
+    span {
+      color: red;
+      padding-left: 5px;
+      display:inline;
+    }
+  </style>
+</head>
+<body>
+  <form id="form1" action="#">
+    Nombre: <input name="txtNombre" type="text" id="txtNombre" /> <br />
+    Password: <input type="password" name="txtPwd" id="txtPwd" /> <br />
+    Edad: <input name="txtEdad" type="number" id="txtEdad" min="18" max="60"/> <br />
+    Email: <input name="txtEmail" id="txtEmail" type="email" /> <br />    
+    <input id="btn" type="button" value="Enviar"/>
+  </form>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Dialog básico -->
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jQuery UI Dialog - Uso básico</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<script>
+$(function () {
+  $("#dialog").dialog();
+  });
+</script>
+</head>
+<body>
+Diálogo:
+<div id="dialog" title="Dialogo básico">
+  <p>
+    Diálogo básico amodal. Puede ser movido, redimensionado
+    y cerrado haciendo clic sobre el botón 'X'.
+  </p>
+</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Uso de  (dialog)
+Es una ventana de diálogo , cuenta con una barra de título y área de contenido, se puede mover,
+cambiar de tamaño y se cierra con el icono de 'x' por defecto.-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Dialog - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script>
+  $(function() {
+    $( "#dialog" ).dialog();
+  });
+  </script>
+</head>
+<body>
+<div id="dialog" title="Basic dialog">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Activar (dialog) con boton-->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Dialog - Dialogo modal</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+  <script>
+    $(function () {
+      $("#dialog").dialog({
+        autoOpen: false,
+        modal: true
+    });
+    $("#abrir").button().click(function () {
+        $("#dialog").dialog("open");
+      });
+    });
+  </script>
+</head>
+<body>
+  Diálogo:
+  <div id="dialog" title="Dialogo básico">
+    XXXXXXXXXXX
+  </div>
+  <button id="abrir">Abrir diálogo</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Ejemplo de Dialog extendido -->
+<html>
+<head>
+<title>Caja de diálogo jQuery UI</title>
+  <meta charset="UTF-8">  
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+  <script>
+  $(document).ready(function(){
+     $("#dialogo").dialog({
+        modal: true,
+        title: "Caja con opciones",
+        width: 550,
+        minWidth: 400,
+        maxWidth: 650,
+        show: "fold",
+        hide: "scale"
+     });
+  });
+  </script>
+</head>
+<body>
+  <h1>Caja de diálogo jQuery UI</h1>
+  <p>Cuando se terminen de cargar los scripts, aparecerá una caja de diálogo...</p>
+  <div id="dialogo">
+     <p>Esta es la caja de diálogo más básica, que se puede redimensionar y arrastrar a otra posición. Además, se puede cerrar con el icono del aspa "X" que aparece en el titular de la caja.</p>
+  </div>
+</body>
+</html>
+
+-------------------------------------
+
+<!--
+########### Bootstrap ###########
+
+Es un frameworks CSS que utiliza técnicas avanzadas CSS y JS
+para proveer a las páginas la capacidad o la propiedad de ser
+web responsive o adaptables a todo tipo de pantallas y dispositivos.
+Librería muy utilizda para páginas que son visualizadas en pc y dispositivos
+móbiles como smartphones y tablets.
+-->
+
+-------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plantilla básica de Bootstrap</title> 
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+    <h1>¡Hola mundo!</h1>
+    <h1>¡Hola mundo!</h2>
+    <h1>¡Hola mundo!</h3>
+    <b>¡Hola mundo!</b>
+    <!-- Librería jQuery requerida por los plugins de JavaScript -->
+    <script src="http://code.jquery.com/jquery.js"></script> 
+    <!-- Todos los plugins JavaScript de Bootstrap (también puedes
+         incluir archivos JavaScript individuales de los únicos
+         plugins que utilices) -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+-------------------------------------
+
+<!-- Pasando atributos CSS al DOM con Jquery -->
+<!doctype html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>jQuery desde Cero</title>
+      <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    </head>
+<script type="text/javascript">
+$('document').ready(function() {
+      $('p').css({
+        //'border': '3px solid green',
+        //'background-color': 'blue',
+        'border': 'ridge 1px',
+        'width': '500px'
+      });
+});
+</script>
+<body>    
+    <p>texto de prueba</p>
+    <p>texto de prueba 2</p>
+    <p>texto de prueba 3</p>
+    <p>texto de prueba 4</p>
+    </body>
+</html>
+
+-------------------------------------
+
+<!-- Mover un elemento dentro de otro, usando una función -->
+<html>
+    <head>
+        <title>zxx</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <script src="jquery-1.9.1.js" type="text/javascript"></script>
+        <script type="text/javascript">        
+        $('document').ready(function() {
+            $("#activar").click(function() {
+                $('#cuerpo1').appendTo('#cuerpo2');
+            });
+        });
+        </script>
+    </head>
+<style type="text/css">
+#cabecera {
+    border:ridge 1px;
+    height: 50px;
+    background-color: yellow;
+}
+#cuerpo1 {
+    border:ridge 1px;
+    height: 100px;
+    background-color: blue;
+}
+#cuerpo2 {
+    border:ridge 1px;
+    height: 200px;
+    background-color: red;
+}
+</style>
+<body>
+<div id="cabecera">
+    Cabecera
+</div>
+<p />
+<div id="cuerpo1">
+    <p>Xxxxxxxxxxxxx
+    xxxxxxxxxxxxxxxx
+    xxxxxxxxxxxxxxxx</p>
+</div>
+<p />
+<div id="cuerpo2">
+    xxx
+</div>
+<div>
+    <button id="activar">Activar</button>
+</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Arrastrar o mover elementos en el DOM -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mover objeto en todo el documento jQuery</title>
+    <script src="https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jquery.js"></script>
+    <script type="text/javascript" src="https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jqueryui.js"></script>    
+    <style type="text/css">
+        #mueveme{
+            width:100px;
+            height:100px;
+            border:1px solid black;
+        }
+    </style>
+    <script type="text/javascript">
+        var x=$(document);
+        x.ready(inicio);
+        function inicio(){
+            var x=$("#mueveme");
+            x.draggable();
+        }
+    </script>
+</head>
+<body>
+   <div id="mueveme">Mueveme</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Efectos aplicados a elementos -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Algunos efectos que trae con sigo jQuery UI</title>
+    <script src="https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jquery.js"></script>
+    <script type="text/javascript" src="https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jqueryui.js"></script>
+    <style type="text/css">
+        .divefectos{
+            width:200px;
+            height:200px;
+            text-align:left;
+            border:1px solid black;
+            position:relative;
+            background:#CCC;
+            margin-left: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        $('document').ready(function () {
+            $("#boton1").click(function (){ $("#efecto1").effect( 'blind' , "slow" ); });
+            $("#boton2").click(function (){ $("#efecto2").effect( 'bounce' , "slow" ); });
+            $("#boton3").click(function (){ $("#efecto3").effect( 'shake' , "slow" ); });
+            $("#boton4").click(function (){ $("#efecto4").effect( 'clip' , "slow" ); });
+            $("#boton5").click(function (){ $("#efecto5").effect( 'drop' , "slow" ); });
+            $("#boton6").click(function (){ $("#efecto6").effect( 'explode' , "slow" ); });
+            $("#boton7").click(function (){ $("#efecto7").effect( 'puff' , "slow" ); });
+            $("#boton8").click(function (){ $("#efecto8").effect( 'fade' , "slow" ); });
+            $("#boton9").click(function (){ $("#efecto9").effect( 'fold' , "slow" ); });
+        });
+    </script>
+</head>
+<body>
+<div id="efecto1" class="divefectos">Desaparece hacia arriba</div>
+<input type="button" value="Efecto blind" id="boton1">
+<p>------------</p>
+<div id="efecto2" class="divefectos">Rebote vertical</div>
+<input type="button" value="Efecto bounce" id="boton2">
+<p>------------</p>        
+<div id="efecto3" class="divefectos">Rebote horizontal</div>
+<input type="button" value="Efecto shake" id="boton3">
+<p>------------</p>
+<div id="efecto4" class="divefectos">Desaparece desde el centro</div>
+<input type="button" value="Efecto clip" id="boton4">
+<p>------------</p>
+<div id="efecto5" class="divefectos">Combina transparencia con movimiento hacia la izquierda</div>
+<input type="button" value="Efecto drop" id="boton5">
+<p>------------</p>
+<div id="efecto6" class="divefectos">Lo divide en 9 pedazos y los explota con transparencia</div>
+<input type="button" value="Efecto explode" id="boton6">
+<p>------------</p>
+<div id="efecto7" class="divefectos">Hace lo mismo sin dividirlo y con escala mas cada vez mas grande</div>
+<input type="button" value="Efecto puff" id="boton7">
+<p>------------</p>
+<div id="efecto8" class="divefectos">El objeto desaparece</div>
+<input type="button" value="Efecto fade" id="boton8">
+<p>------------</p>
+<div id="efecto9" class="divefectos">El objeto se pliega</div>
+<input type="button" value="Efecto fold" id="boton9">
+</body>
+</html>
+<!--
+El método "effect" recibe parametros, en primer lugar especificaremos
+el tipo de efecto que queramos entre comillas (ya sea simples o dobles)
+algunos tipos de efectos que existen son:
+#####
+blind – Desaparece hacia arriba
+bounce – Rebote vertical
+shake – Rebote horizontal
+clip – Desaparece desde el centro
+drop – Combina transparencia con movimiento hacia la izquierda
+explode – Lo divide en 9 pedazos y los explota con transparencia
+puff – Hace lo mismo sin dividirlo y con escala mas cada vez mas grande
+fade – El objeto desaparece
+fold – El objeto se pliega
+#####
+Y en segundo lugar especificaremos el tiempo que queremos que tarde
+la animación, lo podemos especificar con números o también con una palabra.
+Si son números, no tienen que llevar comillas, pero si son palabras si.
+Las palabras para el tiempo son:
+#####
+slow – Lento
+fast – Rápido
+#####
+-->
+
+-------------------------------------
+
+<!-- Efectos aplicados a un formulario -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Algunos efectos que trae con sigo jQuery UI</title>
+    <script src="googledrive_jquery.js" type="text/javascript"></script>
+    <script src="jQueryUI.js" type="text/javascript"></script>
+    <style type="text/css">
+        #area_form {
+            width: 500px;
+            /*border: ridge 1px;*/
+            text-align: right;
+        }
+    </style>
+    <script type="text/javascript">
+      $('document').ready(function () {
+        //$("#boton1").click(function (){ $("#efecto1").effect( 'drop' , "slow" ); });
+        $("#boton1").click(function () {
+            $("#efecto1").effect( 'drop' , "slow" );
+        });
+        $("#boton2").click(function () {
+            $("#efecto2").effect( 'drop' , "slow" );
+        });
+        $("#boton3").click(function () {
+            $("#efecto3").effect( 'drop' , "slow" );
+        });
+        $("#boton4").click(function () {
+            $("#efecto4").effect( 'drop' , "slow" );
+        });
+        $("#boton5").click(function () {
+            $("#efecto5").effect( 'drop' , "slow" );
+        });
+        $("#boton6").click(function () {
+            $("#efecto6").effect( 'drop' , "slow" );
+        });
+        $("#boton7").click(function () {
+            $("#efecto7").effect( 'drop' , "slow" );
+        });
+      });
+    </script>
+</head>
+<body>
+<!--div id="efecto1" class="divefectos">
+    <p>XXXXXX</p>
+</div>
+<input type="button" value="Eliminar" id="boton1"-->
+<div id="area_form">
+    <form action="#" method="get">
+        <div id="efecto1" class="divefectos">
+            Fecha: <input type="text" name="fecha">
+            <input type="button" value="x" id="boton1">
+        </div>
+        <p />
+        <div id="efecto2" class="divefectos">
+            Hora de inicio: <input type="text" name="hora_inicio">
+            <input type="button" value="x" id="boton2">
+        </div>
+        <p />
+        <div id="efecto3" class="divefectos">
+            Hora de finalización: <input type="text" name="hora_finalización">
+            <input type="button" value="x" id="boton3">
+        </div>
+        <p />
+        <div id="efecto4" class="divefectos">
+            Asistentes: <input type="text" name="asistentes">
+            <input type="button" value="x" id="boton4">
+        </div>
+        <p />
+        <div id="efecto5" class="divefectos">
+            Asunto: <input type="text" name="asunto">
+            <input type="button" value="x" id="boton5">
+        </div>
+        <p />
+        <div id="efecto6" class="divefectos">
+            Puntos tratados: <input type="button" value="x" id="boton6"><br />
+            <textarea name="puntos_tratados" rows="10" cols="40"></textarea>
+        </div>
+        <p />
+        <div id="efecto7" class="divefectos">
+            Acuerdos: <input type="button" value="x" id="boton7"><br />
+            <textarea name="acuerdos" rows="10" cols="40"></textarea>
+        </div>        
+        <p />
+        <input type="submit" value="Guardar">
+        <input type="reset" value="Borrar">
+    </form>
+</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Desplazar/mover elementos de una lista / -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mover elementos de una lista con jQuery</title>
+    <!--script src="https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jquery.js"></script>
+    <script type="text/javascript" src="https://googledrive.com/host/0BygD_wcLS3rmSENDOURWVEZSZW8/jqueryui.js"></script-->
+    <script src="googledrive_jquery.js" type="text/javascript"></script>
+    <script src="jQueryUI.js" type="text/javascript"></script>
+    <style type="text/css">
+      #area_form {
+        width: 500px;
+        border: ridge 1px;
+        text-align: right;
+      }
+      ul{
+        list-style:none;
+      }
+      ul li{
+        padding-top: 5px;
+        border: ridge 1px red;
+        background-color: #F2F2F2;
+      }
+      #campo {
+        /*border: ridge 1px;*/
+      }
+    </style>
+  <script type="text/javascript">
+    $('document').ready(function () {
+        $("ul").sortable();
+    });
+  </script>
+</head>
+<body>
+  <div id="area_form">
+    <form action="#" method="get">
+    <ul>
+      <li>Fecha: <input type="text" name="fecha"></li>
+      <p />
+      <li>Hora de inicio: <input type="text" name="hora_inicio"></li>
+      <p />
+      <li>Hora de finalización: <input type="text" name="hora_finalización"></li>
+      <p />
+      <li>Asistentes: <input type="text" name="asistentes"></li>
+      <p />
+      <li>Asunto: <input type="text" name="asunto"></li>
+      <p />
+      <li>Puntos tratados: <br>
+        <textarea name="puntos_tratados" rows="10" cols="40"></textarea><br />
+      </li>
+      <p />
+      <li>
+        Acuerdos:<br />
+         <textarea name="acuerdos" rows="10" cols="40"></textarea>
+       </li>
+      <p />
+      <li>
+        <input type="submit" value="Guardar">
+        <input type="reset" value="Borrar">
+      </li>
+    </ul>
+    </form>
+  </div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Seleccionar varios elementos de una lista con jQuery -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar varios elementos de una lista con jQuery</title>
+    <script src="googledrive_jquery.js" type="text/javascript"></script>
+    <script src="jQueryUI.js" type="text/javascript"></script>
+    <style type="text/css">
+    ul{
+        list-style:none;
+    }
+    ul li{
+        border: 1px solid gray;
+        width:200px;
+        height:30px;
+    }
+    ul .ui-selecting{
+        background:yellow;
+    }
+    ul .ui-selected{
+        background:red;
+    }
+  </style>
+    <script type="text/javascript">
+    $('document').ready(function () {
+      $("ul").selectable();
+    });
+  </script>
+</head>
+<body>
+   <ul>
+     <li>Elemento 1</li>
+     <li>Elemento 2</li>
+     <li>Elemento 3</li>
+     <li>Elemento 4</li>
+     <li>Elemento 5</li>
+  </ul>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Borrar o remover elementos del dom -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>remove demo</title>
+  <!--script src="https://code.jquery.com/jquery-1.10.2.js"></script-->
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+  <script>
+  $('document').ready(function () {
+    $( "#enlace" ).click(function() {
+      $( "a" ).remove();
+    });
+    $( "#titulo" ).click(function() {
+      $( "h1" ).remove();
+    });
+    $( "#parrafo" ).click(function() {
+      $( "p" ).remove();
+    });
+  });
+  </script>
+  <style>
+  a {
+    background-color: yellow;
+  }
+  h1 {
+    background-color: blue;
+  }
+  p {
+    background-color: red;
+  }
+  
+  </style>
+</head>
+<body>
+<a href="#">Esto es un enlace</a>
+<h1>Esto es un título</h1>
+<p>Esto es un párrafo...</p>
+<br />
+<button id="enlace">Borrar enlace</button>
+<button id="titulo">Borrar título</button>
+<button id="parrafo">Borrar párrafo</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Borrar o remover elementos del dom, ejemplo de un formulario -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Algunos areas que trae con sigo jQuery UI</title>
+    <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    <style type="text/css">
+        #area_form {
+            width: 500px;
+            border: ridge 1px;
+            text-align: right;
+        }
+    </style>
+    <script type="text/javascript">
+      $('document').ready(function () {
+        $("#boton1").click(function () {
+            $("#area1").remove();
+        });
+        $("#boton2").click(function () {
+            $("#area2").remove();
+        });
+        $("#boton3").click(function () {
+            $("#area3").remove();
+        });
+        $("#boton4").click(function () {
+            $("#area4").remove();
+        });
+        $("#boton5").click(function () {
+            $("#area5").remove();
+        });
+        $("#boton6").click(function () {
+            $("#area6").remove();
+        });
+        $("#boton7").click(function () {
+            $("#area7").remove();
+        });
+      });
+    </script>
+</head>
+<body>
+<div id="area_form">
+    <form action="#" method="get">
+        <div id="area1">
+            Fecha: <input type="text" name="fecha">
+            <input type="button" value="x" id="boton1">
+        </div>
+        <p />
+        <div id="area2">
+            Hora de inicio: <input type="text" name="hora_inicio">
+            <input type="button" value="x" id="boton2">
+        </div>
+        <p />
+        <div id="area3">
+            Hora de finalización: <input type="text" name="hora_finalización">
+            <input type="button" value="x" id="boton3">
+        </div>
+        <p />
+        <div id="area4">
+            Asistentes: <input type="text" name="asistentes">
+            <input type="button" value="x" id="boton4">
+        </div>
+        <p />
+        <div id="area5">
+            Asunto: <input type="text" name="asunto">
+            <input type="button" value="x" id="boton5">
+        </div>
+        <p />
+        <div id="area6">
+            Puntos tratados: <input type="button" value="x" id="boton6"><br />
+            <textarea name="puntos_tratados" rows="10" cols="40"></textarea>
+        </div>
+        <p />
+        <div id="area7">
+            Acuerdos: <input type="button" value="x" id="boton7"><br />
+            <textarea name="acuerdos" rows="10" cols="40"></textarea>
+        </div>
+        <p />
+        <input type="submit" value="Guardar">
+        <input type="reset" value="Borrar">
+    </form>
+</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Agregar elementos al DOM -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>append demo</title>
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+  <script>
+    $("document").ready(function(){
+      $("#add").click(function () {
+        $("#contenido").append( "<h2>Cabecera</h2>" );
+      });
+    });
+  </script>
+  <style type="text/css">
+  #contenido {
+    height: 400px;
+    width: 400px;
+    border: ridge 1px;
+    overflow: auto;
+  }  
+  </style>
+</head>
+<body>
+    <div id="contenido">    
+    </div>
+    <button id="add">Agregar</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Clonar elementos del DOM clone() -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>clone demo</title>
+  <!--script src="https://code.jquery.com/jquery-1.10.2.js"></script-->
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+  <script>
+  $(document).ready(function(){
+    $("#clonar").click(function(){
+        $("#a").clone().prependTo("#b");
+    });
+  });
+  </script>
+</head>
+<body>
+    <div id="a">AAA</div>
+    <div id="b"></div>
+    <p />
+    <button id="clonar">Clonar</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Agregar/Eliminar elementos del DOM -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.9.1.js" type="text/javascript"></script>
+</head>
+<body>
+  <button id="add">Agregar</button>
+  <button id="remove">Borrar</button>
+  <br />
+  <br />
+  <div id="contenido">
+    <h1>XXXXX</h1>
+  </div>
+</body>
+</html>
+<script>
+  $("document").ready(function(){    
+    $("#add").click(function () {
+      a = "<h1>XXXXX</h1>"
+      $("#contenido").append(a);
+    });
+    $("#remove").click(function(){
+      $("#contenido").empty();
+    });
+});
+</script>
+<style type="text/css">
+#contenido {
+  height: 300px;
+  width: 300px;
+  border: solid 1px #000000;
+  overflow: auto;
+}
+</style>
+
+-------------------------------------
+
+<!-- Uso de un contador, jugando con el name de los inputs de un formulario -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XXXXXX</title>
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="contenido"></div>
+    <button id="fecha">Agregar Fecha</button>
+</div>
+</body>
+</html>
+<script>
+  $("document").ready(function() {
+        cont = 0;
+        limite = 3;
+        $("#fecha").click(function () {
+            if (cont == limite) {
+                alert("Exedíste el límite de adición (" + cont + ") campos");
+            }
+            else {
+                fecha = "<div id='area_fecha'>Fecha: <input type='text' name='fecha"+cont+"'><p /></div>"
+                $("#contenido").append(fecha);
+                //alert(contador);
+                cont=cont+1;
+            }
+        });
+    });
+</script>
+
+-------------------------------------
+
+<!-- Mostrar mensaje al posar el cursor sobre enlace con tooltip -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+    </head>
+<body>
+    <div class="container">
+        <h1>Titulo 1</h1>
+        <h2>Titulo 2</h2>
+        <h3>Titulo 3</h3>
+        <a href="#" data-toggle="tooltip" title="Recuerda llenar todos los datos!">Registrarse</a>
+    </div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Alineacion de tooltip (top,bottom,left,right) -->
+<!-- Mostrar mensaje al posar el cursor sobre enlace con tooltip -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('[data-toggle="tooltip"]').tooltip();   
+            });
+        </script>
+    </head>
+<body>
+    <div class="container" align="center">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <!--a href="#" data-toggle="tooltip" title="Recuerda llenar todos los datos!">Registrarse</a-->
+        <button id="grafo" data-toggle="tooltip" data-placement="top" class="btn btn-success" title="Permite apreciar gráficamente cómo las cuentas de Twitter mencionan etiquetas (hashtags) y se mencionan entre sí. >Grafo de menciones">Grafo de menciones</button>
+
+        <p>.</p>
+        
+
+        <button id="grafo" data-toggle="tooltip" data-placement="bottom" class="btn btn-success" title="Permite apreciar gráficamente cómo las cuentas de Twitter mencionan etiquetas (hashtags) y se mencionan entre sí. >Grafo de menciones">Grafo de menciones</button>
+
+        <p>.</p>        
+
+        <button id="grafo" data-toggle="tooltip" data-placement="left" class="btn btn-success" title="Permite apreciar gráficamente cómo las cuentas de Twitter mencionan etiquetas (hashtags) y se mencionan entre sí. >Grafo de menciones">Grafo de menciones</button>
+
+        <p>.</p>
+
+        <button id="grafo" data-toggle="tooltip" data-placement="right" class="btn btn-success" title="Permite apreciar gráficamente cómo las cuentas de Twitter mencionan etiquetas (hashtags) y se mencionan entre sí. >Grafo de menciones">Grafo de menciones</button>
+
+    </div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Mostrar mensaje (tooltip) al posar el cursor sobre campos de un formulario -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+    </head>
+<body>
+  <br />
+  <br />
+  <br />
+  <div align="center">
+    <form action="#" method="get">
+      Usuario: <input type="text" name="nombre" data-toggle="tooltip" data-placement="right" title="Escribe tu nombre de Usuario">
+      <br />
+      <br />
+      Contraseña: <input type="password" name="pass" data-toggle="tooltip" data-placement="right" title="Escribe tu contraseña">
+      <br />
+      <br />
+      <input type="submit" value="Enviar">
+      <input type="reset" value="Borrar">
+    </form>
+  </div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Mostrar mensaje al posar el cursor sobre enlace con tooltip de CSS -->
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        button.tooltip {outline:none; }
+        button.tooltip strong {line-height:30px;}
+        button.tooltip:hover {text-decoration:none;} 
+        button.tooltip span {
+            z-index:10;display:none; padding:14px 20px;
+            margin-top:-30px; margin-left:28px;
+            width:300px; line-height:16px;
+        }
+        button.tooltip:hover span{
+            display:inline; position:absolute; color:#111;
+            border:1px solid #DCA; background:#fffAF0;}
+        .callout {z-index:20;position:absolute;top:30px;border:0;left:-12px;}
+            
+        /*CSS3 extras*/
+        button.tooltip span
+        {
+            border-radius:4px;
+            box-shadow: 5px 5px 8px #CCC;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />        
+        <button class="tooltip"> Grafo de Menciones
+            <span>
+                Permite apreciar gráficamente cómo las cuentas de Twitter mencionan etiquetas (hashtags) y se mencionan entre sí.
+            </span>
+        </button>
+        <br/>
+        <button class="tooltip"> Agrupamiento por temas
+            <span>
+                Permite apreciar gráficamente los "temas" principales tratados en los textos de los tuits.
+            </span>
+        </button>
+    </center>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Otros tooltip´s de CSS avanzado -->
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+<style type="text/css">  
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    margin: 64px auto;
+    text-align: center;
+    font-size: 100%;
+    max-width: 640px;
+    width: 94%;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  header,
+  .demo,
+  .demo p {
+    margin: 4em 0;
+    text-align: center;
+  }
+
+  /**
+   * Tooltip Styles
+   */
+
+  /* Base styles for the element that has a tooltip */
+  [data-tooltip],
+  .tooltip {
+    position: relative;
+    cursor: pointer;
+  }
+
+  /* Base styles for the entire tooltip */
+  [data-tooltip]:before,
+  [data-tooltip]:after,
+  .tooltip:before,
+  .tooltip:after {
+    position: absolute;
+    visibility: hidden;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -webkit-transition: 
+        opacity 0.2s ease-in-out,
+          visibility 0.2s ease-in-out,
+          -webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+      -moz-transition:    
+          opacity 0.2s ease-in-out,
+          visibility 0.2s ease-in-out,
+          -moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+      transition:         
+          opacity 0.2s ease-in-out,
+          visibility 0.2s ease-in-out,
+          transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform:    translate3d(0, 0, 0);
+    transform:         translate3d(0, 0, 0);
+    pointer-events: none;
+  }
+
+  /* Show the entire tooltip on hover and focus */
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after,
+  [data-tooltip]:focus:before,
+  [data-tooltip]:focus:after,
+  .tooltip:hover:before,
+  .tooltip:hover:after,
+  .tooltip:focus:before,
+  .tooltip:focus:after {
+    visibility: visible;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+
+  /* Base styles for the tooltip's directional arrow */
+  .tooltip:before,
+  [data-tooltip]:before {
+    z-index: 1001;
+    border: 6px solid transparent;
+    background: transparent;
+    content: "";
+  }
+
+  /* Base styles for the tooltip's content area */
+  .tooltip:after,
+  [data-tooltip]:after {
+    z-index: 1000;
+    padding: 8px;
+    width: 160px;
+    background-color: #000;
+    background-color: hsla(0, 0%, 20%, 0.9);
+    color: #fff;
+    content: attr(data-tooltip);
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  /* Directions */
+
+  /* Top (default) */
+  [data-tooltip]:before,
+  [data-tooltip]:after,
+  .tooltip:before,
+  .tooltip:after,
+  .tooltip-top:before,
+  .tooltip-top:after {
+    bottom: 100%;
+    left: 50%;
+  }
+
+  [data-tooltip]:before,
+  .tooltip:before,
+  .tooltip-top:before {
+    margin-left: -6px;
+    margin-bottom: -12px;
+    border-top-color: #000;
+    border-top-color: hsla(0, 0%, 20%, 0.9);
+  }
+
+  /* Horizontally align top/bottom tooltips */
+  [data-tooltip]:after,
+  .tooltip:after,
+  .tooltip-top:after {
+    margin-left: -80px;
+  }
+
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after,
+  [data-tooltip]:focus:before,
+  [data-tooltip]:focus:after,
+  .tooltip:hover:before,
+  .tooltip:hover:after,
+  .tooltip:focus:before,
+  .tooltip:focus:after,
+  .tooltip-top:hover:before,
+  .tooltip-top:hover:after,
+  .tooltip-top:focus:before,
+  .tooltip-top:focus:after {
+    -webkit-transform: translateY(-12px);
+    -moz-transform:    translateY(-12px);
+    transform:         translateY(-12px); 
+  }
+
+  /* Left */
+  .tooltip-left:before,
+  .tooltip-left:after {
+    right: 100%;
+    bottom: 50%;
+    left: auto;
+  }
+
+  .tooltip-left:before {
+    margin-left: 0;
+    margin-right: -12px;
+    margin-bottom: 0;
+    border-top-color: transparent;
+    border-left-color: #000;
+    border-left-color: hsla(0, 0%, 20%, 0.9);
+  }
+
+  .tooltip-left:hover:before,
+  .tooltip-left:hover:after,
+  .tooltip-left:focus:before,
+  .tooltip-left:focus:after {
+    -webkit-transform: translateX(-12px);
+    -moz-transform:    translateX(-12px);
+    transform:         translateX(-12px); 
+  }
+
+  /* Bottom */
+  .tooltip-bottom:before,
+  .tooltip-bottom:after {
+    top: 100%;
+    bottom: auto;
+    left: 50%;
+  }
+
+  .tooltip-bottom:before {
+    margin-top: -12px;
+    margin-bottom: 0;
+    border-top-color: transparent;
+    border-bottom-color: #000;
+    border-bottom-color: hsla(0, 0%, 20%, 0.9);
+  }
+
+  .tooltip-bottom:hover:before,
+  .tooltip-bottom:hover:after,
+  .tooltip-bottom:focus:before,
+  .tooltip-bottom:focus:after {
+    -webkit-transform: translateY(12px);
+    -moz-transform:    translateY(12px);
+    transform:         translateY(12px); 
+  }
+
+  /* Right */
+  .tooltip-right:before,
+  .tooltip-right:after {
+    bottom: 50%;
+    left: 100%;
+  }
+
+  .tooltip-right:before {
+    margin-bottom: 0;
+    margin-left: -12px;
+    border-top-color: transparent;
+    border-right-color: #000;
+    border-right-color: hsla(0, 0%, 20%, 0.9);
+  }
+
+  .tooltip-right:hover:before,
+  .tooltip-right:hover:after,
+  .tooltip-right:focus:before,
+  .tooltip-right:focus:after {
+    -webkit-transform: translateX(12px);
+    -moz-transform:    translateX(12px);
+    transform:         translateX(12px); 
+  }
+
+  /* Move directional arrows down a bit for left/right tooltips */
+  .tooltip-left:before,
+  .tooltip-right:before {
+    top: 3px;
+  }
+
+  /* Vertically center tooltip content for left/right tooltips */
+  .tooltip-left:after,
+  .tooltip-right:after {
+    margin-left: 0;
+    margin-bottom: -16px;
+  }    
+</style>
+</head>
+<body>
+    <center>      
+      
+        <p>Data attribute only <a href="#" data-tooltip="I’m the tooltip text">Tooltip</a></p>
+        <p><code>.toolbar</code> <a href="#" class="tooltip" data-tooltip="I’m the tooltip text.">Tooltip</a></p>
+        <p><code>.toolbar-top</code> <a href="#" class="tooltip-top" data-tooltip="I’m the tooltip text.">Tooltip</a></p>
+        <p><code>.toolbar-right</code> <a href="#" class="tooltip-right" data-tooltip="I’m the tooltip text.">Tooltip</a></p>
+        <p><code>.toolbar-bottom</code> <a href="#" class="tooltip-bottom" data-tooltip="I’m the tooltip text.">Tooltip</a><p>
+        <p><a href="#" class="tooltip-left" data-tooltip="I’m the tooltip text.">Tooltip</a> <code>.toolbar-left</code></p>
+      
+    </center>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Popover, al dar click muestra una pestaña con una cabecera y un cuerpo -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+      $(document).ready(function(){
+          $('[data-toggle="popover"]').popover();
+      });
+    </script>
+</head>
+<body>
+    <div align="center">
+      <h3>Ejemplo de Popover</h3>
+      <a href="#" data-toggle="popover" title="Cabecera del Popover" data-content="contenido dentro del popover">Activar Popover</a>
+    </div>
+</body>
+</html>
+
+-------------------------------------
+<!-- Para dar posicion al Popover(top,bottom,left,right) -->
+<DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h3>Popover Example</h3>
+  <ul class="list-inline">
+    <li><a href="#" title="Header" data-toggle="popover" data-placement="top" data-content="Content">Top</a></li>
+    <li><a href="#" title="Header" data-toggle="popover" data-placement="bottom" data-content="Content">Bottom</a></li>
+    <li><a href="#" title="Header" data-toggle="popover" data-placement="left" data-content="Content">Left</a></li>
+    <li><a href="#" title="Header" data-toggle="popover" data-placement="right" data-content="Content">Right</a></li>
+  </ul>
+</div>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>
+
+</body>
+</html>
+
+-------------------------------------
+<!-- Para cerrar el Popover haciendo click en cualquier lugar del doc-->
+<DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h3>Popover Example</h3>
+    <a href="#" title="Dismissible popover" data-toggle="popover" data-trigger="focus" data-content="Click anywhere in the document to close this popover">Click me</a>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>
+
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Popover, al dar click muestra una pestaña con una cabecera y un cuerpo y link interno -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+      $(document).ready(function(){
+        $("[data-toggle=popover]").popover({html:true})
+      });
+    </script>
+</head>
+<body>
+    <div align="center">
+      <h3>Ejemplo de Popover con enlace</h3>
+      <button data-toggle="popover" data-content="Link: <a href='#'>Ir</a>" data-html="true"> Example </button>
+    </div>
+</body>
+</html>
+
+---------------------------------- 
+
+<!-- Popover con hover -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </head>
+<body>
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+
+    <div class="container" align="center">
+        <h3>Popover Example</h3>        
+        <a href="#" data-toggle="popover" data-trigger="hover" title="Cabecera" data-content="Cuerpo">Posa el cursor</a>
+    </div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Mostrar mensaje al posar el cursor sobre boton -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">        
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <!--<script src="jquery-1.9.1.js" type="text/javascript"></script>-->
+        <script>
+            $(document).ready(function() {
+                $('#boton').prop('title', 'Enunciado para el boton, se muestra al posar el cursor');
+                $('#boton').click(function(e){
+                    alert("Hola!");
+                    e.preventDefault();
+                });
+            });
+        </script>
+    </head>
+<body>
+    <div align="center">
+        <br />
+        <br />
+        <button id="boton" type="" class="btn btn-success" >PRUEBA</button>
+    </div>    
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Ejemplo de formulario y modal, curso JS example -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Curso JavaScript</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+  </script>
+  <style type="text/css">
+    label {
+        display:block;
+    }
+  </style>
+</head>
+<body bgcolor="red">
+    <div class="container">
+      <h2>Curso JavaScript</h2>
+      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Registrarse</button>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Registrarse en el curso</h4>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="get">
+                    <label>Nombre: <input type="text" name="nombre" placeholder="Tu Nombre" required> <br /></label>
+                    <label>e-mail: <input type="text" name="email" placeholder="Tu email" required> <br /></label>
+                    <p></p>                    
+                    <input type="submit" data-toggle="tooltip" title="Recuerda llenar todos los campos!" value="Registrarse">
+                    <input type="reset" value="Borrar">
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+
+-------------------------------------
+
+JSON es una notación de objetos basada en JavaScript, utiliza una sintaxis que nos permite crear objetos de manera rapida y simple, estos objetos pueden ser utilizados de la manera que queramos y la notación se utiliza muy comúnmente para crear servicios REST, objetos, e incluso fue adoptada por algunas bases de datos como lo es MongoDB. A continuación el siguiente video tutorial demuestra una introducción. Codigo ejemplo puedes encontrarlo posteriormente.
+Sintaxis de JSON
+
+Para escribir JSON debemos tener en cuenta lo siguiente:
+La creación de los objetos JSON implica escribir datos, para ello:
+
+    Los datos estan separados por comas.
+    los datos se escriban en pares, siendo primero el nombre o atributo del mismo y luego el valor del dato.
+    Los objetos JSON estan rodeados por llaves “{}”
+    Llaves cuadradas [] guardan arreglos, incluyendo otros objetos JSON
+
+
+El formato JSON tiene la siguiente notación:
+
+{key : value, key2 : value2, key3 : value3,...}
+
+Y también puede ser serializado y multidimensional, por ejemplo:
+
+[{key : value, key2 : value2, key3 : value3, key : { key : value, key2 : value2, key3 : value3} },{key : value, key2 : value2, key3 : value3,...}]
+
+Ejemplo de un objeto JSON que guarda un usuario y password:
+
+var objetoJSON = {"usuario":"user","password":"123456"};
+
+<!-- Escribiendo en el DOM los datos de un JSON -->
+<!DOCTYPE  html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+</head>
+<body>  
+  <p>JSON example Jquery</p>
+  <div id="caja" >
+  </div>
+  <button>Activar</button>
+</body>
+</html>
+<script type="text/javascript">
+  var json_datos = {"usuarios":[
+    {"nombre":"María","cedula":"12345678"},
+    {"nombre":"Carlos","cedula":"87654321"},
+  ]};
+  var a ="YYY"
+  $(document).ready(function() {
+    $("button").click(function() {
+      //alert("¡Alerta Activada!");
+      //$("#caja").html(a);
+      $("#caja").html(json_datos.usuarios[0].nombre);
+    });
+  });
+</script>
+
+-------------------------------------
+
+<!-- Escribiendo en el DOM los datos de un JSON, por posiciones -->
+<!DOCTYPE  html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+</head>
+<body>  
+  <p>JSON example Jquery</p>
+  <div id="elemento1">
+  </div>
+  <div id="elemento2">
+  </div>
+  <br />
+  <button>Activar</button>
+</body>
+</html>
+<script type="text/javascript">
+  var json_datos = {"usuarios":[
+    {"nombre":"María","cedula":"12345678"},
+    {"nombre":"Carlos","cedula":"87654321"},
+  ]};
+  $(document).ready(function() {
+    $("button").click(function() {
+      $("#elemento1").html(json_datos.usuarios[0].nombre+json_datos.usuarios[0].cedula);
+      $("#elemento2").html(json_datos.usuarios[1].nombre+json_datos.usuarios[1].cedula);
+    });
+  });
+</script>
+
+-------------------------------------
+
+<!-- Escribiendo en el DOM los datos de un JSON, por posiciones 2-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+</head>
+<body>  
+  <p>JSON example Jquery</p>
+  <div id="caja" >
+  </div>
+  <button>Activar</button>
+</body>
+</html>
+<script type="text/javascript">
+  var json_datos = {"usuarios":[
+    {"nombre":"María","cedula":"12345678"},
+    {"nombre":"Carlos","cedula":"87654321"},
+  ]};
+  var a ="YYY"
+  $(document).ready(function() {
+    $("button").click(function() {
+      //alert("¡Alerta Activada!");
+      //$("#caja").html(a);
+      $("#caja").append("Nombre: " + json_datos.usuarios[0].nombre);
+      $("#caja").append(" / Cédula: " + json_datos.usuarios[0].cedula);
+      $("#caja").append("<br />");
+      $("#caja").append("Nombre: " + json_datos.usuarios[1].nombre);
+      $("#caja").append(" / Cédula: " + json_datos.usuarios[1].cedula);
+    });
+  });
+</script>
+
+-------------------------------------
+
+<!-- Comprobar que la función está recibiendo el json, debe mostrar que recibe un objeto, crear el mi.json y añadirle un json cualquiera. -->
+<!DOCTYPE html>
+<html> 
+  <head> 
+     <title>Evaluar una variable que contiene notación JSON</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+ </head> 
+ <body>
+  <input type="button" id="boton1" value="Activar" /><br /><br />
+  <span id="texto"></span>
+   <script type="text/javascript">
+    $('#boton1').click(function () {
+      $.getJSON('mi.json', function (data) {
+        alert(data);
+      });
+    });
+   </script>
+  </body>
+</html>
+
+-------------------------------------
+
+<!--El método .empty() elimina todos los nodos secundarios y el contenido de los elementos seleccionados.
+Nota: Este método no elimina el elemento en sí, o sus atributos.-->
+<!DOCTYPE html>
+<html>
+<head>
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script-->
+<script src="jquery-1.9.1.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("div").empty();
+    });
+});
+</script>
+</head>
+<body>
+<div style="height:100px;background-color:yellow">
+  This is some text
+  <p>This is a paragraph inside the div.</p>
+</div>
+<p>This is a paragraph outside the div.</p>
+<button>Remove content of the div element</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Agregar campos de formulario al DOM usando un select form -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <script>
+          var counterText = 0;
+          var counterRadioButton = 0;
+          var counterCheckBox = 0;
+          var counterTextArea = 0;
+          function addAllInputs(divName, inputType){
+               var newdiv = document.createElement('div');
+               switch(inputType) {
+              case 'text':
+                         newdiv.innerHTML = "Entry " + (counterText + 1) + " <br><input type='text' name='myInputs[]'>";
+                   counterText++;
+                     break;
+                    case 'radio': 
+                         newdiv.innerHTML = "Entry " + (counterRadioButton + 1) + " <br><input type='radio' name='myRadioButtons[]'>";
+                   counterRadioButton++;
+                   break; 
+                    case 'checkbox':
+                         newdiv.innerHTML = "Entry " + (counterCheckBox + 1) + " <br><input type='checkbox' name='myCheckBoxes[]'>";
+                         counterCheckBox++;
+                   break;     
+                    case 'textarea':
+                         newdiv.innerHTML = "Entry " + (counterTextArea + 1) + " <br><textarea name='myTextAreas[]'>type here...</textarea>";
+                   counterTextArea++;
+                   break;       
+                    }
+               document.getElementById(divName).appendChild(newdiv);
+          }
+        </script>
+    </head>
+<body>
+<form name="myForm" method="POST">
+  <div id="dynamicInputs">
+  </div>
+  <p />
+  <select name='inputSelect'>
+    <option value ="text">text field</option>
+    <option value ="radio">radio button</option>
+    <option value ="checkbox">checkbox</option>
+    <option value ="textarea">textarea</option>
+  </select>
+  <br />
+  <input type="button" value="Add selected input" onClick="addAllInputs('dynamicInputs', document.myForm.inputSelect.value);"><br />
+</form>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Agregar campos de formulario al DOM usando un select form -->
+<!-- Agregados otros campos para agregar -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>XXX</title>
+        <meta charset="utf-8">
+        <script>
+          var EnunciadoText = 0;
+          var counterText = 0;
+          var counterTextArea_corto = 0;
+          var counterTextArea_larga = 0;
+          var counterVerdadero_Falso = 0;
+          function addAllInputs(divName, inputType) {
+            var newdiv = document.createElement('div');
+            switch(inputType) {
+              case 'enunciado':
+                newdiv.innerHTML = "Enunciado, pregunta o título " + "(" + (EnunciadoText + 1) + ")" + "<br /><input type='text' name='myInputs_enunciado' ><p />";
+                EnunciadoText++;
+              break;
+              case 'text':
+                newdiv.innerHTML = "Texto Corto " + "(" + (counterText + 1) + ")" + "<br /><input type='text' name='myInputs' ><p />";
+                counterText++;
+              break;
+              case 'textarea_corta':
+                newdiv.innerHTML = "Area de Texto Corto " + "(" + (counterTextArea_corto + 1) + ")" + "<br /><textarea name='myTextAreas_corto' rows='5' cols='50' ></textarea><p />";
+                counterTextArea_corto++;
+              break;
+              case 'textarea_larga':
+                newdiv.innerHTML = "Area de Texto Largo " + "(" + (counterTextArea_larga + 1) + ")" + "<br /><textarea name='myTextAreas_larga' rows='10' cols='60' ></textarea><p />";
+                counterTextArea_larga++;
+              break;
+              case 'verdadero_falso':
+                newdiv.innerHTML = "Verdadero o Falso " + "(" + (counterVerdadero_Falso + 1) + ")" + "<br />Pregunta: <input type='text' name='myInputs_pregunta_vof'><select name='select_form[]'><option>---<option>Sí<option>No</select><p />";
+                counterVerdadero_Falso++;
+              break;
+            }
+            document.getElementById(divName).appendChild(newdiv);
+          }
+        </script>
+    </head>
+<body>
+<h3>Agregar campos </h3>
+<form name="myForm" method="GET">
+  <div id="dynamicInputs">
+  </div>
+  <p />
+  <hr>
+  <select name='inputSelect'>
+    <option value ="enunciado">Enunciado, pregunta o título</option>
+    <option value ="text">Campo de Texto</option>
+    <option value ="textarea_corta">Area de Texto</option>
+    <option value ="textarea_larga">Area de Largo</option>
+    <option value ="verdadero_falso">Verdadero o Falso</option>
+  </select>
+  <br />
+  <br />
+  <input type="button" value="Agregar" onClick="addAllInputs('dynamicInputs', document.myForm.inputSelect.value);">
+  <input type="submit" value="Enviar">
+</form>
+</body>
+</html>
+
+-------------------------------------
+
+<!--Mostrar hora del sistema con una funcion -->
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    </head>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#hora_actual_inicio").click(function() {
+          var tiempo = new Date();
+          var hora;
+          with (tiempo){
+            hora = getHours();
+            minuto = getMinutes();
+            //segundo = getSeconds();
+            if (minuto < 10) {
+              minuto="0"+ minuto
+            }
+            cad = hora + ":" + minuto;
+            //cad = hora + ":" + minuto + ":" + segundo;
+          }
+          $("#fijar_hora_inicio").html(cad);
+        });
+      });
+    </script>
+<body>
+    <div align="center">
+      <b>Hora de inicio:</b>
+      <div id="fijar_hora_inicio"></div>      
+      <button id="hora_actual_inicio">Hora actual</button>
+    </div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- .toggle() Mostrar u ocultar los elementos coincidentes. -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>toggle demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<button>Toggle</button>
+<p>Hello</p>
+<p style="display: none">Good Bye</p>
+ 
+<script>
+$( "button" ).click(function() {
+  $( "p" ).toggle();
+  //$( "p" ).toggle("slow"); Para desaparecer lentamente
+});
+</script>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- .toggle() Mostrar u ocultar los elementos coincidentes, efecto slow -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>toggle demo</title>
+  <style>
+  p {
+    background: #dad;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  </style>
+  <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+<button>Toggle 'em</button>
+<p>Hiya</p>
+<p>Such interesting text, eh?</p>
+<script>
+$( "button" ).click(function() {
+  $( "p" ).toggle( "slow" );
+});
+</script>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- toggle / show and hide element with one button -->
+<html>
+  <head>
+      <title>XXX</title>
+      <!--script src="jquery-1.9.1.js" type="text/javascript"></script-->
+      <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+      <meta charset="UTF-8">
+  </head>
+  <style type="text/css">
+  .a {
+    width: 600px;
+    height: 400px;
+    border: ridge 1px red;
+  }
+  </style>
+<body>
+  <div class="a">
+    <h1>XXXXXXXXXXX</h1>
+  </div>
+  <button class="show">Ver</button>
+</body>
+</html>
+<script type="text/javascript"> 
+  $("document").ready(function () {
+    $('.show').click(function() {
+      $('.a').toggle( "slow" );
+    });
+  });
+</script>
+
+-------------------------------------
+
+<!-- Utilización de un parser JSON en jQuery
+Evaluar una variable que contiene notación JSON.
+-->
+<!DOCTYPE html>
+<html> 
+  <head> 
+     <title>Evaluar una variable que contiene notación JSON</title>
+     <meta http-equiv="Content-Type" 
+              content="text/html; charset=UTF-8">
+     <script src="jquery-1.10.2.js" type="text/javascript"></script>
+ </head> 
+ <body> 
+   <h1>Evaluar una variable que contiene notación JSON.</h1> 
+   <input type="button" id="boton1"
+             value="Recuperar datos del JSON" /> <br/>
+   <span id="texto"></span>
+   <script type="text/javascript">
+       $(document).ready(function () {
+           $("#boton1").click(function () {
+               var cad = "Los libros en el archivo JSON son:<br />";
+               var cadena = $.getJSON("mi.json", function (data) {
+                   for (l in data.libros.lib) {
+                       cad += ("<br />" + data.libros.lib[l].libro + " de " +
+                           data.libros.lib[l].autores[0] + ", " +
+                           data.libros.lib[l].autores[1] + " y " +
+                           data.libros.lib[l].autores[2] + "<br />Editorial: " +
+                           data.libros.lib[l].editorial +
+                           "<br />").replace("y undefined", "").replace(", undefined", "");
+                    }
+                   $("#texto").html(cad);
+               })
+           })
+       });
+  </script>
+    </body>
+</html>
+
+El JSON = mi.json
+
+{
+  "libros": {
+      "lib": [
+          {
+              "libro": "Beginning XML, Cuarta Edición",
+              "año": "2007",
+              "autores": [
+                  "David Hunter",
+                  "Jeff Rafter",
+                  "Andrew Watt"
+              ],
+              "editorial": "Wrox"
+          },
+          {
+              "libro": "Code First",
+              "año": "2012",
+              "autores": [
+                  "Julia Lerman"
+              ],
+              "editorial": "O'Reilly"
+          },
+    {
+              "libro": " .NET: Architecting Applications for the Enterprise",
+              "año": "2009",
+              "autores": [
+                  "Dino Espósito",
+            "Andrea Saltarello"
+              ],
+              "editorial": "Microsoft Press"
+          },
+    {
+              "libro": "Professional ASP.NET MVC 4",
+              "año": "2012",
+              "autores": [
+                  "Jon Galloway",
+        "Phil Haack",
+        "Brad Wilson"
+              ],
+              "editorial": "Wrox (P2P)"
+          }
+      ]
+  }
+}
+
+-------------------------------------
+
+<!-- Utilización de un for para recorrer un json y mostrar los datos -->
+<!DOCTYPE html>
+<html> 
+  <head> 
+     <title>Evaluar una variable que contiene notación JSON</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <script src="jquery-min1.12.4.js" type="text/javascript"></script>
+ </head> 
+ <body> 
+  <h3>Evaluar una variable que contiene notación JSON.</h3>
+  <input type="button" id="boton1" value="Recuperar datos del JSON" /><br /><br />
+  <span id="texto"></span>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#boton1").click(function () {
+        var cad = "Los elementos en el archivo JSON son:<br /><br />";
+        var cadena = $.getJSON("mi.json", function (data) {
+          for (x in data.america.venezuela) {
+            cad += ("Estado: " + data.america.venezuela[x].estado + "<br />");
+            cad += ("Habitantes: " + data.america.venezuela[x].habitantes + "<br />");
+            cad += ("Gobernador: " + data.america.venezuela[x].gobernador[0] + "<br />");
+            cad += ("Consejal: " + data.america.venezuela[x].gobernador[1] + "<br /><br />");
+          }
+          $("#texto").html(cad);
+        })
+      })
+    });
+  </script>
+  </body>
+</html>
+
+El JSON = mi.json
+
+{
+  "america": {
+    "venezuela": [
+      {
+        "estado": "Mérida",
+        "habitantes": "2313123",
+        "gobernador": [
+          "Alexis Ramírez",
+          "Cj. Pedro Pérez"
+        ]
+      },
+      {
+        "estado": "Barinas",
+        "habitantes": "232012",
+        "gobernador": [
+          "Anibal Chávez",
+          "Cj.Carmen Yolanda"
+        ]
+      },
+      {
+        "estado": "Apure",
+        "habitantes": "212309",
+        "gobernador": [
+          "Manuel Carreño",
+          "Cj.José Albarran"
+        ]
+      },
+      {
+        "estado": "Táchira",
+        "habitantes": "234012",
+        "gobernador": [
+          "Vielma Mora",
+          "Cj.Francisco Beltrán"
+        ]
+      }
+    ]
+  }
+}
+
+-------------------------------------
+
+<!-- Utilización de un for para recorrer un json y mostrar los datos, añadiendo link en el json -->
+<!DOCTYPE html>
+<html> 
+  <head> 
+     <title>Evaluar una variable que contiene notación JSON</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+ </head> 
+ <body> 
+  <h3>Evaluar una variable que contiene notación JSON.</h3>
+  <input type="button" id="boton1" value="Recuperar datos del JSON" /><br /><br />
+  <span id="texto"></span>
+   <script type="text/javascript">
+    $(document).ready(function () {
+      /*$("#boton1").click(function () {*/
+      window.onload = function () {
+        var cad = "Los elementos en el archivo JSON son:<br /><br />";
+        var cadena = $.getJSON("mi.json", function (data) {
+          for (x in data.INCES.Proyectos) {
+            cad += ("Nombre del Proyecto: " + data.INCES.Proyectos[x].nombre + "<br />");
+            cad += ("Solicitud: " + data.INCES.Proyectos[x].solicitud + "<br />");
+            cad += ("Responsable 1: " + data.INCES.Proyectos[x].responsables[0] + "<br />");
+            cad += ("Responsable 2: " + data.INCES.Proyectos[x].responsables[1] + "<br />");
+            cad += ("Detalles: " + data.INCES.Proyectos[x].detalles + "<br /><br />");
+          }
+          $("#texto").html(cad);
+        })
+      }
+      /*});*/
+    });
+   </script>
+  </body>
+</html>
+
+El JSON = mi.json
+
+{
+  "INCES": {
+    "Proyectos": [
+      {
+        "nombre": "Proyecto 1",
+        "solicitud": "2313123",
+        "responsables": [
+          "Alexis Parra",
+          "Pedro Pérez"
+        ],
+        "detalles": "<a href='#'>Ver</a>"
+      },
+      {
+        "nombre": "Proyecto 2",
+        "solicitud": "232012",
+        "responsables": [
+          "Marcos Chávez",
+          "Carmen Yolanda"
+        ],
+        "detalles": "<a href='#'>Ver</a>"
+      },
+      {
+        "nombre": "Proyecto 3",
+        "solicitud": "212309",
+        "responsables": [
+          "Manuel Carreño",
+          "José Albarran"
+        ],
+        "detalles": "<a href='#'>Ver</a>"
+      },
+      {
+        "nombre": "Proyecto 4",
+        "solicitud": "234012",
+        "responsables": [
+          "Karla Mora",
+          "Francisco Beltrán"
+        ],
+        "detalles": "<a href='#'>Ver</a>"
+      }
+    ]
+  }
+}
+
+-------------------------------------
+
+<!-- Toma una cadena JSON bien formada y devuelve el valor resultante JavaScript, si esta mal declarado o no consigue el dato devolvera false -->
+<!--Passing in a malformed JSON string results in a JavaScript exception being thrown. For example, the following are all invalid JSON strings:
+"{test: 1}" (test does not have double quotes around it).
+"{'test': 1}" ('test' is using single quotes instead of double quotes).
+"'test'" ('test' is using single quotes instead of double quotes).
+".1" (a number must start with a digit; "0.1" would be valid).
+"undefined" (undefined cannot be represented in a JSON string; null, however, can be).
+"NaN" (NaN cannot be represented in a JSON string; direct representation of Infinity is also not permitted).
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.parseHTML demo</title>
+  <script src="jquery-1.10.2.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var obj = jQuery.parseJSON( '{ "name": "John" }' );
+    alert( obj.name === "Johnn" );
+  });
+</script>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Crea un arreglo de nodos del DOM usando una cadena de y la inserta dentro de un div -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.parseHTML demo</title>
+  <script src="jquery-1.10.2.js"></script>
+</head>
+<body>
+<div id="log">
+  <h3>Content:</h3>
+</div>
+<script>
+var $log = $( "#log" ),
+  str = "hello, <b>my name is</b> jQuery.",
+  html = $.parseHTML( str ),
+  nodeNames = [];
+ 
+// Append the parsed HTML
+$log.append( html );
+ 
+// Gather the parsed HTML's node names
+$.each( html, function( i, el ) {
+  nodeNames[ i ] = "<li>" + el.nodeName + "</li>";
+});
+ 
+// Insert the node names
+$log.append( "<h3>Node Names:</h3>" );
+$( "<ol></ol>" )
+  .append( nodeNames.join( "" ) )
+  .appendTo( $log );
+</script>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Creacion de un modal grande -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+      <h2>Modal grande</h2>
+      <!-- Trigger the modal with a button -->
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Abrir el modal</button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg"> <!-- modal-sm para que sea pequeño -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cabecera del Modal </h4>
+            </div>
+            <div class="modal-body">
+              <p>Contenido del modal</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Boton cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Creacion de un modal pequeño -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+      <h2>Modal pequeño</h2>
+      <!-- Trigger the modal with a button -->
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Abrir el modal</button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm"> <!-- modal-lg para que sea grande -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cabecera del Modal </h4>
+            </div>
+            <div class="modal-body">
+              <p>Contenido del modal</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Boton cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Cargar en modal una pagina web o html externa, con boton cerrar -->
+<!-- Crear el archivo x.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Example of Bootstrap 3 Modals with Remote URL</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="bs-example">
+    <!-- Button HTML (to Trigger Modal) -->
+    <a href="y.html" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Launch Demo Modal</a>
+    
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">             
+                <!-- Content will be loaded here from "remote.php" file -->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<!-- Crear el archivo y.html-->
+<div align="center">
+  <span style="text-align:right">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>  
+  </span>
+  XXXXXXXXXXXXXXXX <br />
+  XXXXXXXXXXXXXXXX <br />
+  XXXXXXXXXXXXXXXX <br />
+  XXXXXXXXXXXXXXXX <br />
+  XXXXXXXXXXXXXXXX <br />
+  <span style="text-align:right">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Boton cerrar</button>
+  </span>
+</div>
+
+-------------------------------------
+
+<!--
+Ajax con JSON y jQuery
+Uno de los argumentos del método jQuery.ajax() es dataType y aquí podemos especificar que vamos a utilizar datos JSON en la respuesta. Si no especificamos nada en dataType, jQuery intetará detectar de forma automática el formato de los datos recibidos. Si se especifica el tipo de contenido, será más fácil para jQuery tratar los datos correctamente. Utilizando jQuery.ajax() tendría un aspecto similar a:
+-->
+<!DOCTYPE html>
+<html> 
+  <head> 
+     <title>Evaluar una variable que contiene notación JSON</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+ </head> 
+ <body> 
+  <h3>Evaluar una variable que contiene notación JSON.</h3>
+  <input type="button" id="boton1" value="Recuperar datos del JSON" /><br /><br />
+  <span id="texto"></span>
+   <script type="text/javascript">
+    $(document).ready(function () {
+      $.ajax({
+          // En data puedes utilizar un objeto JSON, un array o un query string
+          //data: {"parametro1" : "valor1", "parametro2" : "valor2"},
+          //Cambiar a type: POST si necesario
+          type: "GET",
+          // Formato de datos que se espera en la respuesta
+          dataType: "json",
+          // URL a la que se enviará la solicitud Ajax
+          url: "mi.json",
+      })
+       .done(function( data, textStatus, jqXHR ) {
+           if ( console && console.log ) {
+               alert( "La solicitud se ha completado correctamente." );
+           }
+       })
+       .fail(function( jqXHR, textStatus, errorThrown ) {
+           if ( console && console.log ) {
+               alert( "La solicitud a fallado: " +  textStatus);
+           }
+      });
+    });
+   </script>
+  </body>
+</html>
+
+El JSON = mi.json
+
+{
+  "name": {
+    "Proyectos": [
+      {
+        "nombre": "Proyecto 1",
+        "solicitud": "2313123",
+        "responsables": [
+          "Alexis Parra",
+          "Pedro Pérez"
+        ],
+        "detalles": "<a href='#'>Ver</a>"
+      },
+      {
+        "nombre": "Proyecto 2",
+        "solicitud": "232012",
+        "responsables": [
+          "Marcos Chávez",
+          "Carmen Yolanda"
+        ],
+        "detalles": "<a href='#'>Ver</a>"
+      },
+      {
+        "nombre": "Proyecto 3",
+        "solicitud": "212309",
+        "responsables": [
+          "Manuel Carreño",
+          "José Albarran"
+        ],
+        "detalles": "<a href='#'>Ver</a>"
+      },
+      {
+        "nombre": "Proyecto 4",
+        "solicitud": "234012",
+        "responsables": [
+          "Karla Mora",
+          "Francisco Beltrán"
+        ],
+        "detalles": "<a href='#'>Ver</a>"
+      }
+    ]
+  }
+}
+
+-------------------------------------
+
+<!-- Obtener datos del JSON utilizando una petición AJAX, se escriben los datos en el dom -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.getJSON("mi.json", function(result){
+            $.each(result, function(i, field){
+                $("div").append(field + " ");
+            });
+        });
+    });
+});
+</script>
+</head>
+<body>
+<button>Get JSON data</button>
+<div></div>
+</body>
+</html>
+
+El JSON = mi.json
+
+{ 
+  "firstName": "John",
+  "lastName": "Connor",
+  "age": 25
+}
+
+-------------------------------------
+
+<!-- Cargar un página o elemento dentro de un iframe -->
+<html>
+  <head>
+      <title>XXX</title>
+      <!--script src="jquery-1.9.1.js" type="text/javascript"></script-->
+      <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+      <meta charset="UTF-8">
+  </head>
+  <script type="text/javascript"> 
+  $("document").ready(function () {
+    $("button").click(function(){
+      $("#content").attr("src","http://xxxxxx.xxx");
+  });
+  });
+</script>
+<body>
+  <iframe id="content" src="about:blank"></iframe>
+  <button>Get External Content</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Mostrar una alerta cuando una petición AJAX se complete con éxito: -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $(document).ajaxSuccess(function(){
+        alert("AJAX request successfully completed");
+    });
+    $("button").click(function(){
+        $("div").load("a.txt");//Crear el fichero para cargar el contenido
+    });
+});
+</script>
+</head>
+<body>
+<div><h2>Let AJAX change this text</h2></div>
+<button>Change Content</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Cargar un texto en un elemetno <div> ussando un solicitud AJAX -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#div1").load("a.txt"); // Crear el a.txt y cargarle datos
+    });
+});
+</script>
+</head>
+<body>
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+<button>Get External Content</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Obtener y correr un JavaScript usando una solicitud AJAX-->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.getScript("prueba.js"); // Crear el script para probarlo
+    });
+});
+</script>
+</head>
+<body>
+<button>Use Ajax to get and then run a JavaScript</button>
+</body>
+</html>
+
+El JSON = prueba.js
+
+$(document).ready(function(){
+  alert("prueba.js cargado con éxito!");
+});
+
+-------------------------------------
+
+<!-- Mostrar una imagen de carga mientras la solicitud AJAX está pasando: -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $(document).ajaxStart(function(){
+        $("#wait").css("display", "block");
+    });
+    $(document).ajaxComplete(function(){
+        $("#wait").css("display", "none");
+    });
+    $("button").click(function(){
+        $("#txt").load("a.txt"); // Crear el a.txt y cargarle data
+    });
+});
+</script>
+</head>
+<body>
+<div id="txt"><h2>Let AJAX change this text</h2></div>
+<button>Change Content</button>
+<div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;"><img src='demo_wait.gif' width="64" height="64" /><br>Loading..</div><!-- Añadir un loading.gif -->
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Mostrar una alerta cuando falla una petición AJAX -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $(document).ajaxError(function(){
+      alert("An error occured!");
+    });
+    $("button").click(function(){
+      $("div").load("wrongfile.txt"); // Si no consigue el fichero muestra la alerta de error
+    });
+});
+</script>
+</head>
+<body>
+<div><h2>Let AJAX change this text</h2></div>
+<button>Change Content</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Cambiar el contenido de un elemento <div> cuando un petición AJAX está a punto de ser enviada -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $(document).ajaxSend(function(e, xhr, opt){
+      $("div").append("<p>Requesting " + opt.url + "</p>");
+    });
+    $("button").click(function(){
+      $("div").load("a.txt");
+    });
+});
+</script>
+</head>
+<body>
+<div><h2>Let AJAX change this text</h2></div>
+<button>Change Content</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Mostrar una alerta cada 3 segundos (3000 milisegundos): -->
+</html<!DOCTYPE html>
+<html>
+<body>
+<p>Click the button to wait 3 seconds, then alert "Hello".</p>
+<p>After clicking away the alert box, an new alert box will appear in 3 seconds. This goes on forever...</p>
+<button onclick="myFunction()">Try it</button>
+<script>
+function myFunction() {
+  setInterval(function(){ alert("Hello"); }, 3000);
+}
+</script>
+</body>
+
+-------------------------------------
+
+<!-- Cargar la data de un json y escribirlo en un div content con una click function -->
+<html>
+  <head>
+    <title>The jQuery Example</title>
+    <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+    <script type = "text/javascript" language = "javascript">
+      $(document).ready(function() {
+        $("#driver").click(function(event){
+          $.getJSON('mi.json', function(data) { //Crear el json y guardarlo
+            $('#content').html('<p> Name: ' + data.firstName + '</p>');
+            $('#content').append('<p>Apellido : ' + data.lastName + '</p>');
+            $('#content').append('<p>Edad: ' + data.age + '</p>');
+          });
+        });
+      });
+    </script>
+  </head>
+<body>  
+<p>Click para cargar la data del JSON:</p>
+<div id="content" style="border: ridge;">
+  Content
+</div>
+<br />
+<input type = "button" id = "driver" value = "Cargar data" />
+</body>
+</html>
+
+El JSON = mi.json
+
+{ 
+  "firstName": "John",
+  "lastName": "Connor",
+  "age": 21
+}
+
+-------------------------------------
+
+<!-- Cargar la data de un json y escribirlo en un div content, mostrando los contenidos dentro de los arrays-->
+<html>
+  <head>
+    <title>The jQuery Example</title>
+    <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+    <script type = "text/javascript" language = "javascript">
+      $(document).ready(function() {
+        window.onload = function () {
+          $.getJSON('mi.json', function(data) {
+            $('#content').html('<p>Ente Superior: ' + data.name + '</p>');
+            $('#content').append('<p>Ente: ' + data.children[0].name + '</p>');
+            $('#content').append('<p>Proyecto: ' + data.children[0].children[0].name + '</p>');
+          });
+        }
+      });
+    </script>
+  </head>
+<body>
+  <div id="content">
+    Content
+  </div>
+</body>
+</html>
+
+El JSON = mi.json
+
+{
+  "name": "Vicepresidencia",
+  "children":
+  [
+    {
+      "name": "Ente X",
+      "children":
+      [
+        {"name": "Proyecto 1", "size": 2000},
+        {"name": "Proyecto 2", "size": 2000},
+        {"name": "Proyecto 3", "size": 2000},
+        {"name": "Proyecto 4", "size": 2000},
+        {"name": "Proyecto 5", "size": 2000}
+      ]
+    },
+    {
+      "name": "Ente y",
+      "children":
+      [
+        {"name": "Proyecto 1", "size": 2000},
+        {"name": "Proyecto 2", "size": 2000},
+        {"name": "Proyecto 3", "size": 2000},
+        {"name": "Proyecto 4", "size": 2000},
+        {"name": "Proyecto 5", "size": 2000}
+      ]
+    }
+  ]
+}
+
+-------------------------------------
+
+<!-- Jquery show - Mostrar los elementos que esten ocultos display: none-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>show demo</title>
+  <style>
+  p {
+    background: yellow;
+  }
+  </style>
+  <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+ 
+<button>Show it</button>
+<p style="display: none">Hello  2</p>
+ 
+<script type="text/javascript">
+$( "button" ).click(function() {
+  $( "p" ).show( "slow" );
+});
+</script>
+ 
+</body>
+</html>
+
+-------------------------------------
+
+<!-- show y hide elementos del dom, simple -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("p").hide();
+    });
+    $("#show").click(function(){
+        $("p").show();
+    });
+});
+</script>
+</head>
+<body>
+<p>If you click on the "Hide" button, I will disappear.</p>
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- show and hide element when scroll page -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<style type="text/css">
+h1 {
+    position: fixed;
+    color: red;
+}
+.contenedor {
+    width: 900px;
+    height: 3000px;
+    border: ridge 1px;
+    padding: 10px;
+}
+.cuadro {
+    width: 99%;
+    height: 600px;
+    border: ridge 1px;
+}
+
+.green {
+    background-color: green;
+    display: none;
+}
+
+.blue {
+    background-color: blue;
+}
+</style>
+<script type="text/javascript">
+$("document").ready(function () {
+    $(function () {
+        $(window).scroll(function () {
+            // set distance user needs to scroll before we start fadeIn
+            if ($(this).scrollTop() > 100) {
+                $('h1').fadeOut("slow");
+            } else {
+                $('h1').fadeIn("slow");
+            }
+        });
+    });
+
+    $(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 1) {
+                $('.cuadro.green').show( "slow" );
+            } else {
+                $('.cuadro.green').hide( "slow" );
+            }
+        });
+    });
+});
+
+</script>
+</head>
+<body>
+<h1>Tittle</h1>
+<div class="contenedor">
+    <br />
+    <br />
+    <br />
+    <div class="cuadro green">
+    </div>
+    <br />
+    <br />
+    <br />
+    <!--div class="cuadro blue">
+    </div-->
+</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- show and hide elements when scroll -->
+<!DOCtype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="jquery-1.9.1.js" type="text/javascript"></script>
+<style>
+* {
+    box-sizing: border-box;
+}
+.row:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+.header {
+    background-color: #9933cc;
+    color: #ffffff;
+    padding: 15px;
+}
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color :#33b5e5;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.menu li:hover {
+    background-color: #0099cc;
+}
+.aside {
+    background-color: #33b5e5;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.footer {
+    background-color: #0099cc;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+}
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 98%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+.c {
+    display: none;
+}
+</style>
+
+<script type="text/javascript">
+$("document").ready(function () {
+    $(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.c').show( "slow" );
+            } else {
+                $('.c').hide( "slow" );
+            }
+        });
+    });
+});
+</script>
+
+
+</head>
+<body>
+<div class="header">
+    <h1>Cabecera</h1>
+</div>
+<div class="row">
+    <div class="col-2">
+        <div class="aside a">
+            <h2>What?</h2>
+            <p>Chania is a city on the island of Crete.</p>
+            <h2>Where?</h2>
+            <p>Crete is a Greek island in the Mediterranean Sea.</p>
+            <h2>How?</h2>
+            <p>You can reach Chania airport from all over Europe.</p>
+        </div>
+        <br />
+        <br />
+        <div class="aside b">
+            <h2>What?</h2>
+            <p>Chania is a city on the island of Crete.</p>
+            <h2>Where?</h2>
+            <p>Crete is a Greek island in the Mediterranean Sea.</p>
+            <h2>How?</h2>
+            <p>You can reach Chania airport from all over Europe.</p>
+        </div>
+        <br />
+        <br />
+        <div class="aside c">
+            <h2>C</h2>
+            <p>Chania is a city on the island of Crete.</p>
+            <h2>C</h2>
+            <p>Crete is a Greek island in the Mediterranean Sea.</p>
+            <h2>C</h2>
+            <p>You can reach Chania airport from all over Europe.</p>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>Footer</p>
+</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- show y hide elementos del dom, agregándole un valor como parámetro al metodo hide -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("p").hide(1000);
+    });
+});
+</script>
+</head>
+<body>
+<button>Hide</button>
+<p>This is a paragraph with little content.</p>
+<p>This is another small paragraph.</p>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- show y hide elementos del dom -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>show demo</title>
+  <style>
+  div {
+    background: #def3ca;
+    margin: 3px;
+    width: 80px;
+    display: none;
+    float: left;
+    text-align: center;
+  }
+  </style>
+  <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+ 
+<button id="showr">Show</button>
+<button id="hidr">Hide</button>
+<div>Hello 3,</div>
+<div>how</div>
+<div>are</div>
+<div>you?</div>
+ 
+<script>
+$( "#showr" ).click(function() {
+  $( "div" ).first().show( "fast", function showNext() {
+    $( this ).next( "div" ).show( "fast", showNext );
+  });
+});
+ 
+$( "#hidr" ).click(function() {
+  $( "div" ).hide( 1000 );
+});
+</script>
+ 
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Método slide, desliza elementoss arriba y abajo. -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script> 
+$(document).ready(function(){
+    $("#flip").click(function(){
+        $("#panel").slideToggle("slow");
+    });
+});
+</script>
+
+<style> 
+#panel, #flip {
+    padding: 5px;
+    text-align: center;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+}
+
+#panel {
+    padding: 50px;
+    display: none;
+}
+</style>
+</head>
+<body>
+<div id="flip">Click to slide the panel down or up</div>
+<div id="panel">Hello world!</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- show y hide elementos del dom, select -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<style type="text/css">
+#negacion {
+  display: none;
+}
+</style>
+</head>
+<body>
+<form action="" method="get">
+  ¿Está de acuero?<br />
+  <select name="formulario" id="formulario_select">
+    <option value=""></option>
+    <option value="s">Sí</option>
+    <option value="n">No</option>
+  </select>
+  <br />
+  <br />
+  <div id="negacion">
+    ¿Por que no?<br />
+    <input type="text" name="por_que_no"> <br />
+  </div>
+  <br />
+  <input type="submit" value="Enviar">
+</form>
+<br />
+</body>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("select").change(function() {
+    var formulario = $(this).val();
+      if (formulario == '') {
+        $( "#negacion" ).hide();
+      }
+      if (formulario == 's') {
+        $( "#negacion" ).hide();
+      }
+      if (formulario == 'n') {
+        $( "#negacion" ).show();
+      }
+    });
+  });
+</script>
+</html>
+
+-------------------------------------
+
+<!-- Scrollspy - mostrando las secciones de la pagina al hacer scroll -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      position: relative; 
+  }
+  #section1 {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
+  #section2 {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
+  #section3 {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
+  #section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
+  #section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#section1">Section 1</a></li>
+          <li><a href="#section2">Section 2</a></li>
+          <li><a href="#section3">Section 3</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#section41">Section 4-1</a></li>
+              <li><a href="#section42">Section 4-2</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>    
+
+<div id="section1" class="container-fluid">
+  <h1>Section 1</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section2" class="container-fluid">
+  <h1>Section 2</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section3" class="container-fluid">
+  <h1>Section 3</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section41" class="container-fluid">
+  <h1>Section 4 Submenu 1</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section42" class="container-fluid">
+  <h1>Section 4 Submenu 2</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Scrollspy Vertical Menu -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      position: relative;
+  }
+  ul.nav-pills {
+      top: 20px;
+      position: fixed;
+  }
+  div.col-sm-9 div {
+      height: 250px;
+      font-size: 28px;
+  }
+  #section1 {color: #fff; background-color: #1E88E5;}
+  #section2 {color: #fff; background-color: #673ab7;}
+  #section3 {color: #fff; background-color: #ff9800;}
+  #section41 {color: #fff; background-color: #00bcd4;}
+  #section42 {color: #fff; background-color: #009688;}
+  
+  @media screen and (max-width: 810px) {
+    #section1, #section2, #section3, #section41, #section42  {
+        margin-left: 150px;
+    }
+  }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+<div class="container">
+  <div class="row">
+    <nav class="col-sm-3" id="myScrollspy">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">Section 1</a></li>
+        <li><a href="#section2">Section 2</a></li>
+        <li><a href="#section3">Section 3</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#section41">Section 4-1</a></li>
+            <li><a href="#section42">Section 4-2</a></li>                     
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="col-sm-9">
+      <div id="section1">    
+        <h1>Section 1</h1>
+        <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+      </div>
+      <div id="section2"> 
+        <h1>Section 2</h1>
+        <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+      </div>        
+      <div id="section3">         
+        <h1>Section 3</h1>
+        <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+      </div>
+      <div id="section41">         
+        <h1>Section 4-1</h1>
+        <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+      </div>      
+      <div id="section42">         
+        <h1>Section 4-2</h1>
+        <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Metodo jQuery que recorre elementos usando un selector -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>each demo</title>
+  <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+<ul>
+  <li>foo</li>
+  <li>bar</li>
+</ul>
+<script>
+$(document).ready(function(){
+    $( "li" ).each(function( index ) {
+      alert( index + ": " + $( this ).text() );
+  });
+});
+</script>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Metodo jQuery each() Itera sobre los divs y le asigna una propiead de color. -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>each demo</title>
+  <style>
+  div {
+    color: red;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bolder;
+    width: 300px;
+  }
+  </style>
+  <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+ 
+<div>Click here</div>
+<div>to iterate through</div>
+<div>these divs.</div>
+ 
+<script>
+$( document.body ).click(function() {
+  $( "div" ).each(function( i ) {
+    if ( this.style.color !== "blue" ) {
+      this.style.color = "blue";
+    } else {
+      this.style.color = "";
+    }
+  });
+});
+</script>
+ 
+</body>
+</html>
+
+-------------------------------------
+
+<!-- .length() Nos da el número de elementos que contenga el objeto jQuery. -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>length demo</title>
+  <style>
+  body {
+    cursor: pointer;
+  }
+  div {
+    width: 50px;
+    height: 30px;
+    margin: 5px;
+    float: left;
+    background: green;
+  }
+  span {
+    color: red;
+  }
+  </style>
+  <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <span></span>
+<script>
+    var n = $( "div" ).length;
+    $("span").text("There are " + n + " divs");
+</script>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- .size() Nos da el número de elementos que contenga el objeto jQuery.
+The .size() method is deprecated as of jQuery 1.8. Use the .length property instead.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>size demo</title>
+  <style>
+  body {
+    cursor: pointer;
+    min-height: 100px;
+  }
+  div {
+    width: 50px;
+    height: 30px;
+    margin: 5px;
+    float: left;
+    background: blue;
+  }
+  span {
+    color: red;
+  }
+  </style>
+  <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+<span></span>
+<div></div>
+<div></div>
+<script>
+    var n = $( "div" ).size();
+    $( "span" ).text( "There are " + n + " divs.");
+</script>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- html() Añadir un poco de html en cada div. -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>html demo</title>
+  <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+<span>Hello</span>
+<div></div>
+<div></div>
+<div></div>
+<script>
+$("div").html("<b>Hello, again</b>" );
+</script>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Encontrar el elemento padre de cada párrafo que coincida con una clase "x" o "y" -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>parent demo</title>
+  <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div><p>Hello</p></div>
+<div class="x"><p>Hello Again</p></div>
+<div class="y"><p>Hello Again</p></div>
+<div class="x"><p>Hello Again</p></div>
+<script type="text/javascript">
+    $( "p" ).parent( ".x" ).css( "background", "yellow" );
+    $( "p" ).parent( ".y" ).css( "background", "blue" );
+</script>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Agregar clases con JQuery -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seleccion de campo de texto</title>
+        <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    </head>
+    <style type="text/css">
+    .green {
+        background: green;
+        color: white;
+        width: 400px;
+    }
+    </style>
+    <body>
+        <ul>
+            <li>Articulo 1</li>
+            <li>Articulo 2</li>
+            <li>Articulo 3</li>
+        </ul>
+        <button id="boton">Cambiar</button>
+    </body>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#boton").click(function(){
+            $('ul').addClass('green');
+        });
+    });
+    </script>
+</html>
+
+-------------------------------------
+
+<!-- Eliminar y agregar clases con JQuery -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seleccion de campo de texto</title>
+        <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    </head>
+    <style type="text/css">
+    .green {
+        background: green;
+        color: white;
+        width: 400px;
+    }
+    .yellow {
+        background: yellow;
+        color: white;
+        width: 300px;
+    }
+    </style>
+    <body>
+        <ul class="green">
+            <li>Articulo 1</li>
+            <li>Articulo 2</li>
+            <li>Articulo 3</li>
+        </ul>
+        <button id="boton">Cambiar</button>
+    </body>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#boton").click(function(){
+            $('ul').removeClass('green').addClass('yellow');
+        });
+    });
+    </script>
+</html>
+
+-------------------------------------
+
+<!-- Obtener todos los valores de una fila de una tabla -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    <script>
+    $(document).ready(function(){
+        $(".boton").click(function(){
+            var valores="";
+            // Obtenemos todos los valores contenidos en los <td> de la fila seleccionada
+            $(this).parents("tr").find("td").each(function(){
+                valores+=$(this).html()+"\n";
+            });
+            alert(valores);
+        });
+    });
+    </script>
+    <style>
+        .boton {
+            cursor:pointer;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <td>val 1</td>
+            <td>val 2</td>
+            <td>val 3</td>
+            <td class="boton">coger valores de la fila</td>
+        </tr>
+        <tr>
+            <td>val 4</td>
+            <td>val 5</td>
+            <td>val 6</td>
+            <td class="boton">coger valores de la fila</td>
+        </tr>
+        <tr>
+            <td>val 7</td>
+            <td>val 8</td>
+            <td>val 9</td>
+            <td class="boton">coger valores de la fila</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Recorrer, obtener y mostrar los valores de una tabla each() -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    <script>
+    $(document).ready(function(){
+        $(".boton").click(function(){
+            //eq(0): Identifica el numero de la fila, en este caso el número 0 que es la primera.
+            $('#tabla tr').eq(0).each(function () {
+                //(this).find('td'):  Encontrar los td de esa fila específica.
+                $(this).find('td').each(function () {
+                    alert($(this).html());
+                })
+            })
+            $('#tabla tr').eq(1).each(function () {
+                $(this).find('td').each(function () {
+                    alert($(this).html());
+                })
+            })
+            $('#tabla tr').eq(2).each(function () {
+                $(this).find('td').each(function () {
+                    alert($(this).html());
+                })
+            })
+        });
+    });
+    </script>
+</head>
+<body>
+    <button class="boton" >Recorrer</button>
+    <br />
+    <table id="tabla" border="1" cellspacing="5" cellpadding="5">
+        <tr>
+            <td>val 1</td>
+            <td>val 2</td>
+            <td>val 3</td>
+        </tr>
+        <tr>
+            <td>val 4</td>
+            <td>val 5</td>
+            <td>val 6</td>
+        </tr>
+        <tr>
+            <td>val 7</td>
+            <td>val 8</td>
+            <td>val 9</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Recorrer, obtener y mostrar los valores de una tabla each(), similar a la anterior -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="jquery-1.9.1.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("button").click(function(){
+            $("#tabla td").each(function(){
+              var valor=$(this).html();
+              alert(valor);
+            })
+        });
+    });
+</script>
+<body>
+    <button>Recorrer</button>
+    <br />
+    <table id="tabla" border="1" cellspacing="5" cellpadding="5">
+        <tr>
+            <td>val 1</td>
+            <td>val 2</td>
+            <td>val 3</td>
+        </tr>
+        <tr>
+            <td>val 4</td>
+            <td>val 5</td>
+            <td>val 6</td>
+        </tr>
+        <tr>
+            <td>val 7</td>
+            <td>val 8</td>
+            <td>val 9</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Recorrer, obtener y sumar los valores de una tabla con each() -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="jquery-1.9.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function Calcular(){
+            resultado=0;
+            $(".productos td").each(function(){
+                var valor=$(this).html();
+                resultado+=parseInt(valor);
+            })
+            // Imprimir el resultado en el documento
+            $("#resultado").html(resultado)
+        }
+    </script>
+</head>
+<body>
+<table class="productos">
+    <tr>
+        <th>Producto 1:</th><td>200</td>
+    </tr>
+    <tr>
+        <th>Producto 2:</th><td>100</td>
+    </tr>
+    <tr>
+        <th>Producto 3:</th><td>50</td>
+    </tr>
+</table>
+    <button onclick="Calcular()">Calcular</button>
+    <p>Resultado: <b id="resultado"></b></p>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- My First Bootstrap Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Column 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Controlando 2 o más carousel's de Bootstrap -->
+Cambie el href en sus enlaces de nav del carrusel para emparejar el valor del id del carrusel que usted está controlando. Ese valor href es cómo el arranque determina qué diapositiva. Por lo tanto, tendrá que cambiar lo siguiente:
+
+<a class="carousel-control left" href="#carousel-1" data-slide="prev">&lsaquo;</a>
+<a class="carousel-control right" href="#carousel-1" data-slide="next">&rsaquo;</a>
+
+And for the second carousel:
+
+<a class="carousel-control left" href="#carousel-2" data-slide="prev">&lsaquo;</a>
+<a class="carousel-control right" href="#carousel-2" data-slide="next">&rsaquo;</a>
+
+-------------------------------------
+
+<!-- Función que hace desaparecer el .navbar al hacer scroll -->
+<script type="text/javascript">
+  $("document").ready(function () {
+      $(function () {
+          $(window).scroll(function () {
+              // set distance user needs to scroll before we start fadeIn
+              if ($(this).scrollTop() > 100) {
+                  $('.navbar').fadeOut();
+              } else {
+                  $('.navbar').fadeIn();
+              }
+          });
+      });
+  });
+</script>
+
+-------------------------------------
+
+<!-- The fadeIn() method gradually changes the opacity, for selected elements, from hidden to visible (fading effect). -->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $(".btn1").click(function(){
+        $("p").fadeOut()
+    });
+    $(".btn2").click(function(){
+        $("p").fadeIn();
+    });
+});
+</script>
+</head>
+<body>
+<p>This is a paragraph.</p>
+<button class="btn1">Fade out</button>
+<button class="btn2">Fade in</button>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- The fadeIn() method gradually changes the opacity, for selected elements, from hidden to visible (fading effect).
+  Desapareciendo una etiqueta cuando se scrollea
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<style type="text/css">
+h1 {
+    position: fixed;
+    color: red;
+}
+.contenedor {
+    width: 500px;
+    height: 1500px;
+    border: ridge 1px;
+}
+</style>
+<script type="text/javascript">
+$("document").ready(function () {
+    $(function () {
+        $(window).scroll(function () {
+            // set distance user needs to scroll before we start fadeIn
+            if ($(this).scrollTop() > 100) {
+                $('h1').fadeOut("slow");
+            } else {
+                $('h1').fadeIn("slow");
+            }
+        });
+    });
+});
+
+</script>
+</head>
+<body>
+<h1>Tittle</h1>
+<div class="contenedor">
+    <br />
+    <br />
+    <br />
+    <h2>This is a paragraph.</h2>
+</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- The fadeIn() method gradually changes the opacity, for selected elements, from hidden to visible (fading effect).
+Haciendo desaparecer un bloque cuando se scrollea
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<style type="text/css">
+h1 {
+    position: fixed;
+    color: red;
+}
+.contenedor {
+    width: 900px;
+    height: 3000px;
+    border: ridge 1px;
+    padding: 10px;
+}
+.cuadro {
+    width: 99%;
+    height: 600px;
+    border: ridge 1px;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+</style>
+<script type="text/javascript">
+$("document").ready(function () {
+    $(function () {
+        $(window).scroll(function () {
+            // set distance user needs to scroll before we start fadeIn
+            if ($(this).scrollTop() > 100) {
+                $('h1').fadeOut("slow");
+            } else {
+                $('h1').fadeIn("slow");
+            }
+        });
+    });
+
+    $(function () {
+        $(window).scroll(function () {
+            // set distance user needs to scroll before we start fadeIn
+            if ($(this).scrollTop() > 100) {
+                $('.cuadro.green').fadeOut("slow");
+            } else {
+                $('.cuadro').fadeIn("slow");
+            }
+        });
+    });
+
+});
+
+</script>
+</head>
+<body>
+<h1>Tittle</h1>
+<div class="contenedor">
+    <br />
+    <br />
+    <br />
+    <div class="cuadro green">
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="cuadro blue">
+    </div>
+</div>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Collapsible Panel Bootstrap -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Collapsible Panel</h2>
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body">Panel Body</div>
+        <div class="panel-footer">Panel Footer</div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Collapsible List Group Bootstrap -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Collapsible List Group</h2>
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">Collapsible list group</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <ul class="list-group">
+          <li class="list-group-item">One</li>
+          <li class="list-group-item">Two</li>
+          <li class="list-group-item">Three</li>
+        </ul>
+        <div class="panel-footer">Footer</div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Accordion Example Bootstrap -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Accordion Example</h2>
+  <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+      </div>
+    </div>
+  </div> 
+</div>
+    
+</body>
+</html>
+
+
+-------------------------------------
+
+<!-- Dynamic Tabs (pestañas) Bootstrap -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Dynamic Tabs</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>HOME</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Dynamic Pills -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Dynamic Pills</h2>
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
+    <li><a data-toggle="pill" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
+    <li><a data-toggle="pill" href="#menu3">Menu 3</a></li>
+  </ul>
+  
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>HOME</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Right Aligned Navbar -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+  
+<div class="container">
+  <h3>Right Aligned Navbar</h3>
+  <p>The .navbar-right class is used to right-align navigation bar buttons.</p>
+</div>
+
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Agregar o remover un link o enlace al documento pidiendo la dirección al usuario -->
+<html>
+  <head>
+      <title>XXX</title>
+      <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+      <meta charset="UTF-8">
+  </head>
+  <script type="text/javascript"> 
+  $("document").ready(function () {
+
+    //Agregar enlace
+    $("#boton1").click(function() {
+      link=prompt("Por favor escriba la dirección web","enlace");
+      title_link=prompt("Por favor escriba el título del enlace","título");
+      a=("<a href="+link+">"+title_link+"</a> ");
+      $('#x').append(a);
+    });
+
+    //Eliminar enlace
+    $("#boton2").click(function() {
+      $('#x').empty();
+    });
+  });
+  </script>
+<body>
+<button id="boton1">Agregar enlace</button>
+<button id="boton2">Eliminar enlace</button>
+<p />
+<div id="x"></div>
+</body>
+</html>
+
+<style type="text/css">
+#x {
+  height: 400px;
+  width: 600px;
+  border: solid 1px #000000;
+  overflow: auto;
+}
+</style>
+
+-------------------------------------
+
+<!-- Función para hacer desaparecer automáticamente las notificaciones (alerts) de bootstrap -->
+<script type="text/javascript"> 
+  $("document").ready(function () {
+    $(".alert-success").fadeTo(2000, 500).slideUp(200, function(){
+        $(".alert-success").effect( 'blind' , "slow" );
+    });
+  });
+</script>
+
+-------------------------------------
+<!-- Recargar la página con un click-->
+<button class='refresh-page'>Refresh</button>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.refresh-page').click(function(){
+    location.reload();
+  });
+});
+</script>
+
+-------------------------------------
+
+<!-- (this). Seleccionar el elemento html que coincida /Selects the current HTML element -->
+<!DOCTYPE html>   
+<html>
+<head>
+<script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $(this).toggle("slow");
+  });
+});
+</script>
+</head>
+<body>
+  <button>Click me 1</button>
+  <button>Click me 2</button>
+  <button>Click me 3</button>
+  <button>Click me 4</button>
+</body>
+</html>
+
+Otro ejemplo con mas niveles
+
+<!-- Seleccionar un elemento para ocultar/mostrar compartiendo las clases -->
+<script type="text/javascript">
+$("document").ready(function () {
+  $( ".ver_mas" ).click(function() {
+    $(this).find(".oculto").toggle("slow");
+  });
+});
+</script>
+
+-------------------------------------
+
+<!-- find() para buscar elementos. Comienza con todos los párrafos y busca elementos de la extensión descendente, igual que $( "p span" ) -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>find demo</title>
+  <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+</head>
+<body> 
+<p>
+  <span>Hello</span>, how are you?
+</p>
+<p>
+  Me? I'm <span>good</span>.
+</p>
+<span>Hello</span>, how are you? 
+<script type="text/javascript">
+  $( "p" ).find( "span" ).css( "color", "red" );
+</script> 
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Carrusel automático infinito con jQuery y CSS -->
+<html class=" -webkit-">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Carrusel automático infinito con jQuery y CSS</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: #121314;
+      }
+      body > ul {
+        position: absolute;
+        top: 50%;
+        width: 800px;
+        height: 200px; 
+        left: 50%;
+        margin-left: -400px;
+        margin-top: -130px;
+      }
+      ul > li {
+        width: 25%;
+        list-style-type: none;
+        position: absolute;
+        top: 0;
+        padding: 20px;
+        height: 200px; 
+        opacity: 0;
+        padding-top: 40px;
+        text-align: center;
+        transition: 1s opacity; 
+      }
+      .active {
+        opacity: 1;
+      }
+      p {
+        font-family: sans-serif;
+        font-size: 13px;
+        color: #646566;
+        line-height: 1.5em;
+      }
+      strong { 
+        color: #fff;
+        font-weight: 700;
+        font-size: 60px; 
+        line-height: 100px; 
+      }
+    </style>
+    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+  </head>
+
+  <body>
+    <div class="contenido">
+      <ul id="c">
+        <li><p><strong>1</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+        <li><p><strong>2</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+        <li><p><strong>3</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+        <li><p><strong>4</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+
+        <li><p><strong>5</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+        <li><p><strong>6</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+        <li><p><strong>7</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+        <li><p><strong>8</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+
+        <li><p><strong>9</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+        <li><p><strong>10</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+        <li><p><strong>11</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+        <li><p><strong>12</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></li>
+        <!--li>
+          <img src="deb-package.jpg">
+        </li-->        
+      </ul>
+    </div>
+    <script type="text/javascript">
+      var timer = 4000;
+      var i = 0;
+      var max = $('#c > li').length;
+      $("#c > li").eq(i).addClass('active').css('left', '0');
+      $("#c > li").eq(i + 1).addClass('active').css('left', '25%');
+      $("#c > li").eq(i + 2).addClass('active').css('left', '50%');
+      $("#c > li").eq(i + 3).addClass('active').css('left', '75%');
+
+      setInterval(function () {
+        $("#c > li").removeClass('active');
+        $("#c > li").eq(i).css('transition-delay', '0.25s');
+        $("#c > li").eq(i + 1).css('transition-delay', '0.5s');
+        $("#c > li").eq(i + 2).css('transition-delay', '0.75s');
+        $("#c > li").eq(i + 3).css('transition-delay', '1s');
+
+        if (i < max - 4) {
+          i = i + 4;
+        } else {
+          i = 0;
+        }
+
+        $("#c > li").eq(i).css('left', '0').addClass('active').css('transition-delay', '1.25s');
+        $("#c > li").eq(i + 1).css('left', '25%').addClass('active').css('transition-delay', '1.5s');
+        $("#c > li").eq(i + 2).css('left', '50%').addClass('active').css('transition-delay', '1.75s');
+        $("#c > li").eq(i + 3).css('left', '75%').addClass('active').css('transition-delay', '2s');
+      }, timer);
+    </script>
+  </body>
+</html>
+
+-------------------------------------
+
+<!-- El método .serialize() crea una cadena de texto standard con notación de una URL
+leyendo los valores del formulario. Se puede seleccionar individualmente o en grupo el
+conjunto de valores.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>serialize demo</title>
+  <script src="jquery-2.1.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+<form>
+  <select name="single">
+    <option>---</option>
+    <option>111</option>
+    <option>222</option>
+  </select>
+  <br />
+  <br />
+  <select name="multiple" multiple="multiple">
+    <option selected="selected">Mult1</option>
+    <option selected="selected">Mult2</option>
+    <option>Mult3</option>
+  </select>
+  <br />
+  <br />
+  <input type="checkbox" name="check" value="check1" id="ch1">
+    <label for="ch1">check1</label>
+  <input type="checkbox" name="check" value="check2" checked="checked" id="ch2">
+    <label for="ch2">check2</label>
+  <br />
+  <br />
+  <input type="radio" name="radio" value="radio1" checked="checked" id="r1">
+    <label for="r1">radio1</label>
+  <input type="radio" name="radio" value="radio2" id="r2">
+    <label for="r2">radio2</label>
+</form>
+<p>
+  <tt id="results"></tt>
+</p>
+<script type="text/javascript">
+  function showValues() {
+    var str = $( "form" ).serialize();
+    $( "#results" ).text( str );
+  }
+  $( "input[type='checkbox'], input[type='radio']" ).on( "click", showValues );
+  $( "select" ).on( "change", showValues );
+  showValues();
+</script>
+</body>
+</html>
+
+-------------------------------------
+
+<!-- Desabilitar campo(field) con jquery -->
+To change the disabled property you should use the .prop() function.
+$("input").prop('disabled', true);
+$("input").prop('disabled', false);
+
+-------------------------------------
+
+//  Función que desabilita un campo de un formulario.
+$("document").ready(function () {
+  //$("#id_campo").prop('disabled', true);
+});
+
+-------------------------------------
+
+<script type='text/javascript'>
+  /**
+   * Función para randomizar el carousel genérico de bootstrap
+  **/
+  var currentSlide;
+  var rand;
+  $(document).ready(function() {
+    currentSlide = Math.floor((Math.random() * $('.item').length));
+    rand = currentSlide;
+    $('#carousel-example-generic').carousel(currentSlide);
+    $('#carousel-example-generic').fadeIn(1000);
+    setInterval(function(){
+      while(rand == currentSlide){
+        rand = Math.floor((Math.random() * $('.item').length));
+      }
+      currentSlide = rand;
+      $('#carousel-example-generic').carousel(rand);
+    },5000);
+  });
+</script>
+
+-------------------------------------
+
+<!-- Desactivar el puntero en unta etiqueta span -->
+$("span").css("pointer-events", "none");
+
+-------------------------------------
+
+<!-- -->
+
+-------------------------------------
+
+<!-- -->
+
+-------------------------------------
+
+<!-- -->
