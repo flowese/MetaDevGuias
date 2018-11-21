@@ -1,0 +1,3369 @@
+<!-- Guía HTML -->
+
+<!-- Comentarios en HTML -->
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>XXX</title>
+        <meta charset="UTF-8">
+        <script src="jquery-1.9.1.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="styles.css" type="text/css"/>
+    </head>
+<body>
+</body>
+</html>
+
+-----
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XXXXXX</title>
+  <script src="jquery-1.9.1.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="styles.css" type="text/css"/>
+</head>
+<body>
+  <div id="containter">
+    <div id="header">
+        Header
+    </div>
+    <div id="body">
+        Body
+    </div>
+    <div id="footer">
+        Footer
+    </div>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+</script>
+<style type="text/css">
+</style>
+
+---------------
+
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <link rel="stylesheet" href="estilo.css" type="text/css"/> <!--Llamada de un fichero de estilos-->
+    <script src="jquery-1.9.1.js" type="text/javascript"></script> <!--Llamada de un fichero js-->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> <!--Llamada de un fichero js de un servidor externo-->
+<body>
+</body>
+</html>
+
+--------------
+
+<html>
+    <head> <!-- CABECERA -->
+        <title>Titulo</title> <!-- TITULO, se verá reflejado en la barra y pestañas del navegador -->
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" /> <!-- Deficne la codificación de caracteres 
+        que va a ser interpretada por el navegador, sirve también para poder usar los acentos en HTML -->
+        <meta charset="UTF-8" /> <!-- La que usa wikipedia -->
+    </head>
+<body> <!-- CUERPO, donde va el contenido de la página -->
+<center><h2>Pagina Web</h2></center>
+<p>
+<p align="justify"> El fútbol o futbol (del inglés británico football), también conocido como fútbol asociación, balompié o soccer, es un deporte de equipo jugado entre dos conjuntos de once jugadores cada uno y cuatro árbitros que se ocupan de que las normas se cumplan correctamente. Es ampliamente considerado el deporte más popular del mundo, pues participan en él unos 270 millones de personas. <p>
+
+<p align="justify"> El terreno de juego es rectangular de césped natural o artificial, con una portería o arco a cada lado del campo. El objetivo del juego es desplazar con cualquier parte del cuerpo que no sea los brazos o las manos, y mayoritariamente con los pies (de ahí su nombre), una pelota a través del campo para intentar introducirla dentro de la portería contraria, acción que se denomina marcar un gol. El equipo que logre más goles al cabo del partido, de una duración de 90 minutos, es el que resulta ganador del encuentro. <p>
+</body>
+</html>
+
+
+<!-- Desabilitar el click derecho, se pone encima del HEAD
+========================================================== -->
+<script type="text/javascript"> 
+    document.oncontextmenu = function(){return false;}
+</script>
+
+--------------
+
+<!-- Botón Rollover con dos imágenes
+========================================================== -->
+<a href="#"><img src="1.PNG" onmouseover="this.src='2.PNG' " onmouseout="this.src='1.PNG' "/> </a>
+
+
+<!-- Etiquepas para párrafos
+========================================================== -->
+<p> Sirve para separar parrafos y dejar espacios en blanco
+
+<br> Sirve como fin de línea o como un punto y aparte    
+
+&nbsp; &nbsp; Crear espacios en blanco entre las palabras
+
+<pre></pre> formato de texto, el texto se mostrará como se escribió en el codigo fuente
+
+<hr></hr> Permite trazar lineas horizontales para dividir o crear secciones en la página y <hr color="red"> así como <hr size=10px>
+
+<fieldset></fieldset> Crea un rectangulo alrrededor del texto o imagen
+
+<legend>Titulo</legend> Asignar un enzabezado al fieldset
+
+<center></center> Sirve para alinear un encabezado o un parrafo al centro de la pagina
+
+<!-- HTML5 elimina el uso de center y recomienda el uso de CSS para alinear los textos etc, tambien es valido usar la etiqueta DIV a la cual se le pueden dar atributos como id="nombre_identificador" y align="justify,center,left o right" para alinear -->
+
+<div id="cuerpo" align="left"> 
+    Hola....
+</div>
+
+<p align="left"></p> Sirve para justificar un parrafo a LEFT, CENTER, RIGHT o JUSTIFY 
+
+<!-- TIPOS DE LETRA, EFECTOS Y MÁS 
+========================================================== -->
+
+<h1></h1> Le da tamaño al texto, varia del 1 al 6
+
+<b></b> Estilo Negrita
+
+<tt></tt> Teletipo
+
+<strong></strong> Fuerte, como negrita
+
+<i></i> Cursiva
+
+<em></em> Émfasis, como cursiva
+
+font-style: italic // Cursiva en css
+
+<u></u> Subrayado
+
+<strike></strike> Texto tachado    
+
+<s></s> Texto tachado
+
+<sup></sup> Superíndice, como elevado en matemáticas
+
+<sub></sub> Subíndice
+
+<marquee></marquee> El texto se desplaza de derecha a izquierda repetidamente    
+
+<font size="7px">TEXTO</font> Para asignar tamaño al texto, se denota en pixeles el tamaño
+
+<font color="red">TEXTO</font> Para dar color al texto, red, green, orange, blue etc...
+
+<font face="arial">TEXTO</font> Tipo de fuente del texto            
+
+<!-- COLORES Y FONDO
+========================================================== -->
+
+<body text="red"></body> Para dar color a todo el texto de la página
+
+<body bgcolor="red"></body> Color a el fondo de la página
+
+<body background="Imagen.jpg"></body> Asignar una imagen local como fondo de la página
+
+<body link="yellow"></body> Para dar color a los enlaces
+
+<body alink="yellow"></body> Color de enlaces ya visitados
+
+<!-- LISTAS
+========================================================== -->
+
+<ol> ó <ul> Tipo de demarcacion de una lista, numerica y punto
+<li>techo</li>
+<li>puerta</li>
+<li>ventana</li>
+
+<OL type=A> De tipos A,a,I,i,1
+
+<ol> Los famosos más insoportables de la televisión:
+    <li>Antonio Bandelas</li>
+    <li>Catherine Zeta Jones</li>
+    <li>Robert Downey Jr.</li>
+</ol>
+
+<!-- En css, sirve para desabilitar la decoración de los elementos de la lista -->
+list-style: none outside none;
+
+<!-- Listas con estilos
+========================================================== -->
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+    li {
+      /*list-style: none;*/
+      color: red;
+    }
+    #a {
+      color:blue;
+    }
+    #b {
+      color:yellow;
+    }
+    #c {
+      color:green;
+    }
+    </style>
+</head>
+<body>
+  <ul>
+      <li id="a">aaaaaaa</li>
+      <li id="b">bbbbbbb</li>
+      <li id="c">ccccccc</li>
+      <li>ddddddd</li>
+  </ul>
+  <p />
+  <ol>
+      <li id="a">aaaaaaa</li>
+      <li id="b">bbbbbbb</li>
+      <li id="c">ccccccc</li>
+      <li>ddddddd</li>
+  </ol>
+</body>
+</html>
+
+<!-- LINKS O ENLACES
+========================================================== -->
+
+<a href="LINK">Título del enlace</a> Crear un link
+
+<a href="DIRECCION DE PAGINA EN EL ORDENADOR LOCAL">Título</a> Enlaces  locales, páginas que están en el mismo ordenador
+
+<img src="Imagen.jpg" width="200px" height="200px"></img> Agregar una imagen local a la página, debe estar en el mismo directorio de la página, se le puede asignar el tamaño, dimensiones que tendrá la imagen
+
+<a href="link"><img src="Imagen.jpg"></a> Poner una imagen como enlace
+
+<embeed SRC="Multimedia.mp4"> Agregar archivos multimedias a la página, videos, imagenes o archivos de audio
+width="400" Se le puede asignar un tamaño al archivo multimedia agregado a la página
+height="180"
+
+<iframe src="http://as.com" width="800" height="800" scrolling="yes" /> Permite añadir contenido HTML dentro de una página HTML. Una página dentro de otra
+
+<A HREF="Multimedia.mp3">Texto o Imagen</A> Texto o Imagen como enlace a un archivo multimedia
+
+<a href="libro.rar">Descargar Libro</a> Descargar archivo desde el servidor o carpeta local de la página
+
+<!--META http-equiv="refresh" content="número_segundos;url=URL de refresco"--> Sirve para que la pagina se actualice en otra que indiquemos, se le asigna el tiempo de refresco y la URL de la página
+
+<a name="Inicio"></a> Ancla, sirve para asignar un enlace a una seccion de la página, por ejemplo el inicio de la misma, con: <a href="#Inicio">Inicio</a> nos Dirigimos al ancla
+
+<a href="#" title="Ejemplo de título">ENLACE</a> Sirve para ayadir un Título o pequeño texto sobre un enlace determinado, al posar el cursor sobre el enlace se observará el texto
+
+<!-- Abrir enlace en una nueva pestaña -->
+<a href="pagina.html" target="_blank">abrir enlace en una nueva pestaña</a>
+
+-----
+<!-- Enlaces Locales, sirve para trasladarse a sitios determinados dentro de la misma página, por
+ejemplo secciones de la página -->
+<body>
+<h2>Enlaces Locales</h2>
+<h3><a name="indice">Indice</a></h3>
+<ul>
+    <li><a href="#uno">Seción 1</a>  
+    <li><a href="#dos">Seción 2</a>  
+    <li><a href="#tres">Seción 3</a>  
+    <li><a href="#cuatro">Seción 4</a>    
+</ul>
+<hr>
+<h3><a name="uno">Sección 1</a></h3>
+
+11111111111111111111111111 <br>    
+
+<hr>
+
+<h3><a name="dos">Sección 2</a></h3>
+
+22222222222222222222222
+
+<hr>
+
+<h3><a name="tres">Sección 3</a></h3>
+
+333333333333333333333333333333
+
+<hr>
+
+<h3><a name="cuatro">Sección 4</a></h3>
+
+444444444444444444444444
+
+</body>
+
+<!-- Tablas
+========================================================== -->
+
+<table border="3px" cellpadding="10px" cellspacing="10px" style="width:100%">
+    <caption>Título de la tabla</caption>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+</table>
+
+-----
+
+<!-- tabla limpia -->
+<table border="1px" cellpadding="0px" cellspacing="0px" style="width:100%">
+  <thead>
+    <tr>
+      <th>Mes</th>
+      <th>Pagos</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>Suma</td>
+      <td>180</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>Enero</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Febrero</td>
+      <td>80</td>
+    </tr>
+  </tbody>
+</table>
+
+----------
+
+<!-- tabla limpia mas sencilla -->
+<table border="1px" cellpadding="0px" cellspacing="0px" style="width:100%">
+  <thead>
+    <tr>
+      <th>xxxx</th>
+      <th>xxxx</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>xxx</td>
+      <td>xxx</td>
+    </tr>
+  </tbody>
+</table>
+
+-----
+
+<td bgcolor="red"> Para dar color a una celda
+cellpadding=10px Para dar distancia entre el borde de la celda y el texto que contiene
+cellspacing="10px" Establece la anchura en px de los bordes de la celda
+style="width:100%" Ancho de la tabla
+style="text-align:center" Centrar elementos(texto) de las celdas
+style="width:100%;text-align:center" Dos atributos en el estilo separados por ;
+
+<!-- Tablas con cabecera, cuerpo y pies. El orden de uso de thead tbody y tfoot no altera el resultado
+siempre los mostrara en orden en la vista -->
+<html>
+<head>
+  <style>
+    thead {color:green;}
+    tbody {color:blue;}
+    tfoot {color:red;}
+    table, th, td {
+        border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+<table>
+  <thead>
+    <tr>
+      <th>Mes</th>
+      <th>Pagos</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>Suma</td>
+      <td>180</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>Enero</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Febrero</td>
+      <td>80</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
+
+----------
+
+<!-- Tabla con estilo -->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+    </head>
+    <style>
+        table {
+            width:50%;
+            text-align: center;
+            border-color: red;
+            /*color:yellow;*/
+            /*color: white;*/            
+        }
+        div {            
+            font-size:20px;
+            color: Red;
+        }
+    </style>
+<body>
+    <center>
+        <table border="1px" cellpadding="5px" cellspacing="1px">
+            <p >
+            <caption></caption>
+            <tr>
+                <td><button id="grafo" type="" class="btn btn-success" >Grafo de menciones</button></td>
+                <td>CÓNDOR</td>
+                <td><button id="conteos" type="" class="btn btn-success" >Conteos comparativos</button></td>
+            </tr>            
+            <tr>
+                <td><button id="agrupar" type="" class="btn btn-success" >Agrupamiento por temas</button></td>
+                <td><img src="condor.png" width="100px" heigth="100px"></img></td>
+                <td><button id="conteos_simp" type="" class="btn btn-success" >Conteos simples</button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="graficos" type="" class="btn btn-success" >Comportamientos en el Tiempo</button></td>
+                <td></td>
+            </tr>            
+        </table>
+        <div>
+            hola
+        </div>
+    </center>
+</body>
+</html>
+
+<!-- Tabla con estilo e identificador -->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+    </head>
+    <style>
+        table#X {
+            width:50%;
+            text-align: center;
+            color: red;
+            border-color: red;
+        }
+        table#Y {
+            width:50%;
+            text-align: center;
+            color: blue;
+            border-color: blue;
+        }
+    </style>
+<body>
+    <center>
+        tabla 1 <br />
+        <table id="X" border="1px" cellpadding="0px" cellspacing="0px">
+            <tr><td>1</td>  <td>2</td> <td>3</td> </tr>
+            <tr><td>4</td>  <td>5</td> <td>6</td> </tr>
+            <tr><td>7</td>  <td>8</td> <td>9</td> </tr>
+        </table>
+        <p></p>
+        tabla 2 <br />
+        <table id="Y" border="1px" cellpadding="0px" cellspacing="0px">
+            <tr><td>1</td>  <td>2</td> <td>3</td> </tr>
+            <tr><td>4</td>  <td>5</td> <td>6</td> </tr>
+            <tr><td>7</td>  <td>8</td> <td>9</td> </tr>
+        </table>
+    </center>
+</body>
+</html>
+
+<!-- Tabla con estilo e identificador en th, td -->
+<!DOCtype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 {
+}
+
+table#t01 tr:nth-child(even) {
+    background-color: LightCyan;
+}
+table#t01 tr:nth-child(odd) {
+   background-color: green;
+}
+table#t01 th    {
+    background-color: DodgerBlue;
+    color: white;
+}
+</style>
+</head>
+<body>
+<br>
+<table id="t01" border="1px" cellpadding="1px" cellspacing="0px" style="text-align:center;margin-left:10px">
+    <tr>
+        <th><b>ID</b></th>
+        <th><b>Usuario</b></th>
+        <th><b>Nombre</b></th>
+        <th><b>Apellido</b></th>
+        <th><b>Correo electrónico</b></th>
+        <th><b>Creado</b></th>
+        <th><b>Último acceso</b></th>
+        <th><b>Admin</b></th>
+        <th><b>Activo</b></th>
+        <th><b>Grupo</b></th>        
+    </tr>
+    <tr>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>                  
+        <td>XXXX</td>
+        <td>XXXX</td>        
+        <td>Sí</td>
+        <td>No</td>        
+        <td>Grupo </td>
+    </tr>
+    <tr>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>                  
+        <td>XXXX</td>
+        <td>XXXX</td>        
+        <td>Sí</td>
+        <td>No</td>        
+        <td>Grupo </td>
+    </tr>
+    <tr>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>                  
+        <td>XXXX</td>
+        <td>XXXX</td>        
+        <td>Sí</td>
+        <td>No</td>        
+        <td>Grupo </td>
+    </tr>
+</table>
+</body>
+</html>
+
+<!-- Tabla con estilo e identificador en th, td con hover -->
+<!DOCtype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 th    {
+    background-color: DodgerBlue;
+    color: white;
+}
+table#t01 {
+  color: gray;
+}
+
+table#t01 tr:nth-child(even) {
+}
+table#t01 tr:nth-child(even):hover {
+    background-color: LightCyan;
+}
+table#t01 tr:nth-child(odd) {
+}
+table#t01 tr:nth-child(odd):hover {
+   background-color: LightCyan;
+}
+</style>
+</head>
+<table id="t01" border="1px" cellpadding="1px" cellspacing="0px" style="text-align:center;margin-left:10px">
+    <tr>
+        <th><b>ID</b></th>
+        <th><b>Usuario</b></th>
+        <th><b>Nombre</b></th>
+        <th><b>Apellido</b></th>
+        <th><b>Correo electrónico</b></th>
+        <th><b>Creado</b></th>
+        <th><b>Último acceso</b></th>
+        <th><b>Admin</b></th>
+        <th><b>Activo</b></th>
+        <th><b>Grupo</b></th>        
+    </tr>
+    <tr>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>                  
+        <td>XXXX</td>
+        <td>XXXX</td>        
+        <td>Sí</td>
+        <td>No</td>        
+        <td>Grupo </td>
+    </tr>
+    <tr>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>                  
+        <td>XXXX</td>
+        <td>XXXX</td>        
+        <td>Sí</td>
+        <td>No</td>        
+        <td>Grupo </td>
+    </tr>
+    <tr>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>                  
+        <td>XXXX</td>
+        <td>XXXX</td>        
+        <td>Sí</td>
+        <td>No</td>
+        <td>Grupo </td>
+    </tr>
+    <tr>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>                  
+        <td>XXXX</td>
+        <td>XXXX</td>        
+        <td>Sí</td>
+        <td>No</td>
+        <td>Grupo </td>
+    </tr>
+    <tr>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>
+        <td>XXXX</td>                  
+        <td>XXXX</td>
+        <td>XXXX</td>        
+        <td>Sí</td>
+        <td>No</td>
+        <td>Grupo </td>
+    </tr>
+</table>
+</body>
+</html>
+
+<!-- 91 etiquetas disponibles en HTML 
+a, abbr, acronym, address, applet, area, b, base, basefont, bdo, big, blockquote, body, br, button,    caption, center, cite, code, col, colgroup, dd, del, dfn, dir, div, dl, dt, em, fieldset, font, form, frame, frameset, h1, h2, h3, h4, h5, h6, head, hr, html, i, iframe, img, input, ins, isindex, kbd, label, legend, li,
+link, map, menu, meta, noframes, noscript, object, ol, optgroup, option, p, param, pre, q, s, samp, script, select, small, span, strike, strong, style, sub, sup, table, tbody, td, textarea, tfoot, th, thead, title, tr, tt, u, ul, var
+-->
+
+<!-- GET y POST
+========================================================== -->
+
+Se suele prestar a confusión ya que tanto GET como POST son métodos del protocolo HTTP el cual esta compuesto por un envío al servidor conocido como petición (request) y una respuesta a dicha solicitud (response).
+
+Tanto GET como POST, justamente por ser métodos ambos de HTTP, ejecutan un request y response, y a mi criterio esto suele ser parte de la confusión sobre los objetivos reales de ambos métodos.
+
+El concepto GET es obtener información del servidor. Traer datos que están en el servidor, ya sea en un archivo o base de datos, al cliente. Independientemente de que para eso tengamos que enviar (request) algún dato que será procesado para luego devolver la respuesta (response) que esperamos, como por ejemplo un identificador para obtener una noticia de la base de datos.
+
+POST sin embargo es enviar información desde el cliente para que sea procesada y actualice o agregue información en el servidor, como sería la carga o actualización en sí de una noticia. Cuando enviamos (request) datos a través de un formulario, estos son procesados y luego a través de una redirección por ejemplo devolvemos (response) alguna página con información.
+
+Ambos métodos solicitan una respuesta del servidor y ahí es donde parecen que los conceptos son iguales ya que con ambos se podría lograr los mismos objetivos. Yo podría, aunque estaría mal, enviar por GET ciertos datos en la URL y “actualizar o insertar” información en mi base de datos, pero eso le correspondería al método POST. De la misma manera podría solicitar una página diferente por medio de POST y simplemente mostrarla como respuesta aunque eso debería ser a través de una llamada GET.
+
+Las llamadas GET pueden ser cacheadas (historial del navegador), indexadas por buscadores, agregar los enlaces a nuestros favoritos o hasta pasar una url completa a otra persona para que directamente ingrese a esa página. Con el método POST sin embargo no se puede hacer esto.
+
+Generalmente usamos links para ejecutar llamadas GET ya que la idea del link es simplemente “solicitar” una información (página) al servidor y que sea devuelta como una respuesta. Mientras usamos formularios para actualizar datos de productos, clientes, noticias, etc, también teniendo en cuenta que por el método POST también se puede enviar mucha más cantidad de datos que por GET.
+
+<!-- Formularios -forms
+========================================================== -->
+
+<!-- Atributos de un formulario -->
+required // Atributo que hace que el campo sea obligatorio llenarlo
+size="10" // Atributo que se puede añadir al input
+maxlength="10" // Atributo del input para limitar el número de caracteres permitidos en los campos
+autocomplete=off // Atributo para evitar recordar los datos introducidos en los campos
+placeholder="Tu Nombre" //Texto de ejemplo dentro del campo del formulario, a manera de ejemplos
+
+<form action="datos.php" method="get"> formulario de USUARIO y CONTRASEÑA también method="post"
+    Nombre: <input type="text" name="nombre" autocomplete=off><br />
+    Contraseña: <input type="password" name="contrasena"><br />
+    <input type="submit" value="Enviar">
+    <input type="reset" value="Borrar">
+    <input type=image src="guardar.png" width="25" height="15"> Imagen como boton submit
+    <a href="#"><img src="guardar.png" alt="Enviar"></a> Imagen como boton submit
+    <input type="image" name="imageField" src="guardar.png" /> Imagen como boton submit
+</form>
+
+<!-- HTML agrega nuevos tipos de formularios y validacion de campos sin el uso de JavaScript -->
+<div id="formulario1">
+    <h4>LOGIN</h4>
+    <form action="#" method="GET"> 
+        Nombre: <input type="text" name="nombre"><br />
+        Contraseña: <input type="password" name="contrasena"><br /> <p></p>          
+        Búsqueda: <input type="search"> <br />
+        Números: <input type="number"> <br />
+        Rango: <input type="range"> <br />
+        Color: <input type="color"> <br />
+        NMobNum: <input type="tel"> <br />
+        URL: <input type="url"> <br />
+        E-Mail: <input type="email"> <br /> 
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Borrar">
+    </form>
+</div>
+
+----
+
+<!-- Ejemplo del type number, Cantidad (entre 1 y 5), no es la cantidad de
+caracteres si no el valor introducido -->
+<form action="/action_page.php">  
+  <input type="number" name="quantity" min="1" max="5">
+  <input type="submit">
+</form>
+    
+------
+
+<form action="#" method="get">
+    Usuario: <input type="text" name="user" placeholder="Tu Usuario" required> <br />
+    Usuario: <input type="text" name="user" placeholder="Tu Usuario" disabled="disabled" required> <br />
+    Contraseña: <input type="password" name="pass" placeholder="Tu clave" required> <br />
+    <input type="submit" value="Enviar">
+    <input type="reset" value="Borrar">
+</form>
+
+<!-- Básico para login -->
+<form action="#" method="get">
+    Usuario: <input type="text" name="user"> <br />
+    Contraseña: <input type="password" name="pass"> <br />
+    <input type="submit" value="Enviar">
+    <input type="reset" value="Borrar">
+</form>
+
+--------
+
+<!-- Botón enviar -->
+<form action="" method="get">
+    Nombre: <input type="text" name="nombre"> <br />
+    <!--input type="submit" value="Enviar"-->
+    <button>Enviar</button>
+</form>
+
+<!-- textarea -->
+<form>
+    <textarea name="texto" rows="10" cols="50">
+        Hola hdspm
+    </textarea>
+</form>
+
+<!-- Formulario de Selección -->
+<select name="carlist" form="carform">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+
+<!-- Checkbox -->
+<form action="datos.php" method="get">
+    ¿Cuáles son sus pasatiempos favoritos?<br>
+    <input type="checkbox" name="pasa" value="tv">TV<br>
+    <input type="checkbox" name="pasa" value="libros">Libros<br>
+    <input type="checkbox" name="pasa" value="musica">Música<br>
+    <input type="checkbox" name="pasa" value="otros">Otros<br>
+</form>
+
+<!-- Subir una imagen a la página o al servidor -->
+<form action="foto.php" method="post" accept="image/jpg">
+    Ingrese la foto: <input type="file" name="foto"><br />
+    <input type="submit" value="Enviar">
+    <input type="reset" value="Borrar">
+</form>
+
+<!-- Tipo radio -->
+<form action="colores.php" method="get"> 
+    Elija un color<br>
+    <input type="radio" name="col" value="red">Rojo<br>
+    <input type="radio" name="col" value="blue">Azul<br>
+    <input type="radio" name="col" value="green">Verde<br>
+    <input type="submit" value="Enviar">
+    <input type="reset" value="Borrar">
+</form>
+
+<!-- Estilos
+========================================================== -->
+
+<div style="color:red;font-size:20px">
+    hola
+</div>
+
+<p style="color:green;font-size:30px">
+    hola
+</p>
+
+<h1 style="color:green;font-size:10px">Título grande</h1>
+
+<p style="font-size:15px;color:red;font-family: Verdana">Un párrafo verdaderamente espectacular</p>
+
+------
+
+<html>
+    <head>
+        <title>Ejemplo de estilos con CSS</title>
+        <style>
+              h1 { color: red;  font-family: Arial;   font-size: large;  }
+              p  { color: blue; font-family: Verdana; font-size: medium; }
+        </style>
+    </head> 
+<body>
+  <h1>Titular de la página</h1>
+  <p>CSS permite separar los contenidos de la página y la información sobre su aspecto. En el ejemplo anterior, dentro de la propia página HTML se crea una zona especial en la que se incluye toda la información relacionada con los estilos de la página.</p>
+</body>
+</html>
+
+------
+
+<html>
+    <head>
+    <title>Titulo</title>
+        <style>
+            div {
+                float: justify; 
+                border: ridge 1px red;
+                margin: 20px;
+            }
+        </style>
+    </head>    
+<body> 
+    <div>
+        <P>El fútbol femenino ha tenido un crecimiento lento en el fútbol moderno, principalmente por obstáculos sociales y culturales que no permiten el ingreso pleno de la mujer al deporte.29 El primer encuentro femenino bajo las reglas del fútbol asociación del cual se tienen registros sucedió en 1892 en Glasgow, Escocia.30 A finales de 1921 el fútbol femenino fue prohibido en Inglaterra, hecho que no le permitió expandirse al resto del mundo.</P>
+    </div>    
+</body>
+</html>
+
+<!-- LLamado de id y class en CSS -->
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+</head>
+<style>
+  div {
+    border: ridge;
+    width: 300px;
+  }
+  div#a {        
+    color: yellow;
+  }
+  div#b {
+    color: blue;    
+  }
+  div#c {
+    color: red;
+  }
+  div.d {
+    color: green;
+  }
+</style>
+<body>
+<center>
+  <div id="a">
+    11111
+  </div>
+  <br />
+  <div id="b">
+    22222
+  </div>
+  <br />
+  <div id="c">
+    33333
+  </div>
+  <br />
+  <div class="d">
+    44444
+  </div>
+</center>
+</body>
+</html>
+
+<!-- hover -->
+<!DOCtype html>
+<html>
+    <head>
+        <title>Prueba</title>
+        <style>
+            b {
+                color:red;
+            }
+
+            b:hover {
+                color:green;
+            }
+        </style>  
+    </head>
+<body>
+    <b>Hola lince</b> 
+</body>
+</html>
+
+<!-- Hover con imagenes -->
+<html>
+    <head>
+        <title>Estilo para codigo basico</title>
+        <meta charset="UTF-8" />
+    </head>
+    <style type="text/css">
+    img {      
+    }
+    img:hover {
+      border: ridge 1px;
+    }
+    </style>
+<body>  
+    <img src="1.png" onmouseover="this.src='2.png' " onmouseout="this.src='1.png' "/>
+</body>
+</html>
+
+<!-- Hover con imagenes con id -->
+<html>
+    <head>
+        <title>XXXXXX</title>
+        <meta charset="UTF-8" />
+    </head>
+    <style type="text/css">
+    img {      
+    }
+    img#firefox:hover {
+      border:ridge 1px;
+    }
+    </style>
+<body>  
+    <img id="firefox" src="firefox-icon.png" width="200px"></img>
+    <p />
+    <img src="firefox-icon.png" width="200px"></img>
+</body>
+</html>
+
+<!-- Estilo en <div> con el id y el class -->
+<html>
+    <head>    
+        <title>Titulo</title>
+        <meta charset="utf-8" />
+        <style>
+            #a { /* Llamada de un div por su identificador*/
+                float: justify; 
+                border: ridge;
+                margin: 20px;
+            }
+            .b { /* Llamada de un div por su identificador de clase*/
+                float: justify; 
+                border: ridge;
+                margin: 20px;
+            }
+        </style>
+    </head> 
+<body> 
+    <div id="a">
+        <P>El fútbol femenino ha tenido un crecimiento lento en el fútbol moderno, principalmente por obstáculos sociales y culturales que no permiten el ingreso pleno de la mujer al deporte.29 El primer encuentro femenino bajo las reglas del fútbol asociación del cual se tienen registros sucedió en 1892 en Glasgow, Escocia.30 A finales de 1921 el fútbol femenino fue prohibido en Inglaterra, hecho que no le permitió expandirse al resto del mundo.</P>
+    </div>
+    <div class="b">
+        <P>El fútbol femenino ha tenido un crecimiento lento en el fútbol moderno, principalmente por obstáculos sociales y culturales que no permiten el ingreso pleno de la mujer al deporte.29 El primer encuentro femenino bajo las reglas del fútbol asociación del cual se tienen registros sucedió en 1892 en Glasgow, Escocia.30 A finales de 1921 el fútbol femenino fue prohibido en Inglaterra, hecho que no le permitió expandirse al resto del mundo.</P>
+    </div>
+</body>
+</html>
+
+<!-- En el mismo div -->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+    </head>
+    <style>
+    #a {
+      border: ridge 1px;
+      width: 500px; 
+      height: 200px;
+    } 
+    .b {
+      background-color: gray;
+    }     
+    </style>
+<body>
+  <div id="a" class="b">xxxxxxxxxxxx</div>  
+</body>
+</html>
+
+<!-- Llamado de id y class en linea css -->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+    </head>
+    <style>
+    #a.b {
+      border: ridge 1px;
+      border-radius: 10px;
+      width: 500px; 
+      height: 200px;
+      background-color: red;
+    }     
+    </style>
+<body>
+  <div id="a" class="b">xxxxxxxxxxxx</div>  
+</body>
+</html>
+
+<!-- Centrar/alinear un elemento <div> medio/medio -->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+    </head>
+    <style>
+        #prueba {
+            margin: auto;
+            height: 430px;
+            width: 500px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            border: ridge 1px;
+        }
+    </style>
+<body>  
+    <div id="prueba">
+        <p>xxxxxxxxxxxxxxxxxxxxx</p>
+        <p>xxxxxxxxxxxxxxxxxxxxx</p>
+        <p>xxxxxxxxxxxxxxxxxxxxx</p>
+    </div>
+</body>
+</html>
+
+<!-- Menu con estilos -->
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        @import url(http://fonts.googleapis.com/css?family=Carme);
+        .fit-content ul {
+            font-family: carme, sans serif;
+            width: -moz-fit-content;
+            width: -webkit-fit-content;
+            width: -ms-fit-content;
+            width: -o-fit-content;
+            width: fit-content;
+            margin: 0 auto;
+            background: DarkRed;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            list-style: none;
+            overflow: hidden;
+            padding: 10px 5px;
+            font-size: 1.2rem;
+        }
+        .fit-content ul li {
+            float: left;
+            margin: 0 5px;
+        }
+        .fit-content a {
+            background: blue;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            color: black;
+            display: block;
+            padding: 4px 10px;
+            text-decoration: none;
+            -moz-transition: background .7s;
+            -webkit-transition: background .7s;
+            -ms-transition: background .7s;
+            -o-transition: background .7s;
+            transition: background .7s;
+        }
+        .fit-content a:hover {
+            background: #EC0404;
+            outline: 0 none;
+            text-shadow: 0 1px #000; 
+        }
+    </style>
+</head>    
+<body>
+    <p></p>
+    <nav class="fit-content">
+        <ul class="fit-content">
+            <li><a href="#">Aaaaaaa</a></li>
+            <li><a href="#">Bbbbbbbb</a></li>
+            <li><a href="#">Cccccccc</a></li>
+            <li><a href="#">0123456789</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
+
+<!-- Menu horizontal, listas con estilos -->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #111;
+}
+</style>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+</body>
+</html>
+
+<!-- Bootstrap botones -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<button type="button" class="btn btn-default">Default</button>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-link">Link</button>
+
+<!-- Bootstrap Buttons tamaños -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<button type="button" class="btn btn-primary btn-lg">Large</button>
+<button type="button" class="btn btn-primary btn-md">Medium</button>
+<button type="button" class="btn btn-primary btn-sm">Small</button>
+<button type="button" class="btn btn-primary btn-xs">XSmall</button>
+
+<!-- Block Level Buttons -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <h2>Block Level Buttons</h2>
+  <button type="button" class="btn btn-primary btn-block">Button 1</button>
+  <button type="button" class="btn btn-default btn-block">Button 2</button>
+
+  <h2>Large Block Level Buttons</h2>
+  <button type="button" class="btn btn-primary btn-lg btn-block">Button 1</button>
+  <button type="button" class="btn btn-default btn-lg btn-block">Button 2</button>
+
+  <h2>Small Block Level Buttons</h2>
+  <button type="button" class="btn btn-primary btn-sm btn-block">Button 1</button>
+  <button type="button" class="btn btn-default btn-sm btn-block">Button 2</button>
+</div>
+
+<!-- iconos Bootstrap -->
+<!-- Documentación y ejemplos en: http://getbootstrap.com/components/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    <button type="button" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="btn btn-default btn-lg">
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+</body>
+</html>
+
+<!-- formulario, campo de busqueda con estilo -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        #caja {
+            background: none repeat scroll 0 0 #EEEEEE;
+            border: 0 none;
+            padding: 8px;
+            width: 200px;
+        }
+        #boton-buscar {
+            background: none repeat scroll 0 0 #359BED;
+            border: 0 none;
+            border-radius: 0 0 0 0;
+            color: #FFFFFF;
+            font-weight: 500;
+            padding: 8px 10px;
+        }
+        #formulario {
+            /*border: ridge;*/
+            height: 250; 
+            width: 300;
+            font-family: carme, sans serif;
+            /*color: #359BED;*/
+            color: orange;
+        }        
+    </style>
+</head>
+<body>
+    <div align="center">
+        <!--form action="" style="display:inline;" method="get">
+            <input type="text" id="caja" name="busqueda" placeholder="Buscar..."/>
+            <input type="submit" id="boton-buscar" value="Buscar" />
+        </form-->
+        <p />
+        <div id="formulario" align="right">
+            <form id="form" action="#" method="get">
+                <b>Nombre: </b><input type="text" name="nombre" placeholder="Tu Nombre" id="caja" required> <p />
+                <b>Apellido: </b> <input type="text" name="apellido" placeholder="Tu Apellido" id="caja" required> <p />
+                <b>Cédula: </b><input type="text" name="ci" placeholder="Tu Cédula" id="caja" required> <p />
+                <b>Correo-e: </b><input type="text" name="correo-e" placeholder="Tu Correo" id="caja" required> <p />
+                <input type="submit" value="Enviar" id="boton-buscar">
+                <input type="reset" value="Borrar" id="boton-buscar">
+            </form>
+        </div>
+    </div>    
+</body>
+</html>
+
+<!-- formulario, Campo de busqueda con estilo 2 -->
+<html>
+<head>
+    <style>
+        body {
+            background:#f8f8f8;
+        }
+        #search {
+        }
+        #search input[type="text"] {
+            background: url(search-dark.png) no-repeat 10px 6px #fcfcfc;
+            border: 1px solid #d1d1d1;
+            font: bold 12px Arial,Helvetica,Sans-serif;
+            color: #bebebe;
+            width: 150px;
+            padding: 6px 15px 6px 35px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+            -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+            -webkit-transition: all 0.7s ease 0s;
+            -moz-transition: all 0.7s ease 0s;
+            -o-transition: all 0.7s ease 0s;
+            transition: all 0.7s ease 0s;
+        }
+        #search input[type="text"]:focus {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <form method="get" action="#" id="search">
+        <input name="a" type="text" size="40" placeholder="Buscar..." />
+        <button>Buscar</button>
+    </form>
+
+    <p />
+
+    <form action="#" method="get" id="search">
+        <label> Nombre: <input type="text" name="nombre"> </label> <p />
+        <label> Apellido: <input type="text" name="nombre" >  </label> <p />
+        <label> Cedula: <input type="text" name="nombre" > </label> <p />
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Borrar">
+    </form>
+</body>
+</html>
+
+<!-- La etiqueta span
+permite agrupar varios elementos en línea seguidos dentro de un
+mismo bloque (por ejemplo, varias palabras seguidas en un párrafo),
+para después darles formato con la hoja de estilo, tambien podemos declarar
+clases para identificar etiquetas y luego llamarlas en los estilos -->
+<html>
+<head>
+  <meta charset="utf-8">  
+  <style>
+    span.fecha { 
+      font-style: oblique; 
+      text-decoration: underline; 
+    }
+    span.resaltar { 
+      color: red; 
+    }
+  </style>  
+</head>
+<body>
+<p>El <span class="resaltar">primer servidor web de la historia</span> 
+se instaló en el CERN en <span class="fecha">diciembre de 1990</span> (<a
+href="https://en.wikipedia.org/wiki/Image:First_Web_Server.jpg">foto</a>)</p>
+</body>
+</html>
+
+<!-- Estilo para div, mostrar codigos como ejemplo y uso de estilo en <span></span> -->
+<html>
+    <head>
+        <title>Estilo para codigo basico</title>
+        <meta charset="UTF-8" />
+    </head>
+
+    <style>
+        #code {
+            background-color: #2B3047;
+            width:50%;
+            color: white;
+            border-radius: 15px;
+            border: ridge 1px;      
+        }        
+    </style>
+<body>
+<h2>Archivos</h2>
+<h3>Archivos - Carga un archivo y verifica</h3>
+Carga un archivo a través de un formulario y retorna un json con la información de la firma.
+<br />
+<br />
+<a href="https://murachi.cenditel.gob.ve/Murachi/0.1/archivos/firmados">https://murachi.cenditel.gob.ve/Murachi/0.1/archivos/firmados</a>
+<p />
+Ejemplo:
+<div id="code">
+    <pre>
+    <span style="color:#5376FF">var</span> formData <span style="color:#CB0630">= new</span> formData();
+    formData.append("upload", $("#file-sign")[0].files[0]);            
+    $.ajax({
+             url: "https://murachi.cenditel.gob.ve/Murachi/0.1/archivos/firmados",
+             type: "post",
+             datatype: "json",
+             data: formData,
+             cache: false,
+             contenttype: false,
+             processData: false,
+             headers: {"Authorization":"Basic YWRtaW46YWRtaW4="},
+             <span style="color:#CB0630">success:</span> <span style="color:#5376FF">function</span>(response) {
+                    <span style="color:#5376FF">var</span> json = JSON.stringify(response);
+                    <span style="color:#5376FF">alert</span>(json);
+             },
+             <span style="color:#CB0630">error:</span> <span style="color:#5376FF">function</span>(response){
+                    <span style="color:#5376FF">alert</span>("error: " + response.error.toString());
+             }
+    });
+    </pre>
+</div>
+</body>
+</html>
+<!--span style="color:#CB0630"></span>
+<span style="color:#5376FF"></span-->
+
+<!-- Ejemplo practico -->
+<html>
+    <head>
+        <title>Estilo para codigo basico</title>
+        <meta charset="UTF-8" />
+    </head>
+
+    <style>
+        #code {
+            background-color: #141830;
+            width:50%;
+            color: white;
+            border-radius: 15px;
+            border: ridge 1px;            
+        }        
+    </style>
+<body>
+Ejemplo:
+<div id="code">
+    <pre>    
+    <span style="color:aqua">var</span> formData <span style="color:red">= new</span> formData();
+        formData.append("<span style="color:Khaki">upload</span>", <span style="color:red">$</span>(<span style="color:Khaki">"#file-sign"</span>)[<span style="color:DarkViolet">0</span>].files[<span style="color:DarkViolet">0</span>]);
+        <span style="color:red">$</span>.ajax({
+                 url: <span style="color:Khaki">"https://murachi.cenditel.gob.ve/Murachi/0.1/archivos/firmados"</span>,
+                 type: <span style="color:Khaki">"post"</span>,
+                 datatype: <span style="color:Khaki">"json"</span>,
+                 data: formData,
+                 cache: <span style="color:DarkViolet">false</span>,
+                 contenttype: <span style="color:DarkViolet">false</span>,
+                 processData: <span style="color:DarkViolet">false</span>,
+                 headers: {<span style="color:Khaki">"Authorization"</span>:<span style="color:Khaki">"Basic YWRtaW46YWRtaW4="</span>},
+                 <span style="color:Lime">success</span>: <span style="color:aqua">function</span>(<span style="color:orange">response</span>) {
+                        <span style="color:aqua">var</span> json <span style="color:red">=</span> JSON.stringify(response);
+                        <span style="color:aqua">alert</span>(json);
+                 },
+                 <span style="color:Lime">error</span>: <span style="color:aqua">function</span>(<span style="color:orange">response</span>){
+                        <span style="color:aqua">alert</span>(<span style="color:Khaki">"error: "</span> <span style="color:red">+</span> response.<span style="color:aqua">error</span>.<span style="color:aqua">toString</span>());
+                 }
+        });        
+    </pre>
+</div>
+</body>
+</html>
+<!--span style="color:Lime"></span-->
+
+<!-- Ejemplo practico con numeración de lineas -->
+<html>
+    <head>
+        <title>Estilo para codigo basico</title>
+        <meta charset="UTF-8" />
+    </head>
+
+    <style>
+        #code {
+            background-color: #141830;
+            width:50%;
+            color: white;
+            border-radius: 15px;
+            border: ridge 1px;            
+        }
+    </style>
+<body>
+Ejemplo:
+<div id="code">    
+<pre>
+<span style="color:gray"> 1</span>    <span style="color:aqua">var</span> formData <span style="color:red">= new</span> formData();
+<span style="color:gray"> 2</span>        formData.append("<span style="color:Khaki">upload</span>", <span style="color:red">$</span>(<span style="color:Khaki">"#file-sign"</span>)[<span style="color:DarkViolet">0</span>].files[<span style="color:DarkViolet">0</span>]);
+<span style="color:gray"> 3</span>        <span style="color:red">$</span>.ajax({
+<span style="color:gray"> 4</span>                 url: <span style="color:Khaki">"https://murachi.cenditel.gob.ve/Murachi/0.1/archivos/firmados"</span>,
+<span style="color:gray"> 5</span>                 type: <span style="color:Khaki">"post"</span>,
+<span style="color:gray"> 6</span>                 datatype: <span style="color:Khaki">"json"</span>,
+<span style="color:gray"> 7</span>                 data: formData,
+<span style="color:gray"> 8</span>                 cache: <span style="color:DarkViolet">false</span>,
+<span style="color:gray"> 9</span>                 contenttype: <span style="color:DarkViolet">false</span>,
+<span style="color:gray"> 10</span>                 processData: <span style="color:DarkViolet">false</span>,
+<span style="color:gray"> 11</span>                 headers: {<span style="color:Khaki">"Authorization"</span>:<span style="color:Khaki">"Basic YWRtaW46YWRtaW4="</span>},
+<span style="color:gray"> 12</span>                 <span style="color:Lime">success</span>: <span style="color:aqua">function</span>(<span style="color:orange">response</span>) {
+<span style="color:gray"> 13</span>                        <span style="color:aqua">var</span> json <span style="color:red">=</span> JSON.stringify(response);
+<span style="color:gray"> 14</span>                        <span style="color:aqua">alert</span>(json);
+<span style="color:gray"> 15</span>                 },
+<span style="color:gray"> 16</span>                 <span style="color:Lime">error</span>: <span style="color:aqua">function</span>(<span style="color:orange">response</span>){
+<span style="color:gray"> 17</span>                        <span style="color:aqua">alert</span>(<span style="color:Khaki">"error: "</span> <span style="color:red">+</span> response.<span style="color:aqua">error</span>.<span style="color:aqua">toString</span>());
+<span style="color:gray"> 18</span>                 }
+<span style="color:gray"> 19</span>        });        
+</pre>
+</div>
+</body>
+</html>
+<span style="color:gray"></span>
+
+<!-- Uso de !important en CSS
+El atributo !important señala que si hay dos propiedas con diferentes valores,
+aquella propiedad que tenga este atributo sera la que sea usada -->
+<html>
+    <head>
+    <title>Titulo</title>
+    <meta charset="UTF-8">
+      <style>
+        div {
+          float: justify; 
+          border: ridge;
+          margin: 20px;
+          color: red; /* Letra roja */
+        }
+        div {          
+          color: blue !important; /* Letra azul */
+        }
+      </style>
+    </head> 
+  <body> 
+    <div>
+      <p>El fútbol femenino ha tenido un crecimiento lento en el fútbol moderno, principalmente por obstáculos sociales y culturales que no permiten el ingreso pleno de la mujer al deporte.29 El primer encuentro femenino bajo las reglas del fútbol asociación del cual se tienen registros sucedió en 1892 en Glasgow, Escocia.30 A finales de 1921 el fútbol femenino fue prohibido en Inglaterra, hecho que no le permitió expandirse al resto del mundo.</p>
+    </div>  
+  </body>
+  </html>
+</body>
+</html>
+
+<!-- Estilo en boton html -->
+<html>
+  <head>
+    <title>Titulo</title>
+    <meta charset="UTF-8">      
+  </head>
+<body>
+  <style type="text/css">
+    #boton {
+      font-size:15px;
+      font-weight:bold;
+      color:black;
+      background:gray;
+      border-radius: 5px;
+      box-shadow: 2px 2px 10px gray;
+    }
+  </style>
+  <div align="center">
+    <a href="#"><button id="boton" class="btn btn-success">Participar en Consultas</button></a>
+  </div>    
+</body>
+</html>
+
+<!-- boton hover con css -->
+<!DOCtype html>
+<html>
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8" />
+</head>
+<style type="text/css">
+  #boton_download {
+    background-color: #00AEEF;
+    height: 50px;
+    width: 300px;
+    border-radius: 20px;
+    color: #FFFFFF;
+    padding: 20px;
+    /*border-color: red;*/
+    display: inline-block;
+  }
+  #boton_download:hover {
+    background-color: #FFFFFF;
+    color: #00AEEF;
+    border:ridge 1px;
+  }
+  #descargar {
+    font-family: "Open Sans",sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+  }  
+  #click {
+    font-family: "Open Sans",sans-serif;
+    font-size: 15px;
+  }
+</style>
+<body>
+  <br />
+    <div id="cuerpo" align="center">
+      <a href="#">
+        <span id="boton_download">
+          <div id="zona_texto">
+            <span id="descargar">DESCARGAR</span>
+            <br />
+            <span id="click">click para continuar</span>
+          </div>
+        </span>
+      </a>
+    </div>
+</body>
+</html>
+
+<!-- Alineacion en linea de bloques adaptables -->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+    </head>
+    <style>
+      #contenedor .bloque{
+        display: inline-block; /* Es esencial para que se muestren los bloques en línea */
+        height:300px;
+        width: 300px;
+        border:1px solid #333;
+        background: #999;
+        margin:5px;
+      }      
+    </style>
+<body>
+  <div id="contenedor">
+  <div class="bloque">[Texto/Imágenes]</div>
+  <div class="bloque">[Texto/Imágenes]</div>
+  <div class="bloque">[Texto/Imágenes]</div>
+  <div class="bloque">[Texto/Imágenes]</div>
+  <div class="bloque">[Texto/Imágenes]</div>
+</div>
+</body>
+</html>
+
+<!-- Diseño adaptable en cascada -->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+    </head>
+    <style>
+      @media all and (max-width: 600px){
+        div{
+          display: block !important;  /* Cuando el ancho sea inferior a 600px el elemento será un bloque */
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: auto !important;
+          position: static !important;
+          float: none !important;
+        }
+      }
+      .superior{
+        background: #F99;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 30px;
+      }
+      .cuerpo{  /* Este es el delimitador para que la página no sea excesivamente grande */
+        max-width: 1000px;
+        margin:auto;
+      }
+      .cabecera{
+        background: #9F9;
+        margin-top: 30px;
+        height: 200px;
+      }
+      .agenda{
+        background: #99F;
+        float: left;  /* flotamos el elemento a la izquierda */
+        width: 35%;
+        height: 600px;
+      }
+      .contenido{
+        background: #AAA;
+        width: 65%;
+        margin-left: 35%;
+        height: 900px;
+      }
+    </style>
+<body>
+  <div class="superior">[Menú]</div>
+  <div class="cuerpo">
+    <div class="cabecera">[Cabecera]</div>
+    <div class="agenda">[Agenda]</div>
+    <div class="contenido">[Contenido]</div>
+  </div>
+</body>
+</html>
+
+<!-- Campo de busqueda - buscar/search con estilo -->
+<html>
+<head>
+<style>
+#search input[type="text"] {
+    background: url(search-white.png) no-repeat 10px 6px #fcfcfc;/*Agregar imagen de lupa por ejemplo*/    
+    border: 1px solid #d1d1d1;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: #000000;
+    width: 150px;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 5px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+    /*border: ridge 1px;*/
+    }
+#search input[type="text"]:focus {
+    width: 200px;
+    }
+</style>
+</head>
+<body>
+<form method="get" action="/search" id="search">
+  <input name="q" type="text" size="40" placeholder="Buscar..." />
+</form>
+</body>
+</html>
+
+<!-- Ejemplo de fichero .css -->
+body, html {
+    margin:0;
+    padding:0;
+    background:url("./Img/gris2.jpg");
+}
+#cabecera{
+    background:url("./Img/head.png") 100%;
+    width:100%;
+    height: 400px;
+    margin: 0px 0px 2px 0px;
+    border-radius:3px;    
+}
+#RedesSociales{
+    background:url("./Img/transparenciaa.PNG") 100%;
+    position:fixed;
+    width:55px;
+    height:216px;
+    margin:140px auto;  
+    border-radius:3px;  
+}
+#form{
+    /*width:520px;
+    height:35px;        
+     border:ridge 1px;  */
+    /*margin: 10px 10px 10px 10px;*/
+}
+#menu{  
+    background:url("./Img/negro.jpg") 100%; 
+    width:100%;
+    height: 34px;
+    margin: 0px 0px 0px 0px;    
+    border-radius:3px;  
+}
+#menu2{ 
+    background:url("./Img/negro.jpg") 100%; 
+    width:100%;
+    height: 64px;
+    margin: 0px 0px 0px 0px;
+    position:fixed;
+}
+#completo{
+    background:url("./Img/blancoo.jpg") 100%;
+    width:1000px;
+    height: 1080px;
+    margin: 0 auto;
+    border-radius:3px;
+}
+#cuerpo1{
+    background:url("./Img/negro.jpg") 100%;
+    width: 99%;
+    height: 350px;
+    margin: 3px 3px 3px 3px;
+    overflow : auto;
+    float: left;
+    border-radius:3px;
+    
+}
+#cuerpo2{
+    background:url("./Img/negro.jpg") 100%;
+    width: 99%;
+    height: 350px;
+    margin: 3px 3px 3px 3px;
+    overflow : auto;
+    float: left;
+    border-radius:3px;
+}
+#cuerpo3{
+    background:url("./Img/negro.jpg") 100%;
+    width: 99%;
+    height: 350px;
+    margin: 3px 3px 3px 3px;
+    overflow : auto;
+    float: left;
+    border-radius:3px;
+}
+#contenido{
+    background:url("./Img/blanco.jpg") 100%;
+    width: 31%;
+    height: 328px;
+    overflow : auto;
+    margin: 10px 10px 10px 10px;
+    float: left;
+    border-radius:3px;    
+}
+#pie{   
+    background:url("./Img/negro.jpg") 100%; 
+    width:100%;
+    height: 30px;
+    margin: 5px 0px 0px 0px;    
+    border-radius:3px;
+    /*float: left;*/
+    /* bottom: 0;
+    position:fixed; */
+}
+#textos{    
+    margin: 20px 20px 20px 20px;    
+}
+
+<!-- Página para crear tutoriales de instalación con estilos -->
+<html>
+    <head>
+        <title>Estilo para codigo basico</title>
+        <meta charset="UTF-8" />
+    </head>
+
+  <style>
+    body {
+      background-color: #FFFFFF;
+    }
+    #cuerpo {
+      width: 90%;
+      /*border: ridge 1px;*/
+      background-color: #FFFFFF;      
+      margin-top: 5px;
+      padding: 10px;
+      float: left;
+      text-align: justify;
+    }
+
+    #code {
+      background-color: black;
+      width: 90%;      
+      color: lime;
+      /*border: ridge 1px;*/
+      border-color: black;      
+      margin-top: 5px;
+      float: left;
+      padding: 10px;
+      border-radius: 5px;
+    }    
+  </style>
+<body>  
+  <div id="cuerpo">
+    ########## Ambiente virtual en Python ##########
+  </div>
+  <div id="cuerpo">
+    Cuando se desarrollando software con Python, quizas se presente el problema de tener utilizar diferentes versiones de una mismo paquete en
+    diferentes proyectos, ya sea el mismo Python o diferentes versiones de un Framework como Django por ejemplo, el problema a solucionar radica
+    en como poder instalar las dos o mas versiones de la misma librería con el fin de poder desarrollar varios proyectos de forma simultánea.
+
+    La solución consiste en crear virtualenvs o entornos virtuales. Un entorno virtual de Python es un espacio completamente independiente
+    de otros entornos virtuales y de los paquetes instalados globalmente en el sistema. Esto significa que es posible instalar la versión
+    2.7 de Python en un entorno virtual y la versión 3.0 en otro diferente o de forma global sin problema alguno.
+
+    El porder tener diferentes entornos donde podemos instalar diferentes versiones de paquetes nos da la oportunidad de hacer un desarrollo simultaneo
+    así como poder hacer pruebas si afectar a los paquetes del sistema global.
+  </div>
+  <div id="cuerpo">
+    --- Instalación: ---
+  </div>
+  <div id="cuerpo">
+    Para crear un ambiente virtual instale las herramientas python-virtualenv y virtualenvwrapper
+  </div>
+  <div id="code">
+    $ aptitude install python-virtualenv virtualenvwrapper
+  </div>
+  <div id="cuerpo">
+    Con un usuario (diferente a root) cree un ambiente virtual para su proyecto.
+  </div>
+  <div id="code">
+    $ mkvirtualenv nombre_ambiente_virtual
+  </div>  
+</body>
+</html>
+
+----------
+
+<!-- Validación de número de caracteres mínimo de un campo password con pattern de html5 -->
+<!DOCTYPE html>
+<html>
+<body>
+<p>A form with a password field that must contain 6 or more characters:</p>
+<form action="/action_page.php">
+  Password: <input type="password" name="pw" pattern=".{6,}" title="Six or more characters">
+  <input type="submit">
+</form>
+<p><strong>Note:</strong> The pattern attribute of the input tag is not supported in Internet Explorer 9 and earlier versions.</p>
+</body>
+</html>
+
+----------
+
+<!-- Validación de campos con html5 -->
+<html>
+<head>
+    <title>Validacion de campos con html5</title>
+    <meta charset="UTF-8">  
+</head>
+<body>
+    <form>
+        <Nombre: <input name="txtNombre" type="text" id="txtNombre" required oninvalid="setCustomValidity('El campo nombre es obligatorio')" oninput="setCustomValidity('')"/> <br />       
+        Password: <input type="password" name="txtPwd" id="txtPwd" required pattern=".{6,}" oninvalid="setCustomValidity('El password es obligatorio y debe tener como mínimo 6 caracteres')" oninput="setCustomValidity('')" /> <br />
+        Edad: <input name="txtEdad" type="number" id="txtEdad" min="18" max="60" oninvalid="etCustomValidity('La edad debe ser entre 18 y 60 años.')" oninput="setCustomValidity('')" /> <br /-->
+        Email: <input name="txtEmail" id="txtEmail" type="email" oninvalid="setCustomValidity('Debe ingresar un email válido')" oninput="setCustomValidity('')" /> <br />
+        <input type="submit" value="Enviar"  id="btnSubmit" name="btnSubmit"/>
+    </form>
+</body>
+</html>
+
+---------
+
+<!-- Validación de número de un campo password con pattern de html5 -->
+<!DOCTYPE html>
+<html>
+<body>
+<p>Un formulario con un campo de contraseña que debe contener 8 o más caracteres que son de al menos un número, y una letra mayúscula y minúscula:</p>
+<form action="/action_page.php">
+Password: <input type="password" name="pw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+<input type="submit">
+</form>
+<p><strong>Note:</strong> The pattern attribute of the input tag is not supported in Internet Explorer 9 and earlier versions.</p>
+</body>
+</html>
+
+----------
+
+<!-- Validación de un campo email con pattern de html5 -->
+<!DOCTYPE html>
+<html>
+<body>
+<p>A form with an email field that that must be in the following order: characters@characters.domain (characters followed by an @ sign, followed by more characters, and then a ".". After the "." sign, you can only write 2 to 3 letters from a to z:</p>
+<form action="/action_page.php">
+  E-mail: <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+  <input type="submit"></form>
+<p><strong>Note:</strong> The pattern attribute of the input tag is not supported in Internet Explorer 9 and earlier versions.</p>
+</body>
+</html>
+
+----------
+
+<!-- Validación de un campo search con pattern de html5, caracteres excluídos en el formulario -->
+<!DOCTYPE html>
+<html>
+<body>
+<p>A form with a search field that CANNOT contain the following characters: ' or "</p>
+<form action="/action_page.php">
+  Search: <input type="search" name="search" pattern="[^'\x22]+" title="Invalid input">
+  <input type="submit">
+</form>
+<p><strong>Note:</strong> The pattern attribute of the input tag is not supported in Internet Explorer 9 and earlier versions.</p>
+</body>
+</html>
+
+----------
+
+<!-- Validación de un campo tipo url con pattern de html5 -->
+<!DOCTYPE html>
+<html>
+<body>
+<p>A form with a URL field that must start with http:// or https:// followed by at least one character:</p>
+<form action="/action_page.php">
+  Homepage: <input type="url" name="website" pattern="https?://.+" title="Include http://">
+  <input type="submit">
+</form>
+<p><strong>Note:</strong> The pattern attribute of the input tag is not supported in Internet Explorer 9 and earlier versions.</p>
+</body>
+</html>
+
+----------
+
+<!-- Mensaje de alerta con css -->
+<!DOCtype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>xxxxxx</title>
+  <style type="text/css">
+    @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+    .isa_info, .isa_success, .isa_warning, .isa_error {
+    margin: 10px 0px;
+    padding:12px;
+    }
+    .isa_info {
+        color: #00529B;
+        background-color: #BDE5F8;
+    }
+    .isa_success {
+        color: #4F8A10;
+        background-color: #DFF2BF;
+    }
+    .isa_warning {
+        color: #9F6000;
+        background-color: #FEEFB3;
+    }
+    .isa_error {
+        color: #D8000C;
+        background-color: #FFBABA;
+    }
+    .isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+        margin:10px 22px;
+        font-size:2em;
+        vertical-align:middle;
+    }
+  </style> 
+</head>
+<body>
+  <div class="isa_info">Replace this text with your own text.</div>
+  <div class="isa_success">Replace this text with your own text.</div>
+  <div class="isa_warning">Replace this text with your own text.</div>
+  <div class="isa_error">Replace this text with your own text.</div>
+</body>
+</html>
+
+<!-- Sueltos de css -->
+
+textarea {
+  background: url(images/benice.png) center center no-repeat;
+  border: 1px solid #888; 
+  width:200px;
+}
+
+Sombra lateral
+box-shadow: 10px 10px 5px #888888;
+
+Sombra uniforme
+-webkit-box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.75);
+box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.75);
+
+Sombra interior leve
+-webkit-box-shadow: inset 0px 1px 28px -9px rgba(0,0,0,1);
+-moz-box-shadow: inset 0px 1px 28px -9px rgba(0,0,0,1);
+box-shadow: inset 0px 1px 28px -9px rgba(0,0,0,1);
+
+<!-- Colores web -->
+Nombre   Código hex
+HTML       RGB
+
+White       #FFFFFF
+White/gray  #FAFAFA medium
+White/gray  #F2F2F2 strong
+Gray        #808080
+Black       #000000
+Gold        #FFD700
+Yellow      #FFFF00
+Orange      #FFA500
+Red         #FF0000
+DarkRed     #8B0000
+Pink        #FFC0CB
+Aqua / Cyan #00FFFF
+Blue        #0000FF
+Light Blue  #A9E2F3
+DarkBlue    #00008B
+Purple      #800080
+Lime        #00FF00
+Light Green #01DF3A
+Green       #008000
+
+opacity: 0.5; // Opacidad en la imagen o bloque, transparencia, bloque transparente
+
+.class{
+background:rgba(0,0,0,0.5); // Color transparente en los css
+}
+
+<!-- Ejemplo / Plantilla con cuerpos y estilos definidos -->
+<html>
+    <head>
+        <title>zxx</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    </head>
+<body>
+    <div id="completo">
+        <div id="cabecera">
+            Cabecera
+        </div>
+        <div id="menu">
+            Menu
+        </div>
+        <div id="cuerpo">
+            Cuerpo
+        </div>              
+        <div id="footer">
+            Footer
+        </div>      
+    </div>  
+</body>
+</html>
+
+<style type="text/css">
+body, html {
+    /*margin:0;
+    padding:0;
+    background:url("./Img/gris2.jpg");*/
+    /*background-color: #808080;*/
+    background-color: #5B0101;
+    /*background:url("../imagenes/follaje.jpg") 100%;*/
+}
+#completo {
+    height: 610px;
+    width:1000px;
+    background-color: #D4DECE;
+    float: left;
+    margin: auto;
+    top: 15;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    border-radius: 5px;
+    /*border:ridge 1px;
+    border-color: red;*/
+    /*### Sombra ###*/
+    -webkit-box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.75);
+    box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.75);
+}
+
+#cabecera {
+    /*background:url("../imagenes/banner_cabecera.jpg") 100%;*/
+    background-color: #F2F2F2;
+    height: 150px;
+    width:98%;
+    border-radius: 5px;
+    border:ridge 1px;
+    border-color: #808080;
+    float: left;
+    margin: 10 0 0 0;    
+    margin-left: 10px;
+    -webkit-box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.15);
+    -moz-box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.15);
+    box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.15);
+}
+
+#menu {
+    /*background:url("../imagenes/chavez_bannerr.jpg") 100%;*/
+    /*background-color: #F78181;*/
+    background-color: #F2F2F2;
+    height: 50px;
+    width:98%;
+    float: left;
+    margin: 10 0 0 0;
+    margin-left: 10px;    
+    border-radius: 5px;
+    border:ridge 1px;
+    border-color: #808080;
+    -webkit-box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.15);
+    -moz-box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.15);
+    box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.15);
+}
+
+#cuerpo {
+    background-color: #F2F2F2;
+    height: 300px;
+    width:98%;    
+    float: left;    
+    /*margin-bottom: 5px;*/
+    margin: 10 0 0 10;    
+    overflow: auto;
+    border-radius: 5px;
+    border:ridge 1px;
+    border-color: #808080;
+    /*margin-left: 10px;*/
+    -webkit-box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.15);
+    -moz-box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.15);
+    box-shadow: -1px 0px 9px 5px rgba(0,0,0,0.15);
+}
+
+#footer {
+    /*background:url("../imagenes/chavez_footerr.jpg") 100%;*/
+    background-color: #F78181;
+    /*background-color: #F2F2F2;*/
+    width:98%;
+    height: 50px;
+    float: left;
+    border:ridge 1px;
+    margin: 10 0 0 5;    
+    border-radius: 5px;
+    border:ridge 1px;
+    border-color: #808080;
+    margin-left: 10px;
+}
+</style>
+
+<!-- Ejemplo de sitio responsivo -->
+<!DOCtype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+    box-sizing: border-box;
+}
+.row:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+.header {
+    background-color: #9933cc;
+    color: #ffffff;
+    padding: 15px;
+}
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color :#33b5e5;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.menu li:hover {
+    background-color: #0099cc;
+}
+.aside {
+    background-color: #33b5e5;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.footer {
+    background-color: #0099cc;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+}
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>Cabecera</h1>
+</div>
+<div class="row">
+    <div class="col-3 menu">
+        <ul>
+            <li>ffff</li>
+            <li>gggg</li>
+            <li>yyyy</li>
+            <li>aaaa</li>
+        </ul>
+    </div>
+    <div class="col-6">
+        <h1>Cuerpo</h1>
+        <p>XXXXXXXXXXXXXXXX</p>
+    </div>
+    <div class="col-3 right">
+        <div class="aside">
+            <h2>What?</h2>
+            <p>Chania is a city on the island of Crete.</p>
+            <h2>Where?</h2>
+            <p>Crete is a Greek island in the Mediterranean Sea.</p>
+            <h2>How?</h2>
+            <p>You can reach Chania airport from all over Europe.</p>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>Footer</p>
+</div>
+</body>
+</html>
+
+<!-- Estilos para un sitio responsive, para un tamaño determinado de pantalla, aquí se definen
+el tamaño máximo de las pantallas y los estilos personalizados para cada tamaño. -->
+<style type="text/css">
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+    img {
+        width: 100%;
+    }
+    .title_post_carousel {
+        color: #d11e22;
+        font-weight: bold;
+        font-size: 10px;
+    }
+    .text_description {
+        font-size: 10px;
+    }
+}
+</style>
+
+<!-- Poner una imagen/favicon a la página -->
+<!DOCtype html>
+<html>
+    <head>    
+      <title>Prueba</title> 
+      <meta charset="UTF-8">        
+      <script src="jquery-1.9.1.js" type="text/javascript"></script>
+      <!--link rel="icon" type="image/jpeg" href="xxx.jpeg" /--> <!-- imagen .jpeg -->
+      <link rel="icon" type="image/png" href="yyy.png" /> <!-- imagen .png -->
+    </head>
+<body>
+  <div id="cuerpo">
+    XXXXXX
+  </div>
+</body>
+</html>
+
+<!-- Trabajando con display block, inline, inlineblock -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Display valores</title>
+    <link rel="stylesheet" type="text/css" href="css/displayvalores.css">
+  </head>
+  <body>
+    <p class="block">Soy un elemento con comportamiento de bloque</p>
+    <p class="block">Soy un elemento con comportamiento de bloque</p>
+ 
+    <p class="inline">Soy un elemento con comportamiento en linea</p>
+    <p class="inline">Soy un elemento con comportamiento en linea</p>
+ 
+    <p class="inlineblock">Soy un elemento con comportamiento en bloque de linea</p>
+    <p class="inlineblock">Soy un elemento con comportamiento en bloque de linea</p>
+  </body>
+</html>
+<style type="text/css">
+.block { /*Si acepta width y height*/
+  display: block;
+  padding: 10px;
+  background: blue;
+  color: white;
+} 
+ 
+.inline { /* No acepta width ni height */
+  display: inline;
+  padding: 10px;
+  margin-left: 50px;
+  background: pink;
+} 
+.inlineblock { /*Permite width, height, tener elementos vecinos, margin y padding */
+  display: inline-block;
+  width: 160px;
+  margin: 15px;
+  padding: 15px;
+  background: red;
+  color: white;
+}
+</style>
+
+<!-- Uso de varias clases en un mismo div -->
+<html>
+<head>
+  <title>Ssssssss</title>
+</head>
+<style type="text/css">
+    #aaa {
+        border: 1px solid black;
+    }
+    .bbb {
+        width: 600px;
+    }
+    .ccc {
+        color: green;
+    }
+    .ddd {
+        height: 500px;
+    }
+    /*
+    .bbb.ccc.ddd {
+        color: green;
+        height: 500px;
+        width: 600px;
+    }
+    */
+</style>
+<body>
+    <div id="aaa" class="bbb ccc">
+        Campo de Texto <br />
+        Campo de Texto <br />
+        Campo de Texto <br />
+    </div>
+</body>
+</html>
+
+<!-- Iframe, Permite insertar o incrustar un documento HTML dentro de un documento HTML principal -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XXXXXXXXxx</title>
+<style type="text/css">
+iframe {
+  height: 400px;
+  width: 400px;
+}
+</style>
+</head>
+<body>
+  <iframe src="http://www.as.com">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</body>
+</html>
+
+<!-- Menu css con pestañas desplegables, lista -->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .nav {
+    /*border: 1px solid green;
+    width:300px;
+    height:200px;
+    padding:20px;*/
+  }
+  ul, ol {
+    list-style:none;
+  }
+  .nav > li {
+    /*float:left;*/
+  }
+  .nav li a {
+    background-color:#000000;
+    color:#FFFFFF;
+    text-decoration:none;
+    display:block;
+  }
+  .nav li a:hover {
+    /*background-color:#434343;*/
+  }
+  .nav li ul {
+    display:none;
+    /*display:block;*/
+    position:absolute;
+  }
+  .nav li:hover > ul {
+    display:block;
+  }
+  #botonminuta_li {
+    /*background-color: #FAFAFA;
+    width: 90px;
+    border: solid 1px #808080;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    padding: 3px;
+    text-decoration: none;*/
+    font-size: 12px;
+    text-decoration: none !important;
+    color: #313131 !important;
+    -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,0,.135);
+    -moz-box-shadow: inset 0 -2px 0 rgba(0,0,0,.135);
+    /*box-shadow: inset 0 -2px 0 rgba(0,0,0,.135);*/
+    text-align:center;
+    border: none;
+    width: 80px;
+    line-height: 30px;
+    background-color: #f4f5f9;
+    border: 1px solid #d2cecd;
+    /*padding: 0 5px;*/
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #botonminuta_li:hover {
+    font-size: 12px;
+    text-decoration: none !important;
+    color: #3F8FBA !important;
+    -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,0,.135);
+    -moz-box-shadow: inset 0 -2px 0 rgba(0,0,0,.135);
+    /*box-shadow: inset 0 -2px 0 rgba(0,0,0,.135);*/
+    text-align:center;
+    border: none;
+    width: 80px;
+    line-height: 30px;
+    background-color: #f4f5f9;
+    border: 1px solid #d2cecd;
+    /*padding: 0 5px;*/
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0px 1px 28px -9px rgba(0,0,0,0.30);
+    -moz-box-shadow: inset 0px 1px 28px -9px rgba(0,0,0,0.30);
+    box-shadow: inset 0px 1px 28px -9px rgba(0,0,0,0.30);
+  }
+
+  #botones_minuta_child {
+    font-size: 12px;
+    text-decoration: none !important;
+    color: #313131 !important;
+    -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,0,.135);
+    -moz-box-shadow: inset 0 -2px 0 rgba(0,0,0,.135);
+    text-align:center;
+    border: none;
+    width: 130px;
+    line-height: 30px;
+    background-color: #f4f5f9;
+    border: 1px solid #d2cecd;
+    /*padding: 0 5px;*/
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #botones_minuta_child:hover {
+    font-size: 12px;
+    text-decoration: none !important;
+    color: #3F8FBA !important;
+    -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,0,.135);
+    -moz-box-shadow: inset 0 -2px 0 rgba(0,0,0,.135);
+    text-align:center;
+    border: none;
+    width: 130px;
+    line-height: 30px;
+    background-color: #f4f5f9;
+    border: 1px solid #d2cecd;
+    /*padding: 0 5px;*/
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0px 1px 28px -9px rgba(0,0,0,0.30);
+    -moz-box-shadow: inset 0px 1px 28px -9px rgba(0,0,0,0.30);
+    box-shadow: inset 0px 1px 28px -9px rgba(0,0,0,0.30);
+  }
+}
+</style>
+</head>
+<body>
+  <ul class="nav">
+    <li id="botonminuta_li"><span id="boton_minuta">Minuta</span>
+      <ul>
+        <li id="botones_minuta_child" class="add-responsable"><span id="boton_agregar_responsable">Responsable</span></li>
+        <li id="botones_minuta_child" class="add-fecha"><span id="boton_agregar_fecha">Fecha</span></li>
+        <li id="botones_minuta_child" class="add-horainicio"><span id="boton_agregar_horainicio">Hora de inicio</span></li>
+        <li id="botones_minuta_child" class="add-horafinal"><span id="boton_agregar_horafinal">Hora de finalización</span></li>
+        <li id="botones_minuta_child" class="add-asistente"><span id="boton_agregar_asistente">Asistentes</span></li>
+        <li id="botones_minuta_child" class="add-asunto"><span id="boton_agregar_asunto">Asunto</span></li>
+        <li id="botones_minuta_child" class="add-punto"><span id="boton_agregar_punto">Puntos tratados</span></li>
+        <li id="botones_minuta_child" class="add-acuerdo"><span id="boton_agregar_acuerdo">Acuerdos</span></li>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>
+
+<!-- Menu css desplegable -->
+<html>
+  <head> 
+    <title>Titulo</title>
+    <meta charset="UTF-8" />
+  </head>
+  <style type="text/css">
+    #menu{padding-left:25px; margin-top:15px;}
+    #menu li{list-style:none; float:left;}
+    #menu li a{display:block; width:200px;
+    height:20px; background:#99cccc;
+    border:1px solid; padding:2px;
+    text-decoration:none;
+    text-align:center; color:#000;
+    font-family:arial; font-size:15px;
+    font-weight:bold;}
+    #menu li a:hover{background:navy;
+    border-color:transparent;
+    color:#ffcc00;}
+    #menu li ul{display:none; position:absolute;}
+    #menu li ul li {display:block; float:none;
+    position:relative; padding:0px;}
+    #menu li:hover ul{display:block; padding-left:0px;}
+    #menu li ul li a{display:block;}
+  </style>
+<body>
+  <ul id="menu">
+  <li><a href="url...">HOME</a></li>
+  <li><a href="url...">THEESPECTROMANIA</a></li>
+  <li><a href="url...">HTML</a>
+  <ul>
+  <li><a href="url...">CENTER</a></li>
+  <li><a href="url...">FONT</a></li>
+  </ul></li>
+  <li><a href="url...">CSS</a>
+  <ul>
+  <li><a href="url...">GRADIENT</a></li>
+  <li><a href="url...">BORDES</a></li>
+  </ul></li>
+</body>
+</html>
+
+<!-- Negrita desde el css -->
+<style type="text/css">
+span {
+    font-weight: bold;
+}
+</style>
+<span>La Sociedad del Talento - Cmdte. Hugo Chávez Frías, 10 de noviembre de 2006.</span>
+
+
+<!-- Uso del acénto y la ñ -->
+Acci&oacute;n <br />
+A&ntilde;adir <br />
+Espec&iacute;fico <br />
+
+-----
+
+<!-- Agregar un botón responsive a la página para subir / top -->
+
+
+<!-- Antes del cierre de la etiqueta footer has de insertar este código HTML:-->
+<a class="go-top" href="#">
+  <!--span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span-->
+  Subir
+</a>
+
+<!-- Justo antes de cerrar la etiqueta body al final del documento HTML, has de insertar este código de jQuery: -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    // Show or hide the sticky footer button
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 200) {
+        $('.go-top').fadeIn(200);
+      } else {
+        $('.go-top').fadeOut(200);
+      }
+    });
+    // Animate the scroll to top
+    $('.go-top').click(function(event) {
+      event.preventDefault();
+
+      $('html, body').animate({scrollTop: 0}, 300);
+    })
+  });
+</script>
+
+<!-- Agregamos los estilos al botón -->
+<style type="text/css">
+.go-top {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+}
+
+.go-top:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+</style>
+
+----------------
+
+<!-- Asignar una imágen de fondo a un bloque div-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XXXXXX</title>
+</head>
+<body>
+  <div id="containter">
+    <div id="header">
+        Header
+    </div>
+    <div id="body">
+        Body
+    </div>
+    <div id="footer">
+        Footer
+    </div>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+</script>
+<style type="text/css">
+#header {
+  height: 150px;
+  border: ridge 1px red;
+}
+#body {
+  height: 150px;
+  border: ridge 1px blue;
+  background: url(fff.png) no-repeat center;
+}
+#footer {
+  height: 150px;
+  border: ridge 1px green;
+}
+</style>
+
+------------------
+
+<!-- Banner con fondo y texto alineado, para comunicados, requerimientos, noticia para red social, etc -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>XXX</title>
+        <meta charset="UTF-8">
+        <script src="jquery-1.9.1.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="styles.css" type="text/css"/>
+    </head>
+<style type="text/css">
+body {
+    background: url(limpia.png) no-repeat 10px 6px #fcfcfc;
+    /*border: ridge 1px green;*/
+    /*El tamaño de la imágen debe ser el siguiente*/
+    width: 784px;
+    height: 1200px;
+}
+.title {
+    /*border: ridge 1px blue;*/
+    font-size: 25px;
+    /*width: 300px;
+    width: 600px;*/
+    padding: 30px;
+    color: #CC0100;
+    margin-top: 180px;
+}
+.body {
+    /*border: ridge 1px blue;*/
+    font-size: 14px;
+    /*width: 300px;
+    width: 600px;*/
+    padding: 45px;
+    /*color: #CC0100;*/
+    margin-top: -45px;
+}
+</style>
+<body>
+<div class="title" align="center">
+    <b>sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</b>
+</div>
+<div class="body" align="center">
+    <div align="justify">
+        <p>
+        xxxxxxxxxxxxx
+        <br />
+        <br />
+        1) xxxxxxxxxxxx.<br />
+        2) xxxxxx.<br />
+        3) xxxxxxxxxxxxx.<br />
+        <br />
+        <br />
+        sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        <br />
+        <br />
+        sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        <br />
+        <br />
+        1) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.<br />
+        2) ssssssssssssssssssssssssssssss.<br />
+        <br />
+        ssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        <br />
+        <br />
+        b) ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        sssssssssssssssssssssssssssssssssssssss
+        <br />
+        <br />
+        sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        sssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        <br />
+        ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        <br />
+        ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        <br />
+        <br />
+        1. dasdadasdasdasdads.<br />
+        2. dasdadasdasdasdads.<br />
+        3. dasdadasdasdasdads.<br />
+        4. dasdadasdasdasdads.<br />
+        5. dasdadasdasdasdads.<br />
+        6. dasdadasdasdasdads.<br />
+        7. dasdadasdasdasdads.<br />
+        8. dasdadasdasdasdads.<br />
+        <br />
+        <br />
+        dsadadadadas
+        <br />
+        <br />
+        dasdasdasd
+        <br />
+        <br />
+        </p>
+    </div>
+</div>
+</body>
+</html>
+
+----------------
+
+<!-- Efectos hovers sobre imágenes con CSS, con opacidad en los cuadros -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Efectos hovers sobre imágenes con CSS</title>
+    <style>
+      html {
+        background: url(firefox-icon.png) no-repeat center center fixed;
+        background-size: cover;
+      }
+      body 
+      {
+        margin:0;
+      }
+
+      .block {
+        width: 6%;
+        float: left;
+        position: relative;
+        box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.25);
+        transition: all 1s ease;
+      }
+      .block:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+      }
+      .block:hover {
+        box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.25);
+      }
+
+    </style>
+    <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <section class="blocks"></section>
+    <script>
+      var i = 0,
+          newBlock = '<div class="block"></div>',
+          $blockContainer = $(".blocks");
+
+      for (i = 0; i < 150; i++) {
+        $blockContainer.append(newBlock);
+      }
+    </script>
+  </body>
+</html>
+
+<!-- Efectos hovers sobre imágenes con CSS -->
+<!--html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Efectos hovers sobre imágenes con CSS</title>
+    <style>
+      html {
+        background: url(firefox-icon.png) no-repeat center center fixed;
+        background-size: cover;
+      }
+      body 
+      {
+        margin:0;
+      }
+      .block {
+        width: 6.25%;
+        float: left;
+        position: relative;
+        transition: opacity 500ms ease;
+        background-color: transparent;
+        transition: all 3s linear;
+      }
+      .block:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+      }
+      .block:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+        transition: all 100ms linear;
+      }
+
+    </style>
+    <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <section class="blocks"></section>
+    <script>
+      var i = 0,
+          newBlock = '<div class="block"></div>',
+          $blockContainer = $(".blocks");
+
+      for (i = 0; i < 150; i++) {
+        $blockContainer.append(newBlock);
+      }
+    </script>
+  </body>
+</html-->
+
+----------------
+
+<!-- Efecto zoom en una imagen con css -->
+<html>
+  <head>
+    <title>Efecto zoom en una imagen con css</title>
+    <link rel="stylesheet" href="styles.css" type="text/css"/>
+    <meta charset="UTF-8">
+  </head>
+<style type="text/css">
+.div-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+.img {
+  transform:scale(1);
+  -ms-transform:scale(1);
+  -moz-transform:scale(1);
+  -webkit-transform:scale(1);
+  -o-transform:scale(1);
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+}        
+.img:hover {
+  transform:scale(1.2);
+  -ms-transform:scale(1.2);
+  -moz-transform:scale(1.2);
+  -webkit-transform:scale(1.2);
+  -o-transform:scale(1.2);
+}
+</style>
+<body>
+<div class="container">
+  <div class="div-img hidden" >
+    <img class="img" src="firefox-icon.png">
+    <img class="img" src="firefox-icon.png" width="50px">
+  </div>
+</div>  
+</body>
+</html>
+
+----------------
+
+<!-- Efecto rotar en una imagen con css -->
+<html>
+  <head>
+    <title>Efecto rotar en una imagen con css</title>
+    <link rel="stylesheet" href="styles.css" type="text/css"/>
+    <meta charset="UTF-8">
+  </head>
+<style type="text/css">
+.img {
+  border: ridge 1px red;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+}
+.img:hover{
+  transform: rotate(-15deg);
+  -webkit-transform: rotate(-15deg);
+  -moz-transform: rotate(-15deg);
+  -o-transform: rotate(-15deg);
+  -ms-transform: rotate(-15deg);
+}
+</style>
+<body>
+  <img class="img" src="firefox-icon.png">
+  <img class="img" src="firefox-icon.png" width="50px">
+</div>  
+</body>
+</html>
+
+----------------
+
+<!-- Clase container de bootstrap -->
+<style type="text/css">
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+</style>
+<div class="container">
+</div>
+
+----------------
+
+<!-- Aplicando estilos a las clases que coincidan con la expresión -->
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="styles.css" type="text/css"/>
+    <meta charset="UTF-8">
+  </head>
+<body>
+<style type="text/css">
+  [class^="boton-"] {
+  /*[class^="boton-a"] {*/
+   color: red;
+  }
+  [class^="boton-"]:hover {
+  /*[class^="boton-a"] {*/
+   color: blue;
+  }
+</style>
+  <p>
+    <button class="boton-a">Hola</button>
+    <br />
+    <button class="boton-aa">Hola</button>
+    <br />
+    <button class="boton-b">Hola</button>
+    <br />
+    <button class="boton-c">Hola</button>
+  </p>
+</body>
+</html>
+
+----------------
+
+<!-- Estilo para imágen circular, tipo social-profile -->
+<html>
+  <head>
+    <title>XXX</title>
+    <meta charset="UTF-8">
+  </head>
+  <style type="text/css">
+    .img-circular {
+      width: 300px;
+      height: 300px;
+      border-radius: 500px;
+    }
+  </style>
+<body>
+<img class="img-circular" src="x.jpg">
+</body>
+</html>
+
+----------------
+
+<style type="text/css">
+/* Limpiar los links o enlaces de toda decoracíón */
+a:link {
+    text-decoration: none;
+  }
+
+  a:visited {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a:active {
+    text-decoration: underline;
+  }
+</style>
+
+----------------
+
+<!-- Botón para compartir contenido por twitter -->
+<a class="btn twitter-button" target="_blank" href="https://twitter.com/intent/tweet?hashtags=Myhashtag,Myhashtag2&amp;text=some text&amp;via=twitter">
+<span><img src="twitter-icon.png" width="25px"></span> Compartir en Twitter
+</a>
+
+----------------
+
+<!-- Link para descarga directa de un recurso -->
+<a href="http://xxx.mkv" download>Download</a>
+
+----------------
+
+<!-- Pedir código de seguridad para enviar el formulario, como si fuera un captcha -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Captcha by Ian L. of Jafty.com</title>
+  </head>
+<style type="text/css">
+#txtCaptchaDiv {
+  background-color:#eb8516;
+  color:#FFF;
+  padding:8px;
+  border-radius: 5px;
+}
+</style>
+<body>
+  <div align="center">
+    <br />
+    <form name="review" action="newpg.html" method="POST" onsubmit="return checkform(this);">
+      <b>Please enter Code:</b> <span id="txtCaptchaDiv"></span>
+      <input type="hidden" id="txtCaptcha" />
+      <br />
+      <br />
+      <input type="text" name="txtInput" id="txtInput" size="15" />
+      <input type="submit" value="Submit"/>
+    </form>
+  </div>
+  <script type="text/javascript">
+    /*
+    |-----------------------------------------------------------
+    | Functions that validate the captcha in the template.
+    |-----------------------------------------------------------
+    */
+    function checkform(theform){
+      var why = "";
+
+      if(theform.txtInput.value == ""){
+        why += " Security code should not be empty.\n";
+      }
+      if(theform.txtInput.value != ""){
+        if(ValidCaptcha(theform.txtInput.value) == false){
+          why += "Security code did not match.\n";
+        }
+      }
+      if(why != ""){
+        alert(why);
+        return false;
+      }
+    }
+
+    //Generates the captcha function
+    var a = Math.ceil(Math.random() * 9)+ '';
+    var b = Math.ceil(Math.random() * 9)+ '';
+    var c = Math.ceil(Math.random() * 9)+ '';
+    var d = Math.ceil(Math.random() * 9)+ '';
+    var e = Math.ceil(Math.random() * 9)+ '';
+
+    var code = a + b + c + d + e;
+    document.getElementById("txtCaptcha").value = code;
+    document.getElementById("txtCaptchaDiv").innerHTML = code;
+
+    // Validate the Entered input aganist the generated security code function
+    function ValidCaptcha(){
+        var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+        var str2 = removeSpaces(document.getElementById('txtInput').value);
+        if (str1 == str2){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // Remove the spaces from the entered and generated code
+    function removeSpaces(string){
+      return string.split(' ').join('');
+    }
+  </script>
+
+</body>
+</html>
+
+----------------
+
+<!-- Coloreando el borde de una tabla en html -->
+<style type="text/css">
+  table .tabla_trabajadores, th, td {
+    border: 1px solid lightgray;
+  }
+  .tabla_trabajadores th{
+    padding: 15px;
+    text-align: center;
+    background-color: #d9edf7;
+  }
+  .tabla_trabajadores td {
+    padding: 15px;
+  }
+</style>
+
+----------------
+
+<!-- letter-spacing establece el espacio entre letras -->
+<html>
+  <head>
+    <title>XXX</title>
+    <meta charset="UTF-8">
+  </head>
+<body>
+<style type="text/css">
+.letter {
+  letter-spacing: 3px;
+}
+.letter2 {
+  letter-spacing: 5px;
+}
+</style>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p class="letter">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p class="letter2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+</body>
+</html>
+
+----------------
+
+<!-- Estilos del formulario de materialize -->
+<style type="text/css">
+input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="time"], input[type="date"], input[type="datetime-local"], input[type="tel"], input[type="number"], input[type="search"] {
+  background-color: transparent;
+  border: none;
+  border-bottom-width: medium;
+  border-bottom-style: none;
+  border-bottom-color: currentcolor;
+  border-bottom: 1px solid #9e9e9e;
+  border-radius: 0;
+  outline: none;
+  height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0 0 15px 0;
+  padding: 0;
+  box-shadow: none;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  transition: all .3s;
+}
+</style>
+
+----------------
+
+<!-- Lorem ipsum -->
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.
+
+----------------
+
+<!-- Usando una imagen que abarque el 100% de un div section desde la hoja de estilos -->
+.my-section {
+  background-image: url("../img/background.png");
+  /*background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-repeat: repeat;*/
+  background-size:100% auto;
+}
+
+----------------
+
+<!-- Toggle Switch button -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="img/bootstrap-solid.svg">
+  <title>Single template</title>
+  <style type="text/css">
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .switch input {display:none;}
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  </style>
+</head>
+<body>
+  <h2>Toggle Switch</h2>
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider"></span>
+  </label>
+  <label class="switch">
+    <input type="checkbox" checked>
+    <span class="slider"></span>
+  </label><br><br>
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider round"></span>
+  </label>
+  <label class="switch">
+    <input type="checkbox" checked>
+    <span class="slider round"></span>
+  </label>
+</body>
+</html>
