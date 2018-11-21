@@ -7,7 +7,7 @@
 
 **Guías, Códigos, Comandos de GNU/Linux y mucho mas... Todo a tu alcance y explicado de forma simple.**
 
-**Documentos sintetizados de las documentaciones oficiales de cada lenguaje.**
+**Información sintetizada y extraída de las documentaciones oficiales de cada origen.**
 
 ###  Características
 
