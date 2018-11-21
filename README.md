@@ -61,7 +61,7 @@
 ### Información ampliada
 
 - Puedes aportar tu documentación o comentarios si lo precisas.
-- Nos gusta compartir nuestro conocimiento con ánimo de lucro.
+- Nos gusta compartir nuestro conocimiento sin ánimo de lucro.
 - Los comandos o scripts utilizados son o podrían ser desarrollos internos para teraspain.
 - A medida que vayamos puliendo las guias y añadiendo nuevas las publicaremos.
 - Recuerda que esta documentacion inicialmente es de uso interno y lo publicamos por si puede ser de utilidad para alguien mas.
