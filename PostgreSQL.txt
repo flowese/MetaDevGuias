@@ -1,0 +1,458 @@
+##### Guía PostgreSQL #####
+
+#######################
+##### Instalacion #####
+#######################
+
+# aptitude update // Actualizar los repositorios
+# aptitude search postgresql // Buscar la version actual en los repositotios
+# aptitude install postgresql postgresql-server // Instalar la version de PostgreSQL
+
+$ sudo service postgresql restart // Reiniciar el servicio de PostgreSQL, para aplicar cambios etc.
+
+##############################
+##### Remover postgresql #####
+##############################
+
+Los siguientes paquetes se instalan por defecto en Debin Jessie 8, por eso
+los removemos manualmente, pero aplicará a las versiones que tenga instaladas,
+lo sabremos con un $ aptitude search postgresql
+
+# apt-get --purge remove postgresql-9.4 postgresql-client-9.4 postgresql-client-common postgresql-common
+
+##### Entrar en la consola de postgresql #####
+
+$ su
+
+# su postgres
+
+# psql // Entrar a posgresql
+
+ó (sí está instalado sudo)
+
+$ sudo su postgres
+postgresql@xxx:$ psql
+
+---
+
+psql (9.x.x) // Al ver esto postgresql fue instalado correctamente
+Type "help" for help.
+
+postgres@xxx:$ psql name_db // Conectarse diréctamente a una db desde la línea de comandos.
+
+postgres=# // Línea de comandos de postgresql
+
+postgres=# help // Ayuda de postgresql
+Está usando psql, la interfaz de línea de órdenes de PostgreSQL.
+Digite:  \copyright para ver los términos de distribución
+       \h para ayuda de órdenes SQL
+       \? para ayuda de órdenes psql
+       \g o punto y coma («;») para ejecutar la consulta
+       \q para salir       
+postgres=# 
+
+--------------------
+
+# \q //Salir de la consola de Postgres
+
+# \quit //Salir de la consola de Postgres
+
+# \du // Para ver los roles existentes (usuarios)
+
+# \l // Ver las bases de datos creadas
+
+# \s // Ver el historial de comandos usados en postgres
+
+Ctrl + l // Limpiar la consola de postgres
+
+# SELECT CURRENT_DATE; // Muestra la fecha del sistema, para ver el formato de fecha de postgres.
+
+# CREATE USER nombre_usuario; // Crear usuario sin password, es mejor asignarle el pass
+
+# CREATE USER nombre_usuario PASSWORD 'p@s5w0rd'; //Crear usuario y asignarle el password
+
+# ALTER USER usuario WITH PASSWORD 'nueva_password'; //Asignarle o cambiarle el password a un usuario, debe estar creado
+
+# DROP USER nombre_usuario; // Borrar un usuario
+
+# CREATE DATABASE nombre_db; // Crear una base de datos
+
+# CREATE DATABASE new_db WITH TEMPLATE original_db OWNER db_user; // Crear una copia de una database existente;
+
+# DROP DATABASE nombre_db; // Borrar una base de datos
+
+# CREATE DATABASE nombre_BaseDatosprueba OWNER nombre_usuario; // Creando una base de datos, debe estar creado el usuario
+
+# \c name_db; // Conectarse a la base de datos creada
+
+# \c postgres; // Conectarse de nuevo a la db postgres con el usuario postgres 
+
+name_db=# CREATE TABLE nombre_tabla (nombre varchar(20),edad int); //Creacion de una tabla con un campo varchar de tamaño 20 y un campo para enteros
+
+name_db=# \d // Para ver la lista de relaciones de la db, se debe estar conectado a la db, se pueden ver las tablas
+
+namedb=# \d nombre_tabla // Para ver la descripción (nombre de columnas, tipo de datos de una tabla, etc.
+
+namedb=# INSERT INTO nombre_tabla (nombre_campo, ..., nombre_campo) values (valor_campo, ..., valor_campo); //Insertar datos en la tabla
+
+Ejemplo:
+namedb=# INSERT INTO usuario (nombre, nacionalidad, cedula) values ('vladimirov','V',12345678); //Insertar datos en la una tabla, las cadenas
+se expresan entre ('').
+
+namedb=# INSERT INTO usuarios VALUES ('mariana','V',12345678); // Insertar datos, no se pueden dejar campos vacios.
+
+namedb=# SELECT nombre_campo FROM nombre_tabla; // Hacer una consulta a los datos de un campo especifico.
+
+namedb=# SELECT nombre_campo,nombre_campo2 FROM nombre_tabla; // Hacer una consulta a los datos de varios campos especificos, separados por ",".
+
+namedb=# SELECT * FROM nombre_tabla; // Hacer una consulta de los datos de la tabla, (*) Significa que lea todas las columnas de la tabla.
+
+namedb=# select * from nombre_tabla limit n; // Hacer una consulta a los registros de una tabla especificando el número de registros
+a consultar donde n es un entero, ejemplo 5.
+
+namedb=# SELECT * FROM name_table ORDER BY id; // Consultar todos los registros de una tabla pero ordenándolos ascendentemente en referencia a un campo (id) en este caso.
+
+namedb=# SELECT * FROM name_table ORDER BY id ASC; // Consultar los registros de una tabla ordenandolos de manera ascendente en referencia a un campo específico.
+
+namedb=# SELECT * FROM name_table ORDER BY id DESC; // Consultar los registros de una tabla ordenandolos de manera descendente en referencia a un campo específico.
+
+namedb=# SELECT * FROM nombre_tabla WHERE nombre_campo='valor'; // Hacer una consulta de los datos de una tabla cuando coincida con el parametro establecido, cadena
+
+namedb=# SELECT * FROM nombre_tabla WHERE nombre_campo=3; // Hacer una consulta de los datos de una tabla cuando coincida con el parametro establecido, entero
+
+name_db=# SELECT * FROM name_table WHERE id >= 5; // Consultar los datos de una tabla que sean mayores o iguales que.
+
+db_name=# select id from table where id>=25 order by id ASC; // Ordenar ascendente los registros mayores que.
+
+db_name=# select id from table WHERE id IN ( 25, 27 ); // Listar los registros de una tabla que esten en el rango de 25 y 27.
+
+db_name=# select id from table WHERE id NOT IN ( 25, 27 ); // Listar los registros de una tabla exepto los que sean iguales a 25 y 27.
+
+db_name=# select * from table WHERE id BETWEEN 2 and 5; // Listar los registro de una tabla cuyo valor del id esté entre 2 y 5 incluyéndo los mismos.
+
+db_name=# SELECT * FROM table WHERE name LIKE 'Pa%'; // Listar todos los registros cuyo name inicie con la porción de cadena 'Pa'.
+
+db_name=# SELECT name FROM table WHERE name LIKE 'Pa%'; // Listar todos los registros cuyo name inicie con la porción de cadena 'Pa'.
+
+db_name=# select id as identificador,title as título from table_noticia; Hacemos una consulta a una tabla, pero usamos la palabra AS para crer un alias para los nombres de los campos, muy util para generar consultas personalizadas y crear un .csv para hacer una migración de datos, por ejemplo.
+
+postgres=# GRANT ALL PRIVILEGES ON DATABASE nombre_BaseDatos TO nombre_usuario; // Al crear un usuario podemos darle permisos a una base de datos existente.
+
+postgres=# ALTER ROLE name_user WITH SUPERUSER; // Cambiar los permisos de un usuario;
+
+where option can be:
+
+    | SUPERUSER | NOSUPERUSER
+    | CREATEDB | NOCREATEDB
+    | CREATEROLE | NOCREATEROLE
+    | CREATEUSER | NOCREATEUSER
+    | INHERIT | NOINHERIT
+    | LOGIN | NOLOGIN
+    | CONNECTION LIMIT connlimit
+    | [ ENCRYPTED | UNENCRYPTED ] PASSWORD 'password'
+    | VALID UNTIL 'timestamp'
+
+---
+
+nombredb=# DELETE FROM nombre_tabla; // Eliminar los registros de una tabla 
+
+namedb=# DELETE FROM table_name WHERE condition; // Borrar los datos de la columna de una tabla cuando se cumpla
+una condicion.
+
+nombredb=# DELETE FROM nombre_tabla WHERE nombre_campo='xxx'; // Eliminar los registros de un campo especifico
+Ejemplo:
+nombredb=# DELETE FROM usuario WHERE nombre='vladimirov'; // En este ejemplo eliminaremos los registros de una tabla usuarios
+pero solo de los campos cuyo nombre sea igual a (vladimirov), por ello se usa la clausula WHERE.
+
+nombredb=# TRUNCATE TABLE nombre_table; // Vaciar los registros de una tabla, (elimina todos los registros de la tabla)
+y vuelve a crear la tabla con la misma estructura.
+
+// La diferencia con "delete" es la velocidad, es más rápido "truncate table" que "delete" (se nota cuando la cantidad
+de registros es muy grande) ya que éste borra los registros uno a uno.
+
+nombredb=# DROP TABLE nombre_tabla // Elimina una tabla asi como sus registros.
+
+nombredb=# ALTER TABLE nombre_tabla ADD nombre_campo tipo_campo; //Agregar un nuevo campo a una tabla.
+Ejemplo:
+prueba=# ALTER TABLE usuarios ADD cedula int; //En la base de datos prueba, agregamos a la tabla usuarios un nuevo campo
+cedula de tipo entero.
+
+nombredb=# ALTER TABLE nombre_tabla RENAME nombre_campo TO nuevo_nombre_campo; //Cambiar o renombrar el nombre de un campo creado.
+
+nombredb=# ALTER TABLE nombre_tabla DROP COLUMN nombre_columna; // Para eliminar un campo o una columna de una tabla.
+
+nombredb=# ALTER TABLE nombre_tabla DROP COLUMN nombre_columna CASCADE; // Para eliminar un campo o una columna de una tabla en cascada.
+
+nombredb=# ALTER TABLE nombre_tabla ALTER COLUMN nombre_campo TYPE tipo_campo; // Modificar el tipo de dato de una columna.
+
+nombredb=# UPDATE nombre_tabla SET nombre_campo='xxx' WHERE nombre_campo='xxxx'; // Modificar el registro de un campo
+
+Ejemplo:
+
+Prueba=# UPDATE usuarios SET nombre='Vitaly' WHERE cedula='12345678'; // En la base de datos prueba, vamos a actualizar un registro
+de la tabla usuarios que corresponde a la columna o campo nombre, el registro que se modificara sera el que corresponda con el parametro 
+pasado con WHERE, sera el parametro de busqueda en la columna, pero puede ser el id por ejemplo.
+
+# ALTER DATABASE name RENAME TO new_name // Cambiar el nombre de la database
+
+# ALTER DATABASE name OWNER TO new_owner // Cambiar el dueño de la database
+
+##### Creando columna de autoincremento #####
+
+Para crear una columna de autoincremento, ideal para la columna (id) se usa el tipo de dato (serial)
+
+Ejemplo:
+nombredb=# CREATE TABLE usuarios (id serial, nombre varchar(20)); //Creamos una tabla usuarios con dos campos,
+id que sera (serial) y otro campo nombre de tamaño 20, el campo serial toma el valor por defecto de (1) al momento de
+comenzar a introducir registros en los campos. 
+
+Ejemplo:
+prueba=# INSERT INTO usuarios (nombre) VALUES ('Kristina');
+prueba=# INSERT INTO usuarios (nombre) VALUES ('Khalifa');
+// Introducimos los registros 'Kristina' y 'Khalifa' en la columna nombre, como vemos
+no hace falta introducir el valor de la columna (id) puesto que lo toma automaticamente autoincrementando en
+relacion al anterior registro. Si observamos la tabla se vería asi:
+
+prueba=# SELECT * FROM usuarios;
+ id | nombre     
+ ----+-------+
+1 | Kristina |
+2 | Khalifa  |
+(2 filas)
+
+-------
+
+nombredb=# CREATE TABLE nombre_tabla (id serial primary key, nombre_campo varchar(20)); //Creando un campo id tipo clave primaria.
+
+########################################################
+########## Hacer un dump de una base de datos ##########
+########################################################
+
+Significa hacer una copia de seguridad de una base de datos, generando un fichero .sql
+que contiene todos los comandos y sentencias para crear los esquemas de una base de datos, además
+de albergar registros previos, si existiesen.
+
+$ pg_dump -U username -W -h host databasename > databasename.sql
+
+$ pg_dump -U username -W -h 127.0.0.1 databasename > basename.sql // Recomendado éste.
+
+$ pg_dump -U username db_name > db_ename.sql
+
+$ pg_dump -U usuario -h 127.0.0.1 nombre_database > nombre_database.sql
+
+##### postgresql dump ERROR: permiso denegado a la relación name_table #####
+
+// A veces no deja hacer el dump, porque dice que el usuario no tiene permisos en la tabla específica
+// Entonces escribimos el siguiente comando:
+name_db=# GRANT SELECT ON name_table TO PUBLIC;
+
+##################################################
+##### Restaurar / Importar una base de datos #####
+##################################################
+
+// Para restaurar, Se debe tener creado el usuario con la contraseña y la base de datos, luego el dump sustituirá a la bd creada
+
+$ psql -h localhost -U nombre_usuario -d nombre_bd -f /ruta/al/archivo.sql
+
+Parametros:
+-h : Es la ip en donde esta el servidor de la base de datos, si esta trabajando localmente entonces es localhost o 127.0.0.1
+-U : Nombre de usuario propietario de la base de datos.
+-d : Nombre de la base de datos.
+-f : Ruta del archivo sql, si esta en el directorio no hay que poner la ruta
+
+Ejemplo:
+$ psql -h 127.0.0.1 -U usuario_cliente -d banco_db -f banco_db.sql
+
+----- Otra forma -----
+
+// Se debe tener creado el usuario con la contraseña y la base de datos, luego el dump sustituirá a la bd creada
+
+$ psql -U username -W -h localhost nombre_base < dump_base.sql
+
+-U Se refiere al Usuario, en este caso puede ser el usuario propietario de la base de datos o el usuario postgres
+
+-W Con este parámetro conseguiremos que nos solicite el password del usuario antes especificado
+
+-h Con este indicamos cuál es el servidor PostgreSQL al que nos conectaremos para obtener nuestro dump, si estamos
+local podemos colocar localhost sino ponemos la IP del servidor PostgreSQL
+
+databasename // Este es el ultimo parámetro realmente en esta linea de comando, por esa razon no tiene alguna letra que indique que
+el siguiente parámetro es el nombre de la base de datos basename.sql Esta parte en realidad solo indica que la salida de nuestro
+comando pg_dump la guarde en un archivo databasename.sql
+
+####################################################
+##### Restaurando .sql desde psql command line #####
+####################################################
+
+postgres=# \i [full path and file name with extension]
+
+postgres=# \i /home/user/dump.sql // Desde la db postgres (por defecto) importamos el .sql que creará la db automáticamente, con el nombre y el dueño originales, esto en drupal, para hacerlo con django por ejemplo es:
+
+name_db=# \i /home/user/dump.sql // Conectado a la nueva db vacía, con el usuario y contraseña correctos, es decir, los originales, hacemos la restauración.
+
+#######################################################
+##### Copiar datos de una tabla a un fichero .csv #####
+#######################################################
+
+Creamos un fichero .csv, en este ejemplo será "x.csv" y lo guardamos en el /home/user/ luego le damos permisos con:
+
+# chmod 777 x.csv
+
+Luego, desde la línea de comandos de postgres, nos conectamos a la db y ahí ponemos el comando de copia de la tabla que queremos:
+
+db_name=# \copy name_table to 'x.csv' csv header; // Nos pasará los datos de la name_tabla al fichero .csv, separando los datos por filas y comas ",". Si se lanza de nuevo el comando el fichero se sobreescribe, no se duplica la data.
+
+db_name=# \copy name_table to '/home/user/x.csv' csv header; // Pasándole la ruta absoluta del fichero.
+
+-Nota: A veces falla en la copia: xxxxx.csv: Permiso denegado, por lo que se recomienda mover el .csv a /home/user/tmp/ para que no haya problema, y en el comando meter la ruta absoluta del fichero.
+
+######################################################################
+##### Copiar datos de una tabla where x='xxxx' a un fichero .csv #####
+######################################################################
+
+db_name=# \COPY (select * from name_table WHERE x='xxxx') to 'x.csv' csv header; // Copiando todos los campos.
+
+db_name=# \COPY (select id from name_table WHERE x='xxxx') to 'x.csv' csv header; // Especifícando un campo.
+
+db_name=# \COPY (select id,username from name_table WHERE x='xxxx') to 'x.csv' csv header; // Especifícando mas de un campo.
+
+######################################################
+##### Copiando columnas específicas de la tabla  #####
+######################################################
+
+Crear el .csv y darle permisos.
+
+db_name=# \COPY (select id from name_table) TO 'x.csv' DELIMITER ',' CSV HEADER;
+
+db_name=# \COPY (select id,username from name_table) TO 'x.csv' DELIMITER ',' CSV HEADER; // Copiando dos columnas específicas en el .csv
+
+Se puede usar el comando COPY sin "\" aunque a veces no permite las copias por los permisos insuficientes, asi que se usa "\".
+
+##########################################################
+##### Copiando datos de un .csv a una tabla de la db #####
+##########################################################
+
+El fichero csv debe contener la estructura adecuanda (campos), con las columnas y las comas así como la data, por ejemplo:
+
+---
+
+id,username
+1,admin
+
+---
+
+db_name=# \COPY name_table FROM '/home/user/x.csv' CSV header;
+
+#########################
+##### Configuración #####
+#########################
+
+Los archivos de configuracion estan en: 
+
+--> /etc/postgresql/9.1/main
+
+######################
+##### phppgadmin #####
+######################
+
+PhpPgAdmin es una aplicación web, escrita en PHP, para administrar bases de datos PostgreSQL.
+Es una aplicación web que provee una interfaz grafica a los usuarios para crear bases de datos, tablas, alterarlas y consultar
+sus datos usando el lenguaje estándar SQL. phpPgAdmin estuvo basado en phpMyAdmin, pero hoy día ya no comparte código con él; incluso
+provee las mismas funcionalidades y más a los usuarios del servidor de base de datos PostgreSQL.
+
+Instalacion:
+
+# aptitude install phppgadmin
+
+http://localhost/phppgadmin/ // Interfaz grafica en el navegador web
+
+El usuario y contraseña para conectarse debe ser un usaurio de postgres.
+
+Por ahora me ha servido para reiniciar las secuencias de las tablas de django.
+
+Si hay 3976 registros se debe configurar que el último valor es 3977 para que guarde bien en la tabla.
+
+#######################
+##### pgadmin III #####
+#######################
+
+pgAdmin is the leading graphical Open Source management, development and administration tool for PostgreSQL.
+
+# aptitude install pgadmin3
+
+Pgadmin nos permite generar un json a partir de los datos de una tabla, con una secuencia sql directamente:
+
+SELECT array_to_json(array_agg(name_table)) FROM name_table;
+
+##############################
+##### Boolean Data Type ######
+##############################
+
+Valid literal values for the "true" state are:
+TRUE
+'t'
+'true'
+'y'
+'yes'
+'on'
+'1'
+For the "false" state, the following values can be used:
+FALSE
+'f'
+'false'
+'n'
+'no'
+'off'
+'0'
+
+##########################################################################
+##### Conversión de timestamp Unix a timestamp o date de PostgreSQL ######
+##########################################################################
+
+namedb=# select to_timestamp(1480973718);
+
+########################
+##### fichero .sql #####
+########################
+
+Los comentarios dentro un fichero .sql se escriben con: 
+
+-- Comentario línea 1
+-- Comentario línea 2
+
+############################################
+##### Creando relaciones en las tablas #####
+############################################
+
+En el siguiente ejemplo tenemos dos tablas, una de entidades(estados) y otra de municipios, cada tabla tiene una llave
+primaria, pero la tabla de municipios esta relacionada con la llave primaria de la tabla de entidades.
+
+CREATE TABLE entidad (
+  codigo_entidad varchar(100) PRIMARY KEY,
+  nombre varchar(100));
+
+CREATE TABLE municipio (
+    codigo_municipio varchar(100) PRIMARY KEY,
+    nombre varchar(100),
+    codigo_entidad integer REFERENCES entidad
+);
+
+Añadiendo la tabla parroquia a la secuencia de relaciones.
+
+CREATE TABLE parroquia (
+    codigo_parroquia varchar(100) PRIMARY KEY,
+    nombre varchar(100),
+    codigo_municipio varchar REFERENCES municipio
+);
+
+################################################################
+##### Cambiar codificación de una base de datos (encoding) #####
+################################################################
+
+postgres# update pg_database set encoding = pg_char_to_encoding('UTF8') where datname = 'database_name';
+
+// Para LATIN9
+postgres=# update pg_database set encoding=16 where datname='db_name';
+
+// Para LATIN1
+postgres=# update pg_database set encoding=16 where datname='db_name';
