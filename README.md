@@ -7,6 +7,8 @@
 
 **Guías, Códigos, Comandos de GNU/Linux, conceptos y mucho mas... al alcance de cualquiera y explicado de forma simple para todos los públicos.**
 
+**Esta documentación ha sido elaborada por los miembros administradores de TeraSpain a raíz de necesidades que nos han ido surgiendo y sobretodo para unificar los contenidos de cada uno de los miembros en un solo lugar para que el acceso y consulta de la información sea mucho mas fácil para nuestros nuevos administradores delegados y/o administradores de segundo nivel.**
+
 **Información sintetizada y extraída de las documentaciones oficiales de cada origen.**
 
 ###  Características
