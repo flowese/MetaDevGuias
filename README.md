@@ -3,9 +3,9 @@
 
 ![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg)
 
-# KNOWLEDGE OF TERASPAIN ADMINS
+# KNOWLEDGE OF TERASPAIN MASTER-ADMIN
 
-**Guías, Códigos, Comandos de GNU/Linux y mucho mas... Todo a tu alcance y explicado de forma simple.**
+**Guías, Códigos, Comandos de GNU/Linux, conceptos y mucho mas... al alcance de cualquiera y explicado de forma simple para todos los públicos.**
 
 **Información sintetizada y extraída de las documentaciones oficiales de cada origen.**
 
@@ -59,7 +59,7 @@
 ### Información ampliada
 
 - Puedes aportar tu documentación o comentarios si lo precisas.
-- Nos gusta compartir nuestro conocimiento.
+- Nos gusta compartir nuestro conocimiento con ánimo de lucro.
 - Los comandos o scripts utilizados son o podrían ser desarrollos internos para teraspain.
 - A medida que vayamos puliendo las guias y añadiendo nuevas las publicaremos.
 - Recuerda que esta documentacion inicialmente es de uso interno y lo publicamos por si puede ser de utilidad para alguien mas.
