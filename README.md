@@ -41,14 +41,13 @@
 #
 ### Información ampliada
 
-- En el directorio de /scripts se encuentran las funciones.
-- Pueden añadirse y/o desactivarse comandos según se prefiera.
-- Los comandos o scripts utilizados son desarrollos internos para teraspain.
-- Es una primera versión estable y funcional.
-- A medida que vayamos puliendo errores y añadiendo funciones las publicaremos.
-- Recuerda que este bot lo utilizamos internamente y lo publicamos por si puede ser de utilidad para alguien mas.
+- Puedes aportar tu documentación o comentarios si lo precisas.
+- Nos gusta compartir nuestro conocimiento.
+- Los comandos o scripts utilizados son o podrían ser desarrollos internos para teraspain.
+- A medida que vayamos puliendo las guias y añadiendo nuevas las publicaremos.
+- Recuerda que esta documentacion inicialmente es de uso interno y lo publicamos por si puede ser de utilidad para alguien mas.
 - Si gestionas servidores dedicados en linux es de gran utilidad.
-- Puede compilarse con shc si se desea para una versión minimalista.
+- incluímos algunas guías para administradores de entornos Windows.
 
 ### Comunicación
 
