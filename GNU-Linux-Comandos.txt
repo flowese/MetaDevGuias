@@ -1,0 +1,3859 @@
+##### Guía de comandos en GNU/Linux Debian #####
+
+Probados en: Debian GNU/Linux 7 (wheezy) y algunos en Debian GNU/Linux 8 (Jessie)
+
+#########################################################
+##### Comandos para mostrar información del sistema #####
+#########################################################
+
+Crtl + h // Mostrar archivos ocultos de un directorio, esto se hace desde el explorador de archivos nautilus de Gnome
+
+$ cat /etc/issue.net  // Para saber la versión de SO que tenemos.
+
+$ cat /etc/issue  // Para saber la versión de SO que tenemos.
+
+$ cat /proc/cpuinfo // Para ver la información del cpu o procesador
+
+$ lscpu // Para ver la información del cpu o procesador pero menor a la anterior
+
+$ lsb_release -a // Comando que nos va a dar detalles de SO
+
+$ uname // Muestra información del sistema
+
+$ uname -a // Muestra la versión del SO instalado, Version de Kernel y arquitectura de procesador.
+
+$ uname -mrs // Saber mi version de Kernel especifica, recomendada
+
+$ cat /etc/*-release // Ver info del sistema (Probado en Debian GNU/Linux 7 wheezy)
+
+$ uptime // Indica cuánto tiempo ha estado funcionando el sistema, muestra:
+
+15:11:08 up 1 day,  5:07,  9 users,  load average: 0,65, 0,83, 0,88
+
+Los parámetros que muestra son:
+-El tiempo actual que el sistema ha estado ejecutando
+-El tiempo que lleva el sistema corriendo
+-Los usuarios que están actualmente registrados
+-Tiempo de carga del sistema durante los últimos 1, 5 y 15 minutos.
+
+$ ls -l /etc/init.d/ // Saber cuantos demonios(daemons) del sistema están en ejecución. En esta ruta se encuentran algunos de los scripts que se ejecutan con el arrenque del SO.
+
+$ date // Muestra la fecha
+
+# date --set 1998-11-02 // Asignar la fecha manualmente
+
+# date --set 21:08:00 // Asignar la hora manualmente
+
+$ cal // Muestra un calendario
+
+# fdisk -l // Ver informacion de los discos duros, particiones y dispositivos montados en el sistema.
+
+$ lsusb // Este comando muestra todos los puertos USB y los detalles acerca de los dispositivos conectados a ellos.
+
+$ lspci // Lista todos los componentes tipo pci (Peripheral Component Interconnec) como las tarjetas de red, de sonido o de televisión.
+
+$ free // Muestra el estado de la memoria RAM, total, usado, disponible, cached, buffers.
+
+$ free -m // Mostrar los datos en mb sin más.
+
+$ free -h // Para ver los resultados en mb o gb con letra al final.
+
+$ cat /proc/meminfo // Leer el fichero meminfo que contiene datos dinámicos de la memoria, similar a free.
+
+$ vmstat // Muestra el estado de la memoria virtual
+
+$ df // Muestra el espacio disponible del disco y demas dispositivos asi como el espacio usado
+
+$ df -h // Muestra el espacio disponible del disco y demas dispositivos asi como el espacio usado, pero en mg o gb según sea el caso.
+
+$ df -m // Muestra el espacio disponible del disco y demas dispositivos asi como el espacio usado, pero en mg.
+
+$ pstree // Muestra los procesos del sistema en forma de arbol
+
+############################################
+##### Tips para la consola de comandos #####
+############################################
+
+!! // Repetir el ultimo comando ejecutado en consola
+
+~ // Para sacarlo usar AvPag en la consola
+
+comando && comando && comando... // Ejecucion multiple de comandos
+
+Ctrl + u // Cortar el contenido de la linea de comandos desde la posicion del cursor hasta el principio
+
+Ctrl + k // Cortar el contenido de la linea de comandos desde la posicion del cursor hasta el final
+
+Ctrl + t // Intercambiar de posicion las letras que estan a cada lado del cursor
+
+Ctrl + l // Limpiar el shell
+
+Ctrl + d // En el shell, cerrar sesion, salir del root, de maquinas virtuales o de sesiones de usuarios iniciadas
+
+Ctrl + flecha derecha o izquierda // Moverse en el prompt palabra a palabra, no letra por letra.
+
+Ctrl + w // Borrar la palabra que esta antes del cursor en el shell
+
+Control + s : Parar la salida por pantalla. Si por ejemplo ejecutamos un comando que
+tiene una salida inmensa, podemos hacer que trabaje en silencio.
+
+Control + q: Permitir la salida por pantalla, inverso al comando anterior.
+
+Alt + d // Borrar palabra
+
+###########################
+##### Comandos varios #####
+###########################
+
+$ man nombre_comando // Muestra el manual de una comando donde como: ls, grep, aptitude etc...
+
+Dentro de los manuales podemos presionar "h" para ver las opciones tenemos del manual, ejemplo "/delete"
+para hacer una busqueda de la cadena "delete" dentro del manual.
+
+$ clear // Limpiar la consola.
+
+$ whatis nombre_programa // Si no desea ver la página de manual completa sino sólo una descripción corta para confirmar que es lo que está buscando, ingrese whatis programa.
+
+Ejemplo:
+$ whatis scp
+scp (1)     - copia segura (programa de copia de ficheros remotos)
+
+$ poweroff // Apagar la maquina, se debe ser root para ejecutarlo.
+
+$ reboot // Reiniciar la maquina.
+
+$ xrandr // Detectar las resoluciones de pantalla disponibles del sistema así como los hz correspondientes, la que
+tenga (*) es la que está siendo usada.
+
+$ ldd /xxx/python2.7 // Ver las dependencias de una librería o ejecutable, en este caso del ejecutable de python.
+
+$ ldd /bin/bash
+
+##############################################
+##### Comandos para gestionar directorios ####
+##############################################
+
+$ pwd // (print work directory) Muestra la ruta en la que te encuentras.
+
+$ mkdir nombre_carpeta // Crear una carpeta
+
+$ mkdir -p carpeta1/carpeta2 // Crear una carpeta con otra carpeta dentro, encadenar la creación.
+
+&& // El operador '&&' sirver para continuar con la ejecucion de comadnos en el shell, ejemplo:
+
+$ mkdir carpetaFFF && cd carpetaFFF // Creamos una carpetaFFF y luego entramos en la carpeta creada
+,&& nos permite poner varias instrucciones en una sola linea del shell, otro ejemplo:
+
+$ mkdir carpetaZZZ && cd carpetaZZZ && touch archivo.txt // Creamos una carpeta, entramos en ella y creamos un archivo
+en ese directorio en una sola instruccion.
+
+$ touch Nombre_Fichero // Crear fichero
+
+$ mkdir /tmp/`date +\%Y\%m\%d` // Crear una carpeta que lleve por nombre la fecha, ejemplo: 20170807
+
+###############################################
+##### Comandos para listar los directorios ####
+###############################################
+
+$ ls // Muestra lo que hay en la carpeta en la que te encuentras
+
+$ ls -l // Muestra los archivos, fecha, permisos, etc
+
+$ ls -lh // Muestra los archivos, fecha, permisos, y el peso pero en kb,mg o gb según sea el caso.
+
+$ ls -la // Muestra los archivos, los ocultos tambien, fecha, permisos, etc
+
+$ ls -1 // Muestra los archivos en forma de lista
+
+$ ls | more // Lista el contenido de un directorio en orden alfabético, usa space para paginar si la lista es grande.
+
+$ ls *.xxx // Listar todos los ficheros de un directorio que tengan las extension .xxx, donde xxx puede ser: txt, html, php, css, etc.
+ejemplo: ls *.txt
+
+$ ls -R // Listar los directorios y subdirectorios asi como ficehros de un directorio.
+
+$ ls | cat -n // Muestra el contenido del directorio en una lista numerada.
+
+$ ls name_dir | wc // Contar el número de ficheros o elementos contenidos en un directorio.
+
+$ du // ver la lista de carpetas y sub carpetas, los directorios que existen, lo primero que muestra es el tamaño.
+
+$ du -h // Los mismo que arriba pero se ven los tamaños en kg, mg, etc
+
+$ du -sh // Ver el tamaño total de los directorios.
+
+$ du * // Muestra todos directorios y ficheros y el espacio que ocupan en el disco.
+
+$ du -h * // Leer todos los elementos y ver los tamaños en kg, mg, etc.
+
+$ du -h file_name.xxx // Ver los tamaños en kg, mg, etc, de un fichero específico.
+
+$ file * // Nos dira el tipo de archivo de todos los ficheros del directorio.
+
+##################################################
+##### Comandos para moverse entre directorios ####
+##################################################
+
+$ cd // Cambiar de directorio, nos lleva al home del usuario.
+
+$ cd 'nombre carpeta' // Acceder a un directorio que tiene espacios en el nombre.
+
+-- Si una carpeta se llama (a b c d e), para aceder a ella usamos:
+
+$ cd a\ b\ c\ d\ e/ // Al final siempre lleva el / normal, los otros usan el invertido.
+
+$ cd .. // retroceder un directorio
+
+$ cd ../../ // Retroceder dos directorios (../) representa un directorio
+
+#######################################
+##### Rutas relativas y absolutas #####
+#######################################
+
+- Una ruta o path es donde se localiza una carpeta o fichero dentro de nuestro sistema de ficheros.
+- Todos los comandos que se ejecuten sin especificar una ruta lo hará donde este situado.
+- Hay dos tipos de ruta que debemos diferenciar:
+
+***Ruta absoluta: Se indica toda la ruta del fichero incluyendo el directorio raíz. Por ejemplo:
+
+/home/user/folder/file.txt
+
+***Ruta relativa: Se indica la ruta a partir de donde este en ese momento situado. No se incluye el directorio raíz. Por ejemplo, si estamos en la
+ruta /home/user y queremos acceder al file.txt que esta dentro de folder, seria:
+
+folder/file.txt
+
+#############################################################################
+##### Comandos para buscar ficheros, directorios, paquetes, historiales #####
+#############################################################################
+
+$ history // Mostrar el historial de los comandos de la consola
+
+$ fc -l // Mostrar los ultimos comandos usados por el usuario
+
+$ history | grep xxx // Busqueda especifica de una comando usado, ejemplo: aptitude, alias, grep etc.
+
+.bash_history // En los archivos ocultos del home, en este fichero se almacena el historial de los comandos usados
+
+$ grep --color=always -n "mysql" /var/www/prueba/2/datos.php // --color para colorear la palabra a buscar, 
+-n para listar la la linea del caracter buscado y al final ra ruta del archivo a buscar
+
+$ grep cadena_texto ./* -rIn // Busca la cadena de manera recursiva en la carpeta en que se encuentre situado
+
+$ grep --color=always -n "cadena_texto" ./* -Ir // Busca la cadena de manera recursiva en la carpeta en que se encuentre situado
+
+$ grep --color -n "cadena_texto" -Ir // No hace falta poner =always
+
+$ egrep -r "Saludo" . // Otra forma de busqueda.
+
+| grep xxx // filtra la busqueda con el parametro que le demos ejemplo:
+
+$ aptitude search python | grep 2.7 // Busca las versiones de python que coincidan con el patron 2.7
+
+$ ps -e | grep ruby // Busca en los procesos del sistema las coincidencias con ruby
+
+$ whereis python // Para saber donde esta instalado un programa, saber el directorio
+$ whereis firefox
+$ whereis apache2
+
+$ find // Listar todos los archivos contenidos en el directorio actual y en los sub directorios, si estamos en /home/user nos listara todo, dependiendo de donde este pues listara el contenido.
+
+$ find -name name_dir // Buscar un directorio especifico en el sistema.
+
+# find / -name name_file_or_package // Buscar un fichero o directorio específico en el sistema.
+
+su:
+find / -type f -name NombreArchivo.html // Para mostrar el directorio del archivo que se quiera buscar, se debe saber el nombre del archivo.
+
+file:///home/user/nombre_fichero.xxx // Abrir un fichero del directorio desde el navegador.
+
+$ locate nombre_del_archivo // Hacer una busqueda de un archivo en los directorios, se puede especificar un nombre con su extensión
+// o solo especificar una palabra, la busqueda se hara en todos los archivos que contengan la palabra o nombre de archivo escrita.
+
+$ locate .jpg // Buscar en todos los directorios los ficheros con la extension especificada
+
+$ locate "*.jpg" // Buscar en todos los directorios los ficheros con la extension especificada.
+
+$ locate .pdf | grep software // Buscar en todos los .pdf del sistema que contengan la palabra "software" en el nombre. Sí hace distinción entre mayúsculas, minúsculas y acéntos.
+
+$ sudo locate -c hola // Muestra cuantos archivos contienen la palabra "hola" en el nombre.
+
+$ sudo locate -i hola // Busca todos los archivos que contienen la palabra "hola" en el nombre tanto en mayúsculas como en minúsculas.
+
+$ sudo locate nombre_archivo > /home/usuario/lista.txt // Para guardar el resultado de la búsqueda en un archivo de texto.
+
+$ sudo find / -name nombre_carpeta // (/) es para hacer la busqueda desde ahi en adelante, puede ser (/home/user)
+
+$ find /carpeta // Lista los archivos que componen el directorio introducido
+
+$ type nombre_comando // Busca la ruta donde se encuentra el comando, ejemplo: aptitude, python, etc.
+
+$ which nombre_programa // Buscar la ruta de un programa
+
+$ sudo find / -name "*nombre_fichero*" // Buscar en todo el sistema los ficheros cuyo nombre contengan la expresion escrita.
+
+$ sudo find -name "*nombre_fichero*" // Buscar en el directorio actual los ficheros cuyo nombre contengan la expresion escrita.
+
+$ sudo find / -name "*.xxx*" // Buscar en todo el sistema los ficheros cuyo nombre contengan la expresion escrita, en este caso,
+una extensión de fichero, donde / puede ser /home/user etc y .xxx la extension: .jpg, .png, .txt, .py, etc.
+
+$ sudo find /home/user ! -name "*xxx*" // Busca todos los archivos que NO contienen la palabra "xxx" en el nombre, se especifíca el directorio en el cual buscar.
+
+$ sudo find /home/user -iname "*xxx*" // Busca todos los archivos que contienen la palabra "xxx" en el nombre tanto en mayúsculas como en minúsculas.
+
+$ sudo find /home/user/ -iname "*xxx*" > /home/user/lista.txt // Si el resultado de la búsqueda anterior te ha proporcionado una gran cantidad de información, resulta
+más cómodo almacenar el resultado de la búsqueda en un fichero de texto para revisarlo posteriormente.
+
+# sudo find / -type f -name /home/user/fichero.c>>/home/user/x.txt // Crear un fichero (x.txt) que guardará la salida de la consola, en este caso
+es una búsqueda, buscamos el fichero.c en el directorio user y guardaremos la salida del shell en el fichero x.txt que se creará.
+
+#######################################################
+##### Lectores/Editores de texto desde la consola #####
+#######################################################
+
+$ nano nombre_fichero // Modificar un fichero con el editor nano.
+
+$ man nano // Leer el manual del editor de textos nano, muy útil, práctico y fácil de usar
+
+$ cat nombre_fichero.xxx // Mostrar contenido de un fichero, concatenate files and print on the standard output.
+
+$ cat -b nombre_fichero.xxx // Mostrar contenido de un fichero y numerar las líneas.
+
+$ less nombre_fichero.xxx // Mostrar el contenido de un archivo, lector de ficheros, mayor movilidad que cat, con / permite buscar dentro
+del fichero, como vim, q para salir.
+
+$ tail nombre_fichero.xxx // El comando tail sirve para mostrar en pantalla las últimas líneas de un archivo.
+
+$ tail -n X nombre_fichero.xxx // -n donde X es el número de lineas que queremos ver del fichero.
+
+$ tail -c X nombre_fichero.xxx // -n donde X es el número caracteres desde el final, que queremos ver del fichero.
+
+$ tail fichero_1.xxx fichero_2.xxx // Se pueden especificar 1 o más ficheros a la vez, los mostrara en el orden declarado.
+
+$ stat nombre_fichero // Muestra el estado e información de un fichero
+
+$ stat nombre_carpeta // Muestra información de un directorio
+
+$ file xxx // donde xxx es el nombre de un fichero, nos dira el tipo de fichero que es.
+Ejemplo: file index.html
+index.html: HTML document, UTF-8 Unicode text
+
+$ diff /home/user/file.html /home/user/file2.html // Permite hacer una comparacion de dos archivos para apreciar sus diferencias
+se debe especificar la ruta de ambos archivos y separarlos con un espacio, si estan en el mismo directorio no hace
+falta especificar las rutas completas.
+
+$ rename 's/\.txt/\.xls/' *.txt  //Cambiar extension a todos los ficheros de un directorio
+//En el ejemplo vamos a sustituir los .txt por .xls y le decimos que se lo haga a todos los .txt
+
+################
+##### Less #####
+################
+
+// less es un visualizador de archivos de texto que funciona en intérpretes de comando.
+// A diferencia de otros programas similares (como more), less permite una completa navegación
+// por el contenido del archivo, utilizando un mínino de recursos del sistema.
+
+***** Comandos basicos *****
+
+man less // Manual de less
+
+AvPag // Avanzar una página
+
+RePag // Retroceder una página
+
+space // Tecla espacio para avanzar, como page up
+
+:q // Salir
+
+:h // Ayuda
+
+:/palabra // (/) Buscamos una palabra dentro del documento
+// (n) para ir a la siguiente coincidencia.
+// (N) para ir a la coincidencia anterior
+
+:G // Ir al final del texto
+
+:g // Ir al inicio del texto
+
+:v //Invocar un editor de texto para el documento, por lo general usa vi pero puede usar nano automaticamente
+
+$ less +123 filename // Para ir a una línea específica de un fichero.
+
+################################################
+##### Ver un fichero .csv desde la consola #####
+################################################
+
+Ordenará por columnas, etc...
+
+$ cat file.csv | sed -e 's/,,/, ,/g' | column -s, -t | less -#5 -N -S
+
+###############################################
+##### Comandos para monitorear el sistema #####
+###############################################
+
+$ top  // Listar los procesos de ejecución del sistema (y más cosas) en tiempo real, es una de las herramientas más importantes para un administrador.
+-Si presionamos "z" nos mostrara la salida con 2 colores, para distingir mejor la información.
+-"q" o "Ctrl+c" para salirse del monitor top.
+
+# sysctl -w vm.drop_caches=3 // Liberar memoria ram.
+
+# gnome-shell --replace & disown // Refrescar el escritorio gnome sin reiniciar.
+
+Alt + F2 and type r and enter, this for gnome3.
+
+$ xfce4-panel -r && xfwm4 --replace // Para refrescar el desktop en xfce.
+
+$ fg %1 // Si un programa es pausado con Ctrol + z, con este comando lo reanudamos.
+
+$ htop // Es otro monitor del sistema, parecido a top pero con un poco mas de herramientas, para instalarlo # apt-get install htop
+
+$ nmon // Es otro monitor de sistema, para instalarlo # apt-get install nmon
+Si quieren ver la información relacionada con el CPU presionan la tecla "c", con la memoria "m", del kernel "k" y discos "d".
+Segun vayamos usando las letras nos va mostrando lo que escogimos, muy útil y bonito.
+
+$ ping xxx // Donde xxx es el nombre de un host al cual enviaremos paquetes y comprobaremos si hay una conexion con ese host, util para saber si estamos conectados a internet por ejemplo:
+ping http://www.google.com.ve // Si hay conexion a internet enviara paquetes que seran recibidos, de lo contrario dara un error.
+
+$ ping -w n ip_num // Tiempo en segundos que se va a hacer ping donde n es un entero
+
+// Siendo root, Ver si hay aceleracion grafica en la maquina, muestra unos engranajes
+// de colores rodando, si es así, está correcta la instalacion del video.
+# glxgears
+
+##########################################
+##### Gestionar procesos del sistema #####
+##########################################
+
+Cada proceso tiene un identificador (PID) proccess ID, entonces podemos matar ese proceso con:
+
+$ kill xxxx // Matar un proceso donde xxxx es el identificador del proceso.
+
+$ kill -9 xxxx // Matar un proceso donde xxxx es el identificador del proceso.
+
+$ ps // Muestra los procesos actuales del sistema y acepta varios parametros como:
+
+$ ps -e // Visualiza información sobre "todos" los procesos del sistema.
+
+$ ps -ef // Visualiza información sobre "todos" los procesos del sistema con mas detalles, así pues se puede detener un proceso con kill -9 PID_number.
+
+$ ps -ef | grep evince // Filtrar la búsqueda, en este caso, buscando el proceso que alberga el visor pdf evince.
+
+$ ps -ef | grep ssh // Filtrar la búsqueda para ver las conexiones ssh activas, nuevamente se aclara que podemos matar esos procesos
+con kill -9 xxx pasandole el PID process.
+
+$ ps -p xxxx -o etime // Saber el tiempo que lleva ejecutandose un proceso.
+
+$ ps aux // Muestra los procesos del sistema de sistema, similar a ps -ef.
+
+$ ps aux | grep firefox // Mostrar información de proceso/s específico/s.
+
+$ ps -l // Muestra algunos detalles de los procesos del sistema.
+
+$ ps l //  Muestra mas detalles de los procesos del sistema.
+
+########################################################################################
+##### Restaurar o reiniciar las conexiones de red del sistema - networking restart #####
+########################################################################################
+
+# /etc/init.d/networking restart
+
+# service networking restart
+
+# invoke-rc.d networking restart
+
+#### Para maquinas virtuales #####
+
+Cuando se va a conectar por wireless, para que el dhcp le asigne una dirección ip
+modificamos el fichero:
+
+/etc/network/interfaces
+
+Y quedará así:
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+#auto lo
+#iface lo inet loopback
+auto eth0
+iface eth0 inet dhcp
+
+---
+
+Guardamos y reiniciamos las interfaces de redes con los tres comandos de arriba, esto
+es para cuando una máquina virtual no agarra internet inalambrico, tambien debe estar
+habilitada el adaptador de conexión inalambrica en el panel de configuración de la maquina virtual.
+Dentro de la máquina virtual parecerá que esta conectado por cable.# The loopback network interface
+
+Cuando se instala el SO y no consigue ninguna red cableada, es posible que el router/DHCP no le haya
+asignado una dirección ip, entonces modificamos el mismo fichero para que quede así:
+
+auto lo
+iface lo inet loopback
+auto eth0
+iface eth0 inet dhcp
+
+Y reiniciamos las interfaces de red, con suerte obtendremos una dirección ip de la red.
+
+Podemos intentar un ifup para ver si el dhcp le asigna la dirección ip sin necesidad de reiniciar la maquina o las
+interfaces de red:
+
+# ifup eth0
+
+Luego # ip addr a ver si ya tiene ip, si no es así entonces reiniciaremos las conexiones de red del sistema con los comandos descritos arriba.
+
+Si lo demás no a servido, se puede editar el /etc/resolv.conf de la máquina virtual a ver si hagarra internet,
+a veces el dhcp le asigna ip pero no tiene conexión a internet, entonces:
+
+# sudo nano /etc/resolv.conf
+
+Agregamos las siguientes líneas:
+
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+
+Guardamos el archivo y hacemos ping a ver si ya envía paquetes a google:
+
+Lo que vamos a hacer es enviar paquetes a los servidores de Google para comprobar si nos responde
+su ip pública es 8.8.8.8
+
+$ ping 8.8.8.8
+
+################################################################################
+##### Restaurar o reiniciar las conexiones de red inalambrica del sistema #####
+################################################################################
+
+If you really want to reset the network adapter you usually need to unload and reload the kernel module that it uses.
+
+If you just want to reconfigure it you can usually do:
+
+# /etc/init.d/network-manager restart
+
+But if you just want a new dhcp lease (that's the technical name for obtain a new IP from the router), you just need to use:
+
+# dhclient -v eth1
+
+###############################
+##### Herramientas de red #####
+###############################
+
+$ ifconfig // Siendo root, permite desplegar numerosos parámetros de las interfaces de red residentes  en el núcleo,
+como la dirección ip (dinámica o estática), o la máscara de red entre otros.
+
+$ ip addr// Para ver el estatus de las conexiones de red, este comando le mostrará su dirección ip, el tipo de conexión que está utilizando, etc.
+
+$ nmap -sT -O localhost // Ver que puertos estan escuchando 
+
+##### Iproute2 #####
+
+Iproute2 es un paquete de herramientas muy potentes para administrar interfaces de red y conexiones en sistemas Linux.
+
+Este paquete reemplaza completamente las funcionalidades presentes en ifconfig, ya que este no viene instalado por defecto en GNU/Linux Debian 9 Stretch, ya que a ifconfig
+se le considera obsoleto.
+
+##### Instalar ifconfig y route en Debian 9 #####
+
+Lo primero que tenemos que hacer es abrir un terminal e instalar el paquete “net-tools”. Si en la instalación hemos elegido hacer “sudo” para ascender a superusuario para instalar paquetes, tecleamos:
+
+# apt-get  install net-tools
+
+##### Comparación de comandos de entre ifconfig e IP #####
+
+// Mostrar dispositivos de red y su configuración.
+$ ifconfig
+
+$ ip addr show
+
+ó
+
+$ ip link show
+
+// Activar una interfaz de red.
+$ ifconfig eth0 up
+
+$ ip link set eth0 up
+
+// Desactivar una interfaz de red.
+$ ifconfig eth0 down
+
+$ ip link set eth0 down
+
+// Establecer una dirección IP a una interfaz.
+$ ifconfig eth0 192.168.1.1
+
+$ ip address add 192.168.1.1 dev eth0
+
+// Eliminar una dirección IP de una interfaz.
+ifconfig no podrá hacer esto.
+
+$ ip address del 192.168.1.1 dev eth0
+
+// Añadir una interfaz virtual.
+$ ifconfig eth0:1 10.0.0.1/8
+
+$ ip addr add 10.0.0.1/8 dev eth0 label eth0:1
+
+// Para configurar una tarjeta de red física, por ejemplo, con ifconfig debemos teclear lo siguiente:
+$ ifconfig eth0 192.168.0.2 netmask 255.255.255.0
+
+$ ip addr add 192.168.0.2/24 dev eth0
+
+##########################################
+##### Gestionar usuarios del sistema #####
+##########################################
+
+$ su nombre_de_usuario // Conectarse como otro usuario creado
+
+$ adduser nombre_de_usuario // Como root, Agregar un usuario nuevo al sistema, una nueva sesion, nos pedira agregar el 
+nombre de usuario y asignarle contraseña, la clave de root es la misma para todas las sesiones.
+
+$ userdel -r nombre_usuario // Como root, eliminar el usuario creado
+
+$ deluser --remove-home nombre_usuario // Otra forma de eliminar un usuario creado
+
+#################################################
+###### Comandos para escribir en un fichero #####
+#################################################
+
+$ echo "Texto al final del archivo" >> archivo.txt // Escribir una cadena de texto al final de un fichero.
+
+$ sed -i '1i xxxxx' archivo.txt // Insertar una cadena de texto "xxxxx" al principio de un fichero.
+
+$ sed -i '$a xxx' archivo.txt // Insertar una cadena al final del fichero, funciona como el método echo.
+
+$ apt-get moo // Huevo de pascua, muestra una vaca.
+
+########################################################
+##### Comandos para copiar, mover, eliminar, otros #####
+########################################################
+
+$ cp // Copiar un fichero o carpeta
+
+$ cp -r // Copiar un fichero o carpeta
+
+$ cp Nombre_de_archivo.txt /Carpeta/destino/a/copiar // Copiar un fichero en un directorio
+se debe estar situado en la carpeta del archivo a copiar
+
+$ cp Nombre_carpeta -r /Carpeta/destino/a/copiar // Copiar un directorio en otro, 
+se debe estar situado en la carpeta de la carpeta a copiar.
+
+- Saber la ruta de un directorio //  Desde el explorador de archivar (nautilus) desde cualquier directorio
+sin importar el nivel donde estemos, tecleamos Ctrl + l esto nos dirá la ruta completa hasta el directorio.
+
+$ cp -r /home/usuario/carpeta1/ /home/usuario/carpeta2/ //Se pueden copiar archivos o carpetas especificando las
+rutas completas, en este caso la primera ruta es el directorio o archivo a copiar y la segunda es la ruta donde
+se va a pegar lo copiado, ambas rutas separadas por un espacio en blanco.
+
+$ cp -r carpeta/ carpeta2/ // Ambas carpetas estan en el mismo directorio donde estamos situados, por lo tanto
+no hay que especificar las rutas completas de las carpetas involucradas
+
+$ cp nombre_fichero.xxx nombre_fichero2.xxx // Hacer una copia de un fichero y cambiarle el nombre.
+
+$ cp -r carpeta1 carpeta2 // Hacer una copia de un directorio y cambiarle el nombre.
+
+$ mv // Mover un fichero o carpeta y/o cambiar su nombre
+
+$ mv /home/carpeta/archivo1.txt /home/carpeta2/ // Mover una carpeta o archivo especificando el directorio
+de salida y el de llegada, si estan en el mismo directorio no hace falta poner las rutas completas.
+
+$ mv archivo1.txt archivo2.txt // Renombrar un archivo o carpeta 
+
+$ rmdir // Borrar una carpeta
+
+$ rm nombre_fichero // Borrar un fichero
+
+$ rm fichero1 fichero2 fichero3 // Borrar varios ficheros
+
+$ rm -r /directorio // Para borrar una carpeta, se le da la ruta del directorio a borrar
+
+$ rm * // Borrar todos el contenido de una carpeta, se debe estar dentro del directorio
+
+rm -r * // Borrar todo el contenido de una carpeta, incluyendo las carpetas de ese directorio
+se debe estar dentro del directorio
+
+$ sudo rm -rf /xxx/xxxx // rm: Comando "remove", eliminar. -rf: r de "recursivo" donde se borra todo y f de "force";
+nunca solicita confirmación. /xxx/xxx indica la ruta de los ficehros o carpetas a borrar.
+
+$ rm -r !("try") // Borrar todos los elementos de un directorio exeptuando lo que está entre "", donde try es un directorio pero
+también puede ser un fichero, "x.txt" por ejemplo.
+
+$ sudo -i // Pedir contraseña root, algunas versiones basadas en Debian
+
+$ su // Pedir contraseña del root
+
+root@debian:/home/user# Ctrl + d //Para salir del root, tambien exit, funciona en algunas consolas como python, ruby, entre otras.
+
+Ctrl + r // En la consola, para hacer una busqueda de comandos usados baasndose en la palabra que se introduzca
+
+Shift + Page up <--> Page down // Moverse a traves de los logs de la consola, simula el scroll up/down del mouse
+
+###################################
+##### Ip pública e Ip privada #####
+###################################
+
+##### Ip Pública #####
+
+Es la que tiene asignada cualquier equipo o dispositivo conectado de forma directa a Internet.
+
+Algunos ejemplos son: los servidores que alojan sitios web como Google, los router o modems que dan a acceso a Internet, otros
+elementos de hardware que forman parte de su infraestructura, etc.
+
+Las Ip públicas son siempre únicas. No se pueden repetir. Dos equipos con IP de ese tipo pueden conectarse directamente entre sí.
+Por ejemplo, tu router con un servidor web. O dos servidores web entre sí.
+
+##### Ip Privada #####
+
+Se utiliza para identificar equipos o dispositivos dentro de una red doméstica o privada.
+En general, en redes que no sean la propia Internet y utilicen su mismo protocolo (el mismo "idioma" de comunicación).
+
+Las Ip privadas están en cierto modo aisladas de las públicas. Se reservan para ellas determinados rangos de direcciones. Son estos:
+
+Estas Ip deben ser únicas dentro de una misma red. Cada equipo o dispositivo ha de tener la suya, distinta de la de los demás.
+De lo contrario habría problemas. Sería como si dos vecinos tuvieran el mismo nombre y la misma dirección física.
+El cartero nunca sabría a quién corresponde la carta que les envíen.
+
+Las Ip privadas sí pueden repetirse en redes distintas (como en la tuya y la de una empresa).
+Los equipos o dispositivos con esas IP pueden conectarse entre sí SÓLO dentro de la red a que pertenecen.
+No hay conflictos porque las redes están separadas. Igual que no los hay entre dos direcciones físicas iguales de ciudades distintas.
+
+#### Saber la ip pública #####
+
+Una forma de averigar esa ip pública es haciendo uso del comando curl. Si no tenéis instalado el paquete habrá que instalarlo,
+
+$ sudo apt-get install curl
+
+$ curl ifconfig.me // Nos mostrará nuestra ip pública.
+
+$ user@debian:/media$ umount nombre_device // Desmontar un dispositivo, pendrive, disco externo etc.
+
+$ who // Muestra usuarios conectados a nuestra máquina, tambien usado para ver las conexiones entrantes de un servidor
+
+Ejemplo:
+user tty7         2015-07-28 08:47 (:0)
+user pts/0        2015-07-30 14:03 (:0.0)
+user pts/1        2015-07-30 17:03 (:0.0)
+user pts/2        2015-07-31 14:15 (:0.0)
+user pts/3        2015-07-31 12:37 (:0.0)
+
+// En este caso son los usuarios conectados a mi máquina, eso quiere decir que tengo shells
+abiertos, por lo tanto todos son representados como usuarios, entre los diversos parametros
+se puede apreciar la fecha y la hora en que se abrio el shell, en un servidor seria
+el momento en que se conecto el usuario
+
+$ whoami // Muestra que usuario soy, nombre de usuario
+
+$ who am i // Nos dira cual usuario somos, si navegamos por los shells abiertos y ejecutamos el comando nos dira cual usuario es
+
+$ who -u // Ver usuarios conectados
+
+// Ejemplo:
+
+user tty7         2015-07-28 08:47  antig       4257 (:0)
+user pts/0        2015-07-30 14:03 03:22        8351 (:0.0)
+user pts/1        2015-07-30 17:03 03:19        8351 (:0.0)
+user pts/2        2015-07-31 14:15 00:08        8351 (:0.0)
+user pts/3        2015-07-31 12:37 02:53        8351 (:192.168.0.240)
+
+// Aqui observamos que hay una conexion externa a traves de ssh a nuestro servidor proveniente de la maquina
+(192.168.0.240) demarcada por el id process 8351 la cual podemos cancelar con $ kill -9 8351, pero no refusar esa conexion, el usuario seguirá conectado por ssh.
+
+$ pkill -9 -t pts/3 // Acabar con una conexión externa, se envió la señal -9 que indica matar (KILL) el proceso, la opción -t indica que se basará
+en un atributo de nombre de terminal y se indica después el nombre de la terminal en si pts/3. Este es el comando que sí funciona para 
+refusar o eliminar conexiones externas. A veces pide su.
+
+$ last // listar los ultimos usuarios conectados
+
+########################################################
+########## Cambiar el pass del usuario y root ##########
+########################################################
+
+##### Usuario normal #####
+
+$ passwd
+
+// Nos mostrara lo siguiente:
+
+Cambiando la contraseña de user.
+(actual) contraseña de UNIX:******
+Introduzca la nueva contraseña de UNIX:*****
+Vuelva a escribir la nueva contraseña de UNIX:*****
+
+##### Usuario root #####
+
+Primero nos logeamos como root:
+
+$ su
+
+Luego lo mismo de arriba:
+
+# passwd
+
+// Nos pedira que introduzcamos la nueva contraseña y la confirmacion para cambiar la clave de root
+
+Introduzca la nueva contraseña de UNIX:****** 
+Vuelva a escribir la nueva contraseña de UNIX:***** 
+passwd: contraseña actualizada correctamente
+
+############################################################################
+########## Instalacion de programas y paquetes con apt y aptitude ##########
+############################################################################
+
+$ man aptitude // Ver el manual de aptitude.
+
+$ man apt-get
+
+# apt-get install Nombre_Paquete // Instalar paquetes
+
+# apt-get install --only-upgrade packagename // Actualizar un paquete unicamente.
+
+# apt-get install -t jessie-backports Nombre_Paquete // Instalar paquetes disponibles desde otro repositorio, en este caso, los de jessie-backports.
+
+# aptitude install Nombre_Paquete // Instalar paquetes, otra forma
+
+# apt-get build-dep Nombre_Paquete // Intentará satisfacer las dependencias de compilación de un paquete fuente, el comando build-dep
+busca en los repositorios locales en el sistema e instala las dependencias de construcción para el paquete. Si el paquete no existe en
+el repositorio local se devolverá un código de error.
+
+$ aptitude install -s Nombre_Paquete // Hace una simulacion de la instalacion, podemos ver que procesos haría la instalación
+
+# apt-get install -y package // El -y Supone una respuesta afirmativa a todas las preguntas, de esta forma apt-get se ejecuta sin necesidad de intervención posterior para tomar decisiones, usar con cuidado.
+
+# apt-get install -s Nombre_Paquete // Simulacion de instalacion con  apt-get install
+
+$ apt-get source Nombre_paquete // Descargar las fuentes del paquete, para compilar e instalar. 
+
+$ sudo aptitude search Nombre_Paquete // Realizar una busqueda en los repositorios del paquete que se quiere encontrar
+
+$ aptitude show Nombre_Paguete // Para ver la informacion del paquete, version, estado, tamaño, conflictos, dependencias, etc.
+
+$ apt-cache show nombre_paquete // Ver informacion del paquete, version, dependencias, descripcion, tamaño, entre otros.
+
+$ apt-cache search nombre_paquete // Buscar un paquete en los repositorios.
+
+$ aptitude versions nombre_paquete // Muestra las versiones de los paquetes listados en la línea de órdenes.
+
+# aptitude remove Nombre_paquete // Elimina o Desinstala el paquete.
+
+# aptitude purge Nombre_Paquete // Elimina el paquete y sus archivos de configuracion.
+
+$ aptitude download nombre_paquete // Descarga el fichero .deb del paquete dado al directorio actual.
+
+$ apt-get download nombre_paquete // Descarga el fichero .deb del paquete dado al directorio actual.
+
+# aptitude reinstall nombre_paquete // Reinstalar un paquete
+
+$ aptitude update // Actualizar la lista de paquetes disponibles.
+
+$ dpkg -l | grep nombre_paquete // Saber si un paquete está instalado y su version.
+
+# apt-get autoremove // Borra los paquetes huérfanos, o las dependencias que quedan instaladas después de haber instalado una aplicación y luego eliminarla, por lo que ya no son necesarias.
+
+##### Comparación de las ordenes en apt-get y aptitude #####
+
+### Acción ###
+Instalar cualquiercosa
+Buscar cualquiercosa
+Eliminar cualquiercosa
+Lista recursiva de dependencias de cualquiercosa
+Mostrar el estado de cualquiercosa
+apt-cache policy cualquiercosa
+Descargar código fuente de cualquiercosa y crear un paquete .deb
+
+### apt-get ###
+apt-get install cualquiercosa
+apt-cache search cualquiercosa
+apt-get remove cualquiercosa
+apt-cache rdepends cualquiercosa
+apt-get source --compile cualquiercosa
+
+### aptitude ###
+aptitude install cualquiercosa
+aptitude search cualquiercosa
+aptitude remove cualquiercosa
+aptitude search ~Dcualquiercosa
+aptitude versions cualquiercosa
+
+####################################################
+##### Saber la version instalada de un paquete #####
+####################################################
+
+xxx --version // Saber la version de algun paquete que tengamos instalado.
+
+Ejemplo:
+bash --version
+gcc --version
+python --version
+ruby --version
+
+#####################################
+##### Liberando espacio con apt #####
+#####################################
+
+APT (Advanced Packaging Tool) Herramienta Avanzada de Empaquetado es un sistema gestor de paquetes creado por el proyecto Debian.
+Esta herramienta se encarga de facilitarle al usuario las tareas de instalación y eliminación de programas en los
+sistemas GNU/Linux (distribuciones derivadas de Debian).
+
+Esta herramienta se compone de dos programas principalmente: apt-get y apt-cache, para estos programas podemos encontrar programas
+frontend, me refiero a programas con una interfaz gráfica que facilita el uso de apt como es Aptitude, Synaptic, Adept, Ubuntu Software Center, etc.
+
+Apt instala paquetes .deb para los sistemas debian y distribuciones derivadas, instalar un programa con esta herramienta es tan sencillo como escribir:
+
+$ apt-get install <nombre_del_programa>
+
+Donde <nombre_del_programa> lo sustituimos por el nombre del programa que deseamos instalar.
+
+Si queremos por ejemplo instalar GIMP, un programa para la manipulación de imágenes, se haría de la siguiente manera:
+
+$ apt-get install gimp
+
+##### Comprobando el espacio utilizado #####
+
+Los archivos .deb que apt-get descarga de los repositorios, son almacenados en nuestra máquina antes de comenzar el proceso
+de instalación, y a veces hace falta hacer limpieza de estos archivos (ojo, al realizar los siguientes 3 pasos para liberar
+espacio, liberaremos espacio sin desinstalar programas, solo borraremos los instaladores, caché de .deb almacenados localmente);
+Los archivos son almacenados en la siguiente ruta cuando van a ser instalados /var/cache/apt/archives podemos ver cuánto espacio
+están utilizando estos archivos en nuestro disco con:
+
+$ du -hs /var/cache/apt/archives
+
+du es un comando que nos permite ver el Disk Usage (espacio utilizado en disco).
+3 Pasos para liberar espacio
+
+$ sudo apt-get autoclean
+$ sudo apt-get clean
+$ sudo apt-get autoremove
+
+##### Explicación de los 3 comandos anteriores #####
+
+1- Para liberar el espacio primero haremos un autoclean, esta opción borra todo el caché de los paquetes .deb de paquetes de versiones anteriores y de los programas que ya han sido instalados en nuestro sistema:
+
+$ sudo apt-get autoclean
+
+2- El siguiente comando con la opción clean borra todos los paquetes .deb, si queremos instalar de nuevo un programa el archivo .deb necesitará ser descargado nuevamente de los repos:
+
+$ sudo apt-get clean
+
+3- Por último el siguiente comando con la opción autoremove borra todos los paquetes dependencias de otros programas:
+
+$ sudo apt-get autoremove
+
+Comprobando el espacio libre nuevamente
+
+Ahora que hemos liberado el espacio, podemos comprobar nuevamente el tamaño de la carpeta que apt usa para almacenar todos los archivos como caché:
+
+$ du -hs /var/cache/apt/archives
+
+#####################################################
+########## Comprimir/Descomprimir archivos ##########
+#####################################################
+
+tar se refiere a un formato de archivos ampliamente usado en
+entornos UNIX identificados por el sufijo de archivo .tar.. Además hace referencia al programa
+para la manipulación de archivos que es estándar en estos entornos, pero no incluye la
+compresión de los mismos.
+
+// Comprimir un directorio, le damos los parametros de compresion, así como el nombre del paquete
+y el directorio que vamos a comprimir.
+
+$ tar -cvf paquete.tar nombre_directorio 
+
+-c : indica a tar que cree un archivo
+-x : extraer un archivo
+-t : listar los contenidos de un archivo
+-v : indica a tar que muestre lo que va empaquetando.
+-f : indica a tar que el siguiente argumento es el nombre del fichero.tar
+-z : comprimir a la vez que se empaqueta
+
+// Crear un paquete con el nombre que le dimos y contiene el archivo.txt 
+
+$ tar -cvf paquete.tar archivo.txt
+
+// Descomprimir un paquete
+
+$ tar -xvf paquete.tar
+
+##### Descomprimir paquetes.tar.bz2 #####
+
+$ tar -xjvf example.tar.bz2
+
+##### Ficheros: .tar.gz #####
+
+// Comprimir un directorio
+
+$ tar -czvf paquete.tar.gz nombre_directorio
+
+// Comprimir un fichero
+
+$ tar -czvf paquete.tar.gz nombre_fichero.xxx
+
+// Descomprimir
+
+$ tar -xzvf paquete.tar.gz
+
+##### Ficheros: .gz: #####
+
+// Comprimir
+
+$ gzip -9 ficehro.txt
+
+// Descomprimir
+
+$ gzip -d fichero.gz
+
+##### Descomprimir .tar.xz #####
+
+$ tar Jxvf fichero.tar.xz
+
+-------------
+
+Cuando nos iniciamos en Linux y buscamos un programa lo normal es que encontremos un .deb o .rpm y en muchos casos nos encontramos programas con
+la extensión .tar.gz y .tar.bz2, estos archivos están comprimidos y por lo general contienen aparte del programa unas instrucciones para instalarlo.
+
+La instalación para estos dos tipos de paquetes es exactamente igual, primero entramos a la carpeta donde tengamos el archivo.
+
+$ cd directorio
+
+$ tar -zxvf nombredelarchivo.tar.gz
+
+$ tar -jxvf nombredelarchivo.tar.bz2
+
+-Configuramos, con esta accion se configurara el paquete
+para la posterior compilacion, si hacen falta paquetes "dependencias" para la compilacion
+por lo general mostrara que paquetes faltan y fallará la configuracion.
+
+$ ./configure
+
+-Hacemos make (compilamos)
+
+$ make
+
+-Ahora make install
+
+$ make install
+
+################################
+##### Descomprimir con RAR #####
+################################
+
+// Necesitamos instalar unrar
+
+$ aptitude search unrar
+
+Si no lo encuentra debemos bajar el source de http://www.unrarlib.org/
+Nos bajara unrarsrc-3.7.8.tar.gz // Descomprimimos, nos dejara la carpeta (unrar)
+luego: 
+$ cd unrar
+$ make -f makefile.unix
+$ install -v -m755 unrar /usr/bin // Como root
+
+// Ya deberíamos poder descomprimir .rar
+
+Uso: unrar [OPTION...] ARCHIVE [FILE...] [DESTINATION]
+-x, --extract              Extract files from archive (default)
+-t, --list                 List files in archive
+-f, --force                Overwrite files when extracting
+--extract-newer        Only extract newer files from the archive
+--extract-no-paths     Don't create directories while extracting
+-p, --password             Decrypt archive using a password
+-?, --help                 Give this help list
+--usage                Give a short usage message
+-V, --version              Print program version
+
+ejemplo:
+$ unrar x archivo.rar // Para descomprimir un fichero .rar
+$ unrar x archivo.rar /home/user/carpeta // Para descomprimir un fichero .rar dando la ruta
+
+###########################################
+##### Comprimir/ Descomprimir con ZIP #####
+###########################################
+
+$ sudo aptitude install zip // Instalar el paquete de zip
+
+$ zip archivo.zip nombre_fichero.xxx
+
+$ unzip archivo.zip // Descomprimir el fichero
+
+$ zip -r carpeta.zip nombre_carpeta // Comprimir directorios y su contenido
+
+#####################
+##### Programas #####
+#####################
+
+#########################################
+########## Terminal Terminator ##########
+#########################################
+
+//Gran herramienta para los desarrolladores, permite abrir multiples terminales
+y poder ordenarlos, muy personalizable, entre muchas otras cosas. **RECOMENDADO**
+
+Paquete: terminator / multiple GNOME terminals in one window
+
+aptitude install terminator // Para instalarlo
+apt-get install terminator
+
+Dentro de Terminator:
+Ctrl + Shift + o // Abrir un terminal horizontal y paralelo
+Ctrl + Shift + e // Abrir un terminal vertical y paralelo
+Ctrl + Shift + t // Abrir una nueva pestaña en el terminal
+Alt + flechas // Moverse por los terminales
+Ctrl + Shift + w // Cerrar un terminal
+Ctrl + Shift + x // Maximizar un terminal, igual para salir
+Ctrl + Shift + z // Maximizar un terminal(aumentado), igual para salir
+Ctrl + Shift + flechas // Cambiar el tamaño a voluntad de un terminal
+Ctrl + (+) // Aumentar tamaño de fuente, el (+) del Qwerty
+Ctrl + (-) // Minimizar tamaño de fuente, el (-) del Qwerty 
+Ctrl + d // Si no hay sesion de usuario abierta, como root y otros cerrará la pestaña o ventana.
+f11 // Pantalla completa.
+
+#################################
+### DIA - Editor de diagramas ###
+#################################
+
+Es un editor de diagramas, grafos, gráficas, etc. Ofrece soporte para diagramas de estructuras
+estáticas en UML (diagramas de clases), diagramas de  Entidad-Relación, diagramas de redes y mucho más.
+Los diagramas se pueden exportar a postscript y a otros formatos.
+
+$ aptitude install dia
+
+################
+##### Meld #####
+################
+
+Es una herramienta gráfica para hacer archivos diff y fusionarlos.
+Permite al usuario ver los cambios entre, y fusionar, dos archivos, dos directorios, o dos archivos con un ancestro común.
+
+$ aptitude install meld
+
+####################################
+##### Editor de texto VI o VIM #####
+####################################
+
+// Es un editor de texto poderoso, muy usado en la comunidad de desarrolladores de Software Libre para escribir scripts, modificar ficheros
+de texto en el shell, programar etc. No posee botones y todas sus funcionalidades se usan a traves de comandos.
+Por lo general viene preinstalado en la mayoria de distribuciones, si no es así solo basta con un:
+
+# apt-get install vim // con apt-get
+
+# aptitude install vim // con aptitude
+
+----------------
+
+--- Modos de uso ---
+
+// Al entrar a VIM para editar un fichero por primera vez, estamos en modo de comandos, quiere decir que no podemos editar el texto
+sino que solo podremos usar comandos.
+
+vim // Abrir vim, un fichero en blanco sin nombre ni contenido
+
+i // Tecleamos i para entrar en modo de edicion, podemos insertar texto
+
+escape // Pulsamos la tecla escape para salir del modo edicion o de cualquier otro modo, y volvemos al modo comandos.
+
+:q // En modo comandos escribimos :q para salir del editor sin guardar
+
+:q! // Salir del editor sin guardar ni pedir confirmacion
+
+:w nombre_fichero.xxx //Guardamos un fichero nuevo, le asignamos el nombre y la extension si es necesario.
+
+vim nombre_archivo.xxx // Nos aparecerá una ventana en negro, donde nos aparecerá el contenido del fichero o en negro si está vacío
+// En la parte inferior, nos aparecerán los mensajes o comandos que escribamos para manejar el editor, así como la línea en la que estamos, porcentaje del fichero, etc.
+
+:w // Guardar un documento
+
+:wq! // Guardar y salir, esta accion aplica a un fichero ya creado, que estemos editando.
+
+:f // Para saber el nombre y extensión del fichero abierto.
+
+u // Deshacer el ultimo cambio
+
+Ctrl + R // Rehacer el ultimo cambio
+
+yy // Copiar la linea
+
+dd // Eliminar una linea, en tal caso la corta y esta lista para pegarse
+
+p // Pegar una linea cortada
+
+guu // Convertir la linea actual en minusculas
+
+gUU // Convertir la linea actual en mayusculas
+
+g // Ir al principio del archivo
+
+G // Ir al final del documento
+
+w // navegar palabra por palabra en el fichero
+
+v // Entra en modo Visual. En este modo seleccionaremos un texto con los cursores, y
+después podremos cortar, copiar y pegar con los comandos:  
+Copiar: y
+Copiar el texto seleccionado en modo visual (de "yank".)
+Cortar: c
+Cortar el texto seleccionado en modo visual 
+Pegar: p
+Pegar el texto copiado o cortar en modo visual con anterioridad. 
+
+:/palabra // Para hacer una busqueda de una palabra dentro del archivo
+n // Para ir a la siguiente coincidencia.
+N // Para ir a la coincidencia anterior
+
+:set nu // Enumerar las líneas del fichéro.
+
+Si queremos que se enumeren siempre las lineas editamos el fichero:
+
+# vim /etc/vim/vimrc
+
+y quitámos las comillas (") a la línea que tiene a set number y guardamos.
+
+:123 // Ir a la linea (x) donde 123 es el número de linea a la cual queremos ir.
+
+:syntax on // Sirve para dar color al codigo que estemos editando, VIM reconoce la sintaxis de muchos lenguajes y
+la resalta en colores como muchos otros editores graficos como gedit, sublime, ninja, komodo, Geany.
+
+En /etc/vim en el fichero vimrc descomentamos la linea 
+"syntax on // Quitamos las (") para que quede activado directamente la coloracion de codigos
+
+######################################################
+########## Instalar y configurar phpMyAdmin ##########
+######################################################
+
+# aptitude install phpmyadmin // Instalar
+
+http://localhost/phpmyadmin // Acceder al servicio
+
+***After the installation has completed, add phpmyadmin to the apache configuration.**
+
+# sudo nano /etc/apache2/apache2.conf // Agregar en este archivo la configuracion de abajo
+
+***Add the phpmyadmin config to the file.
+
+Include /etc/phpmyadmin/apache.conf // Esta linea se agrega al final de la configuracion del apache para que reconozca el phpMyAdmin
+
+/etc/init.d/xxx restart // xxx mysql, apache etc... restart
+
+###########################################
+##### Configurar el localhost / hosts #####
+###########################################
+
+En el fichero /etc/hosts está configurado el localhost de la máquina, el contenido
+puede ser parecido a:
+
+---
+
+127.0.0.1      localhost
+127.0.1.1       debian8.debian8 debian8
+
+---
+
+Esto quiere decir que cuando accedamos desde el navegador a "localhost"
+entonces estaremos accediento a 127.0.0.1.
+
+Para hacer una prueba agregaremos y comentaremos una línea al fichero:
+
+---
+
+#127.0.0.1      localhost
+127.0.1.1       debian8.debian8 debian8
+127.0.0.1        www.x.x
+
+---
+
+Lo que hicimos es cambiar localhost por una url arbitraria, ahora si accedemos a www.x.x accederemos a 127.0.0.1
+
+#######################################################
+##### Bloquear acceso localmente a una página web #####
+#######################################################
+
+$ ping www.pagina_a_bloquear.com
+
+Eso va a hacer ping o enviar paquetes a esa web y nos mostrara la ip pública
+del sitio, es decir un número con este formato: 111.222.333.444
+
+Ahora, con esa ip hacemos lo siguiente:
+
+// Para bloquear el acceso a esa página
+# iptables -I INPUT -s 111.222.333.444 -j DROP
+
+// Para habilitar el acceso a esa página
+# iptables -I INPUT -s 111.222.333.444 -j ACCEPT
+
+##### Otra forma #####
+
+Para bloquear sitios vamos a modificar el archivo hosts, abrimos un terminal y escribimos la siguiente
+linea de comando:
+
+// Como super usuario abrimos el fichero /etc/hosts con el editor gedit, puede ser nano vi, vim, u otro.
+
+# gedit /etc/hosts
+
+Ahora para bloquear en este ejemplo a Instagram, vamos a escribir al principio del archivo:
+
+127.0.0.1 instagram.com
+127.0.0.1 www.instagram.com
+
+Guardamos y listo.
+
+##################################################################
+##### Bloquear acceso localmente a una página web en Windows #####
+##################################################################
+
+Probado en 7
+
+Editamos con el blog de notas el fichero que está en:
+
+C:\Windows\system32\drivers\etc\hosts
+
+Nos encontraremos con algo como esto:
+
+127.0.0.1       localhost
+127.0.0.1       localhost
+127.0.0.1       localhost
+
+Para bloquear una página, solamente agregamos un par de lineas al final del fichero
+Por ejemplo, vamos a bloquear a instagram, entonces quedaría así:
+
+127.0.0.1       localhost
+127.0.0.1       www.instagram.com
+127.0.0.1       instagram.com
+
+Guardamos y listo, podemos agregar tantas webs como queramos.
+
+###################################
+##### Generar certificado ssl #####
+###################################
+
+Hay que configurar el sitio a proteger en /etc/hosts
+
+# aptitude install openssl
+
+$ mkdir -p /etc/nginx/ssl_keys/ // Opcional, solo si se trabaja con Nginx web server.
+
+1-) Generar la clave RSA:
+
+$ openssl genrsa -des3 -out x.gob.ve.key 1024
+
+-genrsa: Genera la clave rsa. En criptografía, RSA (Rivest, Shamir y Adleman) es un sistema criptográfico de clave pública
+
+-des3: Triple-DES Cipher. En criptografía el Triple DES se llama al algoritmo que hace triple cifrado del DES. También es conocido
+como TDES o 3DES, fue desarrollado por IBM en 1998. Data Encryption Standard (DES) es un algoritmo de cifrado, es decir,
+un método para cifrar información. El algoritmo fue controvertido al principio, con algunos elementos de diseño
+clasificados, una longitud de clave relativamente corta, Hoy en día, DES se considera inseguro para muchas aplicaciones.
+Esto se debe principalmente a que el tamaño de clave de 56 bits es corto; las claves de DES se han roto en menos de 24 horas. 
+
+-out: Archivo de salida
+
+-1024: Podemos especificar el tamaño de la clave ( 1024, 2048)
+
+2-) Generar CSR (Petición de Firma de Certificado
+
+$ openssl req -new -key x.gob.ve.key -out x.gob.ve.csr
+
+-Realiza una petición para la firma con clave privada especificado. Al realizarlo nos pide datos:
+
+Req: Genera Certificate Signing Request (CSR) 
+-new: Nuevo CRS
+-key: Clave rsa creada anteriormente
+Country Name (2 letter code) []:
+State or Province Name (full name) []:
+Locality Name (eg, city) []:
+Organization Name (eg, company) []:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) []: 
+**El "Common Name" debe corresponder con la URL que queremos Securizar. Si la URL a poner por
+SSL es x.gob.ve, este campo debe contener exactamente eso.
+Email Address []:
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+
+3-) Eliminar Clave Privada DES3
+
+$ cp x.gob.ve.key x.gob.ve.key.gob
+
+$ openssl rsa -in x.gob.ve.key.gob -out x.gob.ve.key
+
+4-) Generar Certificado Autofirmado.
+
+$ openssl x509 -req -days 365 -in x.gob.ve.csr -signkey x.gob.ve.key -out x.gob.ve.crt
+
+Al final nos Deben quedar 4 ficheros: .cert, .crs, .key, .gob
+x.gob.ve.crt // Este es el certificado final.
+x.gob.ve.csr
+x.gob.ve.key
+x.gob.ve.key.gob
+
+#################
+##### rsync #####
+#################
+
+Es una aplicación que ofrece transmisión eficiente de datos, que opera también con datos comprimidos y cifrados.
+Mediante una técnica de delta encoding, permite sincronizar archivos y directorios entre dos máquinas de una red
+o entre dos ubicaciones en una misma máquina, minimizando el volumen de datos transferidos.
+Muy recomendable para hacer respaldos en discos externos.
+
+# apt-get install rsync // Para instalarlo
+
+Parametros: -P para mostrar el progreso de la copia y -r cuando se van a copiar directorios
+
+rsync -P ficehero /directorio/carpeta2 // Para copiar ficheros, archivos, etc. 
+
+rsync -P -r /directorio/carpeta1_origen /directorio/carpeta2_destino // -r para copiar directorios se ponen las dos rutas: origen y destino separados por un espacio
+**Ojo con carpeta1, sin el / al final, lo cual significa que se va copiar la carpeta completa con su contenido y no solo su contenido.
+
+##### rsync para copiar ficheros a un servidor a través de ssh #####
+
+-v : Verbose (try -vv for more detailed information)
+-e "ssh options" : specify the ssh as remote shell
+-a : archive mode
+-r : recurse into directories
+
+$ rsync -P -r -v -e ssh name_dir_or_filename user@192.168.1.100:/home/use/dir/
+
+##### Usando rsync desde python para copiar un fichero a un servidor #####
+
+$ python
+
+>>> import os
+>>> os.system("rsync -varz /home/user/xxx.txt user@192.168.1.100:")
+user@192.168.1.100's password: ******
+sending incremental file list
+xxx.txt
+
+sent 87 bytes  received 31 bytes  33.71 bytes/sec
+total size is 0  speedup is 0.00
+0
+>>> 
+
+// Fichero copiado al servidor!
+
+################################################
+##### CCLive - Descargar videos de youtube #####
+################################################
+
+// CCLive es una aplicación que nos permite descargar un vídeo que esté en YouTube
+// hacia nuestro ordenador mediante un simple comando. Por defecto guarda los vídeos en webm.
+
+$ aptitude show cclive // Para ver si lo tenemos en los repos, y ver la descripción, si es así.
+
+$ aptitude install cclive // Instalación, como root.
+
+ó
+
+$ sudo apt-get install cclive // Instalación, como root.
+
+$ cclive https://www.youtube.com/watch?v=yWVrvce5R9 // Descargar un video pasando la url de youtube.
+
+$ cclive URL1 URL2 URL3 URL4 // Soporta varias URLs a la vez, para bajar mas de 1 video.
+
+$ cclive < urls.txt // Descargar un vídeo detrás de otro, desde un archivo de texto plano con todas las URLs (en líneas diferentes).
+
+$ man cclive // Manual del paquete.
+
+$ cclive -F https://www.youtube.com/watch?v=Lfj667lLLnE // Comprobar los formatos disponibles antes de descargar el video.
+// Se podrá ver un listado de formatos disponibles separados por "|"
+
+$ cclive -f fmt22_720p https://www.youtube.com/watch?v=LtzFg4JiL5E // Se elige el formato y se pasa en el comando, luego comenzará la descarga.
+
+$ cclive -f best http://www.youtube.com/xxxxxx // Download the best available format of the media.
+
+####################################################
+##### youtube-dl - Descargar videos de youtube #####
+####################################################
+
+// Instalamos youtube-dl desde el repositorio de Debian.
+
+# apt-get install youtube-dl
+
+// Para enumerar todos los formatos de video disponibles, use la opción
+// "-list-formats" con el comando youtube-dl.
+
+$ youtube-dl --list-formats my_youtube_url
+
+// Ejemplo de la salida del comando:
+
+[youtube] vKtwZmhX0lw: Downloading webpage
+[youtube] vKtwZmhX0lw: Downloading video info webpage
+[youtube] vKtwZmhX0lw: Extracting video information
+[youtube] vKtwZmhX0lw: Downloading DASH manifest
+[youtube] vKtwZmhX0lw: Downloading DASH manifest
+[info] Available formats for vKtwZmhX0lw:
+format code  extension  resolution note
+171          webm       audio only DASH audio  113k , vorbis@128k (44100Hz), 1.86MiB
+140          m4a        audio only DASH audio  128k , m4a_dash container, aac  @128k (44100Hz), 2.14MiB
+141          m4a        audio only DASH audio  255k , m4a_dash container, aac  @256k (44100Hz), 4.30MiB
+278          webm       180x144    DASH video   63k , webm container, vp9, 1fps, video only, 946.76KiB
+160          mp4        180x144    DASH video  112k , avc1.4d400c, 15fps, video only, 1.86MiB
+242          webm       300x240    DASH video  170k , vp9, 1fps, video only, 2.50MiB
+133          mp4        300x240    DASH video  247k , avc1.4d400d, 25fps, video only, 4.11MiB
+243          webm       400x320    DASH video  288k , vp9, 1fps, video only, 4.07MiB
+13           3gp        unknown    small
+17           3gp        176x144    small ,  mp4a.40.2, mp4v.20.3
+36           3gp        320x240    small ,  mp4a.40.2, mp4v.20.3
+5            flv        400x240    small
+43           webm       640x360    medium ,  vorbis, vp8.0
+18           mp4        640x360    medium ,  mp4a.40.2, avc1.42001E (best)
+
+// Para descargar un formato de archivo preferido, use la opción '-f'
+// (código de formato de video). Por ejemplo, me gustaría descargar el formato mp4
+// así que uso el código de formato como '18' como se muestra a continuación.
+
+$ youtube-dl -f 18 my_youtube_url
+
+###########################################
+##### Formatear pendrives desde linux #####
+###########################################
+
+# aptitude install dosfstools
+
+Luego de instalar el paquede, montamos el pendrive, solo esta montado si aparece el nombre de la unidad en /media, luego escribimos:
+
+$ df -h
+
+Visualizamos la ruta de nuestro usb, ejemplo /dev/sdc1 que es el puerto donde está montado, luego desmontamos el pendrive.
+
+$ umount /media/nombre_usb
+
+Luego, estando desmontado la unidad usb, pero conectado al puerto
+
+# mkfs.vfat -F 32 -n Nombre_usb /dev/sdc1
+
+Esperamos y listo. Con la opción -F 32 le decimos que será formateada como Fat32, y con la opción -n le ponemos una etiqueta o nombre al dispositivo y
+al final ponemos la ruta hasta nuestro dispositivo, la que vimos con df -h
+
+#########################
+##### sqlitebrowser #####
+#########################
+
+Herramienta de alta calidad visual para crear, diseñar y editar archivos de bases de datos compatibles con SQLite.
+Es para usuarios y desarrolladores que desean crear bases de datos, buscar y editar datos.
+Utiliza una interfaz de tipo hoja de cálculo familiar y no necesita aprender comandos SQL complicados.
+
+# aptitude install sqlitebrowser
+
+$ sqlitebrowser // Para ejecutarlo
+
+##########################################################
+##### Quemar o grabar una imagen .iso en un pendrive #####
+##########################################################
+
+# dd if=[imagen] of=[dispositivo]
+
+// En donde imagen es la ruta completa a la imagen ISO que deseas grabar y dispositivo
+// la ruta de sistema hacia la unidad usb, no la ruta con el nombre del usb, estas
+// rutas las vemos con:
+
+$ df -h
+
+Por ejemplo:
+
+# dd if=/home/user/Descargas/debian-testing-i386-businesscard.iso of=/dev/media/sdb
+
+###############################################
+##### Copiar un imagen .iso en unidad USB #####
+###############################################
+
+// Para hacerlo booteable, debe estar desmontado pero conectado en el puerto usb.
+
+$ cat xxxx.iso > /dev/sdxxx ; sync
+
+################################################
+##### Instalación de gnome en sistema base #####
+################################################
+
+# apt-get install gnome-shell
+
+# apt-get install gnome-core
+
+# apt-get install gnome
+
+# apt-get install task-gnome-desktop
+
+# apt-get install task-spanish-desktop
+
+#####################################
+##### Remover gnome del sistema #####
+#####################################
+
+# apt-get autoremove --purge 'gnome*'
+
+# apt-get autoremove
+
+########################################################
+##### Instalación de gnome classic en sistema base #####
+########################################################
+
+Probado en Ubuntu 11 y 12 nada más, puede que funcione en anteriores o superiores.
+
+# apt-get install gnome-panel
+
+# apt-get install gnome-session-flashback
+
+Luego de reiniciar, saldrá el gnome-classic en las opciones de escritorio antes de iniciar sesión.
+
+#########################################
+##### Usando los programas de gnome #####
+#########################################
+
+$ gnome-screenshot // Captura de pantalla del escritorio
+
+$ gnome-shell --replace & disown // Recargar el entorno gráfico, evitando el reinicio del pc.
+
+$ pdfimages fichero.pdf nombre_imagene // Extrae las imagenes de un .pdf
+
+###############################################
+##### Instalación de xfce en sistema base #####
+###############################################
+
+Xfce es un entorno de escritorio ligero para sistemas tipo UNIX. Su objetivo es ser rápido y usar pocos recursos
+del sistema, sin dejar de ser visualmente atractivo y fácil de usar.
+
+# aptitude install xfce4
+
+Luego instalamos utilidades extras, si se quiere, se le conoce como "goodies".
+
+# aptitude install xfce4-goodies
+
+# aptitude install lightdm
+
+Luego de eso, cuando reiniciemos la máquina, podremos elegir acceder con xfce como entorno de escritorio.
+
+########################################
+##### wget para descargar ficheros #####
+########################################
+
+$ wget www.ejemplo_web.com // Descargar toda una página completa, wget no está limitado a solo descargas de archivos. Sitios completos pueden descargarse también.
+
+$ wget -p www.ejemplo_web.com  // Lo mismo que lo anterior pero con esta opción -p descarga además todos los elementos extras necesarios de la página
+como hojas de estilos, imágenes en línea, etc.
+
+$ wget -c ftp://sunsite.doc.ic.ac.uk/ls-lR.Z // -c ó --continue, reanudar una descarga de wget si se detuvo por caída de red, cancelación de proceso, etc. Se lanza el comando de nuevo con el enlace para reanudar.
+
+$ wget http://ejemplo.com/programa.tar.gz  ftp://otrositio.com/descargas/video.mpg // Indicar más de una descarga a la vez, incluso con distintos protocolos o extensiones
+
+$ wget http://ejemplo.com/*.pdf // Descargar varios archivos, con extensión similar.
+
+$ wget -i archivos.txt // Descargar varios archivos a traves de una lista.
+
+Creamos una lista en archivos.txt que serán descargados:
+http://ejemplo.com/programa.tar.gz
+http://ejemplo.com/rpm/paquete.rpm
+ftp://otrositio.com/descargas/distro.iso
+
+$ wget -t 50 http://ejemplo.com/pelicula.mpg // Por defecto, wget realiza 20 intentos de establecer la conexión e iniciar la descarga, en sitios muy
+saturados es posible que ni con 20 intentos se logré, con la opción -t (tries) aumenta a más intentos.
+
+$ wget -r www.ejemplo.com // Con la opción -r se descarga recursivamente hasta 5 niveles del sitio.
+
+$ wget --convert-links -r http://www.sitio.com/
+
+ó
+
+$ wget -k -r http://www.sitio.com/ // Por defecto, los enlaces dentro del sitio apuntan a la dirección del dominio completo. Si deseas descargar el sitio
+recursivamente y después estudiarlo fuera de línea (off line) usa la opción convert-links que los convertirá en enlaces locales, apuntando a las páginas
+dentro del sitio descargado.
+
+$ wget --mirror http://ejemplo_web.com/    
+
+ó
+
+$ wget -m http://ejemplo_web.com/ // De este modo obtienes una copia (un espejo) completa del sitio.
+
+$ wget -r -l7 www.ejemplo.com // -l7 (nivel de profundidad) de descargara, es decir descargará en esa profundidad de subdirectorios. De forma predeterminada wget emplea 5.
+
+// Ignorar avisos de certificados caducados, etc.
+$ wget --no-check-certificate my_url
+
+#################
+##### jigdo #####
+#################
+
+Jigsaw Download, o abreviadamente jigdo , se propone como la forma principal de distribuir imágenes de CD de Debian en el futuro. Actualmente, el sistema funciona, pero no es aún muy cómodo de usar porque la aplicación gestora de descargas no está terminada.
+
+Página del paquete -> https://www.debian.org/CD/jigdo-cd/
+
+# aptitude install jigdo-file
+
+Aquí, por ejemplo, podemos buscar los .jigdo --> http://cdimage.debian.org/debian-cd/8.5.0/amd64/ en jigdo-dvd/
+
+$ jigdo-lite // Nos pedirá un fichero .jigdo para descargar
+
+ó simplemente le pasamos el fichero en el mismo comando:
+
+$ jigdo-lite http://cdimage.debian.org/debian-cd/8.5.0/amd64/jigdo-dvd/debian-8.5.0-amd64-DVD-1.jigdo // Para descargar
+
+ó
+
+$ jigdo-lite http://cdimage.debian.org/cdimage/archive/7.11.0/amd64/jigdo-cd/debian-7.11.0-amd64-CD-1.jigdo // Para descargar
+
+Luego nos preguntará por ejemplo:
+
+Files to scan: 
+
+Como esta es la primera vez que vamos a descargar el iso, damos Enter y no añado nada en este paso.
+
+Lo otro que va a preguntar es cuál el mirror que quieres usar (se puede usar un mirror local siempre y cuando esté actualizado). por lo tango metemos la dirección en el espacio: http://debian.cen.... y enter
+
+Ejecutará muchos procesos y al final debe mostrar un:
+
+-------------------------------
+Finished!
+The fact that you got this far is a strong indication that `debian-7.11.0-amd64-CD-1.iso'
+was generated correctly. I will perform an additional, final check,
+which you can interrupt safely with Ctrl-C if you do not want to wait.
+
+OK: Checksums match, image is good!  
+
+#############################################
+########## Conexion remota con ssh ##########
+#############################################
+
+SSH (Secure SHell) es el nombre de un protocolo y del programa que lo implementa, y sirve para acceder
+a máquinas remotas a través de una red. Permite manejar por completo la computadora mediante un intérprete
+de comandos, y también puede redirigir el tráfico de X para poder ejecutar programas gráficos si tenemos ejecutando un Servidor X (en sistemas Unix y Windows).
+
+Además de la conexión a otros dispositivos, SSH nos permite copiar datos de forma segura
+(tanto archivos sueltos como simular sesiones FTP cifradas), gestionar claves RSA para no escribir
+claves al conectar a los dispositivos y pasar los datos de cualquier otra aplicación por un canal seguro tunelizado mediante SSH.
+
+// Instalar ssh y el servidor de ssh que permite conexiones remotas.
+# aptitude install ssh openssh-server
+
+// Conectarse a otra máquina o servidor
+$ ssh Nombre_usuario@IP_servidor o nombre_servidor
+
+$ ssh user@192.168.0.240 // Asi se accede a un ordenador o servidor remoto, debemos poner el usuario que debe estar creado asi como la ip
+del server, nos pedira la clave de session, una vez adentro tenemos acceso a los archivos y podemos pedir el root para tener acceso total.
+ssh es muy usado por administradores de redes y de sistemas para acceder a las maquinas y los servidores y hacer cambios asi 
+como monitorear los procesos que esten ejecutando, especialmente en maquinas virtuales si varios proyectos corren en un mismo servidor.
+
+$ ssh -l user 192.168.0.240 // otra forma usando el parámetro -l.
+
+$ ssh 192.168.200.xxx // Si el servidor tiene el mismo usuario que el host, no hace falta especificarlo, solamente con la ip del servidor
+basta, pues toma el nombre del usuario del host para hacer la conexión.
+
+Estando conectados al servidor, podemos enviar mensajes o abrir programas remotamente, ejemplo:
+
+echo "mensaje" > /dev/pts/2 // Enviar mensaje a traves del shell a otro usuario, en el servidor o local, debe haber un shell abierto que sea receptor
+Se puede hacer localmente para probar, con (who) veremos la identificacion de cada shell, si estamos conectados remotamente, comprobaremos si hay shells
+abiertos en el local y el servidor, se identifican con los pts/0, pts/1, etc, y sabremos por la ip si son shells locales o del server  el mensaje sale en
+el shell escogido.
+
+$ export DISPLAY=:0.0 // Creamos la ventana virtual donde se abrira la aplicacion que ejecutemos, luego
+$totem o $nautilus // Deberia abrir el programa en el servidor, ya esportada la ventana podemos:
+
+DISPLAY=:0.0 totem // Abrir el reproductor totem en el servidor
+
+DISPLAY=:0.0 nautilus // Abrir el explorador de archivos en el servidor
+
+// Reiniciar el servicio de ssh, a veces se hace para que sirvan algunos cambios de configuración.
+$ sudo service ssh restart
+
+// Para ver el estado del servicio.
+$ sudo service ssh status
+
+###########################
+##### Seguridad en ssh ####
+###########################
+
+Para hacer mas seguras las conexiones a través de ssh es necesario realizar ajustes adicionales en la configuración del servidor.
+Estos ajustes se deben realizar en el fichero de configuración del servidor que, por ejemplo, en Linux se encuentra en /etc/ssh/sshd_config
+
+-- Cambiar el puerto por defecto del servidor SSH --
+
+Por defecto los servidores SSH utilizan el puerto 22 para las conexiones. Cuando un pirata intente buscar la forma de conectarse a nuestro
+servidor SSH este probará en primer lugar con este puerto y, de estar abierto, comenzará el ataque.
+
+Si cambiamos el puerto por defecto por otro de nuestra elección evitaremos que utilicen el puerto 22 para establecer
+las conexiones, sin embargo, es fácil descubrir si este tipo de protocolos utilizan otros puertos adicionales para las conexiones.
+
+-- Bloquear el acceso root en las conexiones remotas --
+
+Es recomendable crear un único usuario para conectarse al servidor con una contraseña lo más fuerte posible de manera que no pueda
+ser explotada fácilmente, sin embargo, por defecto el usuario Root también puede conectarse al servidor SSH de forma remota evitando
+a un atacante el tener que adivinar el usuario y facilitándose el trabajo.
+
+Desactivando los permisos de Root para conectarse al servidor SSH complicaremos notablemente la tarea de explotación por fuerza bruta
+del servidor al tener que adivinar también el usuario establecido para permitir la conexión.
+
+El valor por defecto en el archivo de configuración que permite las conexiones de root es:
+
+    PermitRootLogin yes
+
+Debemos cambiarlo por:
+
+    PermitRootLogin no
+
+De esta manera las conexiones root quedarán bloqueadas evitando que usuarios no autorizados puedan realizar
+ataques de fuerza bruta contra nuestro servidor SSH para adivinar los credenciales del usuario Root.
+
+-- Configuraciones de seguridad adicionales --
+
+Existen otras configuraciones recomendadas para evitar las conexiones no deseadas a nuestro servidor SSH. Estas conexiones son:
+
+LoginGraceTime: Estableceremos el tiempo necesario para introducir la contraseña, evitando que el atacante tenga que “pensar mucho”.
+
+MaxAuthTries: Número de errores permitidos al introducir la contraseña antes de desconectarnos.
+
+MaxStartups: Número de logins simultáneos desde una IP, para evitar que se pueda utilizar la fuerza bruta con varias sesiones a la vez.
+
+AllowUsers: Este parámetro nos permite configurar los usuarios que podrán conectarse y desde la IP que lo podrán hacer. Una medida muy
+restrictiva pero a la vez muy segura ya que bloqueará todas las conexiones que no cumplan los dos parámetros.
+
+-- Reiniciar el servidor para aplicar los nuevos ajustes --
+
+Una vez realizados los ajustes debemos reiniciar el servidor para que se apliquen correctamente. Para ello teclearemos:
+
+$ sudo service ssh reload
+
+En pocos segundos el servidor volverá a arrancar con la nueva configuración aplicada y mucho más seguro que antes.
+
+##### Ejemplo de configuración #####
+
+Port 432 (o el que se quiera menor a 1024)
+Protocol 2
+LoginGraceTime 30
+PermitRootLogin no
+MaxAuthTries 2
+MaxStartups 3
+AllowUsers jose  o también:
+AllowUsers jose maria@192.1.1.300
+
+---
+
+Port: Por default el demonio ssh funciona en el puerto 22, y precisamente muchos scripts de ataques están dirigidos a este puerto, el cambiar
+de puerto no garantiza que el servicio ya no será localizable, de hecho con herramientas como nmap o amap es sumamente fácil descubrir que un
+servicio ssh esta a la escucha en otro puerto distinto al 22, pero al menos no será localizable por varios scripts que de manera automática
+escanean redes y en cuanto a ssh se enfocan solo al puerto 22.
+
+Protocol 2: Hay dos versiones de ssh en cuanto a su protocolo de comunicación, la versión 1 y la versión 2. La 1 esta en desuso pero todavía
+se incluye por compatibilidad, tiene varias vulnerabilidades conocidas y su uso no es ya recomendable. Un error frecuente es dejar al demoinio
+ssh que permita el uso de las dos versiones (Protocol 2,1). Para evitar el uso del protocolo 1 y sus posibles ataques a este, basta con indicar
+en esta línea que solo admita comunicaciones de ssh basadas en el protocolo 2.
+
+LoginGraceTime 30: El número indica la cantidad de segundos en que la pantalla de login estará disponible para que el usuario capture su nombre
+de usuario y contraseña, si no lo hace el login se cerrará, evitando así dejar por tiempo indeterminado pantallas de login sin que nadie
+las use, o peor aun, que alguien este intentando mediante un script varias veces el adivinar un usuario y contraseña. Aqui conviene identificar
+en nuestros usuarios el tiempo promedio que tardan en ingresar su usuario y contraseña y darles unos cuantos segundos más de margen por los
+usuarios lentos para que ingresen sus credenciales. Si somos el único usuario del sistema considero que con 20 o 30 segundos es mas que suficiente.
+
+PermitRootLogin no: Esta es quizás la más importante directiva de seguridad que podemos indicar para fortalecer nuestro servidor ssh.
+Prácticamente todos los sistemas Linux y Unix crean por default al usuario root, entonces sabemos que existe!!!. Muchos ataques de fuerza bruta
+se concentran en atacar al usuario root con la esperanza de que tenga una contraseña débil (¡que es mas común de lo que pensamos!).
+
+Entonces si ya sabemos una parte de la ecuación (root) solo será cuestión de tiempo para que alguien con paciencia y suerte vulnere el sistema.
+Al poner en 'no' la variable PermitRootLogin el usuario root no tendrá permiso de acceder mediante ssh y por lo tanto cualquier intento de ataque
+directo a root será inútil. Con esto siempre tendremos que ingresar como un usuario normal y ya estando adentro entonces mediante su o sudo
+podremos usar funciones de root, no problem. Ahora bien, para el nombre de login del usuario normal te recomiendo que también NO uses palabras
+conocidas como: admin, manager, juan, pedro, sistemas, etc. Usa algo mas dífcil de adivinar como jgon (de juan gonzález) o sispat (de sistemas pato)
+o mejor aun también puedes combinar algún guión bajo o mayúsculas, minúsculas y números en la cuenta de login. Con lo anterior el hacker tendrá
+que atinarle o crackear tanto al nombre del usuario como su contraseña.
+
+MaxAuthTries 2: El número indica la cantidad de veces que podemos equivocarnos en ingresar el usuario y/o contraseña, en este caso después de dos
+intentos, se perderá o cerrará la conexión. Claro, es totalmente posible volver a intentarlo, pero como son dos intentos por vez, evitaremos ataques
+basados en la persistencia de la conexión, como se perderá al tercer intento de conexión, el ataque cesará.
+
+MaxStartups 3: El número indica la cantidad de pantallas de login, o cantidad de conexiones simultaneas de login que permitirá el sshd por ip que
+intente conectarse. Hay ataques muy efectivos que dividen el ataque en decenas y puede ser que en cientos (si el sistema atacado lo permite) de
+conexiones de login. Es decir, el ataque divide en una gran cantidad de logins los intentos por ingresar, aumentando sus posibilidades de más
+rapidamente adivinar al usuario y contraseña. Con esta directiva limitamos a tan solo 3 pantallas de login. Que quede claro, una vez logueados
+en el sistema, es posible tener mas de 3 terminales de ssh, se refiere exclusivamente a pantallas de login.
+
+AllowUsers: En sistemas donde se tiene varios usuarios, quizás existan varios que solo pueden acceder desde la LAN por ejemplo, o quizás solo
+desde ciertos equipos. O incluso que solo desde su PC puedan trabajar en Linux por lo que no hay razón para que se conecten remotamente
+via ssh. Con esta directiva podemos indicar los usuarios que pueden ingresar via ssh. Si solo indicamos al usuario:
+
+AllowUsers jose
+
+El usuario jose podrá ingresar desde cualquier PC en cualquier lugar, no se está validando el host.
+Si se quiere mas seguridad, es posible indicar también el host mediante el símbolo @
+
+AllowUsers jose@192.168.0.25     (solo desde la IP indicada)
+AllowUsers jose@192.168.0.*       (Toda la red indicada)
+AllowUsers jose@*.desarrollo.com  maria@contabilidad.com    
+  (aosorio desde cualquier equipo del dominio indicado, maria solo desde el equipo indicado)
+
+Como puede verse, bastan algunas cuantas directivas o variables bien configuradas en nuestro archivo /etc/ssh/sshd_config para incrementar
+enormemente la seguridad en este servicio, seguramente no estoy considerando alguna otra variable que también pudiera ser importante
+para la seguridad de ssh, si es así por favor házmelo saber para incluirla en este documento. Asi como también hay que tener en cuenta
+que hay variables que permiten el no acceso con contraseñas y sería más bien con certificados o llaves, las posibilidades son extensas y
+es posible incluso tener varios equipos Linux comunícandose entre si para respaldos, bases de datos, etc. con ssh y certificados de
+seguridad, evitando intervención humana, consulta la sección de servicios si es lo que buscas en tu empresa.
+
+###########################################
+##### X11 forwarding a través de ssh  #####
+###########################################
+
+X11, es el servidor gráfico que usan casi todas las distribuciones Linux. Este servidor permite, entre otras cosas,
+forwarding a través de SSH. Esto significa que es posible ejecutar apliaciones gráficas de una máquina remota exportando el display a nuestro escritorio.
+Es decir, la aplicación se ejecuta en el servidor remoto, pero la interfaz gráfica la visualizamos en nuestro escritorio local.
+
+Ejemplo:
+1- En el servidor, editar el archivo /etc/ssh/ssh_config y modificar la opción X11Forwarding o ForwardX11 para que quede así:
+
+X11Forwarding yes
+
+ó
+
+ForwardX11 yes
+
+Luego de este cambio, posiblemente sea necesario reiniciar el demonio ssh. La forma de hacer esto varía de acuerdo a cada distribución Linux.
+Lo más sencillo es reiniciar la máquina.
+
+2- En el escritorio local, loguearse al servidor a través de ssh utilizando el parámetro -X:
+
+$ ssh -X user@hostname
+
+Donde user es el nombre de usuario utilizado para loguearse en el servidor y hostname es el ip o el alias del servidor.
+
+3- Para ejecutar una aplicación, simplemente hay que hacerlo desde el terminal. Por ejemplo:
+
+$ firefox
+
+$ nautilus
+
+$ evince
+
+Cuando ejecutamos una aplicación gráficamente la consola se bloqueara con el proceso en ejecución, por lo que podemos usar &
+para que se ejecute el proceso, construya el entorno grafico del programa y luego dezplace el proceso para poder seguir usando la
+consola, ejemplo:
+
+$ firefox
+
+ó
+
+$ firefox & nautilus &
+
+######################################
+##### Escritorio remoto, por ssh #####
+######################################
+
+Esta guía nos permitirá ejecutar un escritorio remoto a través de una conexión por ssh,
+el cliente debe estar en modo consola, puede usar tty1 por ejemplo.
+
+Primer paso, instalar openssh-server en el cliente y en el servidor
+
+# apt-get install openssh-server openssh-client
+
+Una vez hecho esto configuramos el servidor para que sea accesible desde los clientes:
+
+$ sudo nano /etc/ssh/ssh_config
+
+Hay tres lineas del archivo que deberían quedar así:
+ForwardAgent yes
+ForwardX11 yes
+ForwardX11Trusted yes
+
+Guardamos y abrimos otro archivo:
+
+$ sudo nano/etc/ssh/sshd_config
+
+Debe aparecer la siguiente línea:
+ForwardX11 yes
+
+Una vez hecho esto reiniciamos el servidor ssh:
+
+$ sudo service ssh restart
+
+Luego nos conectamos por ssh al servidor, con el parámetro -X que nos permitirá levantar gráficos
+en el cliente de aplicaciones que se ejecutan en el servidor.
+
+$ ssh -X username@ip_server
+
+##### startx #####
+
+Para iniciar o levantar el modo gráfico
+
+$ startx -- :DISPLAY // Arrancar el servidor gráfico indicándole el DISPLAY, por defecto el primer DISPLAY es 0 (al cual accedemos con Cntrl+Alt+F7).
+
+---
+
+$ sudo startx // Levantará una sesión de escritorio como root, el cliente debe estár en modo ttyX.
+
+ó
+
+$ gnome-session // Puede que falle a veces, si es que el cliente ya tiene una interáz gráfica corriendo, por eso se recomienda que esté en ttyX.
+
+###############################################################
+##### El error ssh remote host identification has changed #####
+###############################################################
+
+Cuando el sistema base guarda una llave de acceso a un host, pero el host cambió, entonces la llave no funciona y arroja el típico error:
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+...
+...
+...
+
+Entonces borramos ese host roto, llave perdida, etc.
+
+$ ssh-keygen -R <host>
+
+Ejemplo:
+
+$ ssh-keygen -R 192.168.3.10
+
+##########################################################
+##### Generar llaves para ssh para saltar contraseña #####
+##########################################################
+
+Si el host desea conectarse al servidor, sin tener que escribir password cada vez que se intente conectarse
+puede usar este método donde se generan claves publica y privada.
+
+// Generamos las claves en el host
+$ ssh-keygen -b 4096 -t rsa
+
+No generar frase de paso: simplemente presionemos [Enter], un segundo después volvemos a presionar [Enter],
+y un segundo después volvemos una vez más a presionar [Enter]. O sea, presionaríamos [Enter] un total de tres
+(3) veces, solo lo presionamos… no escribimos nada.
+
+Eso nos va a generar las claves en:
+
+/home/user/.ssh
+id_rsa // Es nuestra llave privada.
+id_rsa.pub // Es nuestra llave pública.
+known_hosts // Es un fichero ya existente en ese directorio.
+
+Enviamos la llave publica para el home del servidor:
+
+$ scp /home/.ssh/id_rsa.pub user@192.168.12.x:
+
+Luego en el servidor renombraremos la clave publica a:
+
+$ mv id_rsa.pub authorized_keys
+
+Luego moveremos ese nuevo fichero a .ssh
+
+$ mv authorized_keys .ssh/
+
+Luego quedaría intentar conectarse desde el host al servidor, si todo está bien no debería pedir contraseña.
+
+**Es funcional, pero hubo una vez que no se que coño paso y no quizo funcionar, las demas pruebas si fueron exitosas.
+
+####################################################
+##### Copias de directorios o ficheros por scp #####
+####################################################
+
+scp copies files between hosts on a network. It uses ssh for data transfer, and uses
+the same authentica‐tion and provides the same security as ssh(1). scp will ask for
+passwords or passphrases if they are needed for authentication.
+
+##### COPIAR ARCHIVOS DE LOCAL A SERVIDOR #####
+
+Si queremos subir el archivo archivo.txt de nuestro ordenador a la carpeta /home/usuario del servidor, hacemos lo siguiente:
+
+$ scp archivo.txt usuario@dominio.com:/home/usuario // Se especifica el archivo a copiar, luego el servidor y luego el directorio 
+en el servidor donde copiaremos el archivo.
+
+##### COPIAR ARCHIVOS DE SERVIDOR A LOCAL #####
+
+Si queremos copiar el fichero archivo.txt del servidor a nuestro ordenador en la carpeta Documentos, hacemos lo siguiente:
+
+$ scp usuario@dominio.com:/home/usuario/archivo.txt /home/usuario/Documentos // Especificamos el servidor, luego la ruta y el archivo a copiar y luego el directorio local donde sera copiado el archivo.
+
+##### COPIAR ARCHIVOS DE SERVIDOR A SERVIDOR #####
+
+$ scp usuario1@dominio1.com:/home/usuario1/archivo.txt usuario2@dominio2.com:/home/usuario2/
+
+###### COPIAR UN DIRECTORIO COMPLETO DE LOCAL A SERVIDOR #####
+
+Para copiar un directorio completo de mi ordenador al servidor, por ejemplo /home/mario/carpeta a /home/usuario, añadimos un -r en el comando:
+
+$ scp -r /home/mario/carpeta usuario@dominio.com:/home/usuario
+
+$ scp -r /home/mario/carpeta usuario@dominio.com: // Con los dos puntos al final se copiara automáticamente en el home del usuario.
+
+##### COPIAR UN DIRECTORIO COMPLETO DE SERVIDOR A LOCAL #####
+
+Para copiar un directorio completo del servidor al local, por ejemplo /home/usuario/carpeta a /home/user/docs, añadimos un -r en el comando:
+
+$ scp -r usuario@dominio.com:/home/usuario/carpeta /home/user/docs
+
+---
+
+user$ scp x.txt 192.168.200.x // Si el servidor tiene el mismo usuario "user" en este caso, no hace falta especificarlo, solamente con la ip del servidor basta, pues toma el nombre del usuario del host para hacer la conexión y posterior copia.
+
+###################
+##### sshpass #####
+###################
+
+Nos permite enviar el password de SSH en la misma línea con el paquete sshpass, ejemplo:
+
+$ sshpass -p «PASSWORD» ssh root@servidor
+
+$ sshpass -p 123456 ssh user@192.168.1.200 // Accedemos remotamente a ese servidor, si la contraseña coincide no debería pedir mas nada, y despliega el prompt del servidor.
+
+####################################################################
+##### Conexion por nautilus explorador de archivos/directorios #####
+####################################################################
+
+Usando el navegador de archivos de Debian, Ubuntu, etc, podemos acceder a ordenador remoto "servidor" para ver graficamente 
+los directorios, es decir, desde nuestro navegador de archivos, navegaremos en los directorios del servidor, para acceder vamos a:
+
+$ nautilus
+
+Archivo > Conectar con el servidor // Nos saldrá una ventana para llenar con:
+
+Servidor: 192.168.12.400 // Aqui va la ip del servidor
+Puerto: 22 // El puerto que tiene habilitado el ssh_config
+Tipo: SSH
+Carpeta: /home // Carpeta que abrira al entrar en conexion
+Nombre de usuario: // Nombre de usuario, de sesion de ese servidor
+Contraseña: // Contraseña de la sesion de usuario del servidor
+
+Si todo esta bien deberia entrar a explorar los directorios del servidor.
+
+###################################
+##### Crear alias de comandos #####
+###################################
+
+Un alias es una palabra o frase que se asignara para 
+remplazar un comando, por lo generalmente se usa para
+remplazar comandos muy largos y dificiles de recordar
+por lo que es una gran ventaja la creacion de alias.
+
+Un alias Se pueden crear temporalmente, directamente en la consola
+y durara hasta que cerremos ese shell, tambien asignar permanentemente
+escribiendolo en el archivo .bashrc que esta en el /home 
+
+$ alias nombre_alias='comando'
+
+Ejemplo:
+$ alias sa='aptitude search apache | grep rt4' // (sa) ahora es el alias de 
+ese comando de busqueda en los repositorios de un paquete especifico.
+
+$ unalias nombre_alias // Para eliminar el alias creado temporalmente
+
+Otros ejemplos:
+
+# some more ls aliases
+alias ll='ls -l --color'
+alias buscar='grep --color -n -Ir'
+
+// Para que se haga efectivo algun cambio en .bashrc es necesario reiniciar
+pero hay otra forma de actualizar el fichero sin reiniciar, entonces:
+
+$ source .bashrc // Bastara para que se apliquen los cambios hechos
+
+// Mensaje de bienvenida al usuario
+
+Pegamos esto al final del .bashrc, reiniciamos el fichero
+y ahora cada vez que iniciemos un shell nos saludará.
+
+## Mensaje al iniciar
+echo "Hola Usuario"
+
+########################################################
+### Saber la direccion ip de una pagina o un sevidor ###
+########################################################
+
+user@debian:~$ nslookup google.com // Saber la de google por ejemplo
+Non-authoritative answer:
+Name:   google.com
+Address: 216.58.192.110 // Direccion ip de google
+
+--- Otra forma ---
+
+$ ping google.com // Haciendo ping al una pagina 
+PING google.com (216.58.192.110) 56(84) bytes of data.
+64 bytes from mia07s35-in-f14.1e100.net (216.58.192.110): icmp_req=1 ttl=49 time=69.6 ms // Ip de google
+64 bytes from mia07s35-in-f14.1e100.net (216.58.192.110): icmp_req=2 ttl=49 time=70.4 ms
+
+--- google.com ping statistics ---
+3 packets transmitted, 2 received, 33% packet loss, time 2001ms
+rtt min/avg/max/mdev = 69.645665/70.00475/470.48645/0.010 ms
+
+########################################
+##### Cambiar permisos de usuarios #####
+########################################
+
+Al ver los permisos de los ficehros o directorios nos encontramos con varios parametros:
+
+En la primera columna se pueden ver una serie de letras y guiones (-rwxr-x---)
+estas letras nos dicen quien en el sistema, y que clases de permisos tiene el fichero o carpeta.
+
+Estas letras están agrupadas en tres grupos con tres posiciones cada uno
+más una primera posición que nos dice de que clase de archivo se trata
+(los mas normales (d) directorios, o (-) archivos de datos).
+
+El primer grupo de tres (rwx en nuestro caso) nos dice que clase de permisos tiene el dueño del fichero (u)(user/owner)
+El segundo grupo de tres (r-x en nuestro caso) nos dice que clase de permisos tiene el grupo del fichero (g)(group).
+Y el último grupo de tres (--- en nuestro caso) nos dice que clase de permisos tienen todos los demás usuarios del sistema sobre este
+fichero (o)(others).
+
+r :significa permiso para leer 
+w :significa permiso para escribir  
+x :significa permiso para ejecutar
+
+u :permisos para el usuario/dueño del fichero/directorio
+g :permisos de grupos
+o :permisos de los demás usuarios
+
+Los permisos se pueden especificar de diferentes maneras, una serie de ejemplos, es lo mejor para comprenderlo:
+
+chmod ugo+rwx (da permisos rwx a todos, user,group,others)
+chmod ugo-x test (quita permiso x (ejecucion) a todos, user,group,others) 
+chmod o-rwx test (quita permisos rwx a others) 
+chmod u=rwx,g=rx (da permisos rwx a user, rx a group y ninguno a others)
+
+chmod -R u=rwx,g=rx,o=rx /dir/dir2/dir3 // Ejemplo de como otorgar permisos a un directorio específico, estos serían los permisos
+predeterminados o por defecto de un directorio.
+
+##### chmod en octal ######
+
+Representación octal de chmod
+
+Lectura tiene el valor de 4
+Escritura tiene el valor de 2
+Ejecución tiene el valor de 1
+
+Entonces:
+
+rwx |  7  | Lectura, escritura y ejecución
+rw- |  6  | Lectura, escritura
+r-x |  5  | Lectura y ejecución
+r-- |  4  | Lectura
+-wx |  3  | Escritura y ejecución
+-w- |  2  | Escritura
+--x |  1  | Ejecución
+--- |  0  | Sin permisos
+
+Por lo tanto:
+
+chmod u=rwx,g=rwx,o=rx  | chmod 775 |
+chmod u=rwx,g=rx,o=     | chmod 760 |
+chmod u=rw,g=r,o=r      | chmod 644 |
+chmod u=rw,g=r,o=       | chmod 640 |
+chmod u=rw,go=          | chmod 600 |
+chmod u=rwx,go=         | chmod 700 |
+
+#################
+##### chown #####
+#################
+
+Permite modificar a los usuarios o grupos dueños de un archivo o carpeta en el sistema de archivos.
+
+$ chown usuario archivo/carpeta
+
+$ chown -R usuario archivo/carpeta
+
+$ chown usuario *
+
+# chown -R username directory
+
+// Para asignar tanto dueño como grupo usamos
+
+# chown -R username:group directory
+
+########################
+##### Criptografía #####
+########################
+
+// Criptografía es la ciencia y arte de escribir mensajes en forma cifrada o en código.
+// Es parte de un campo de estudios que trata las comunicaciones secretas
+
+// La criptografía se ha definido, tradicionalmente, como el ámbito de la criptología
+// que se ocupa de las técnicas de cifrado o codificado destinadas a alterar las
+// representaciones lingüísticas de ciertos mensajes con el fin de hacerlos ininteligibles
+// a receptores no autorizados. Estas técnicas se utilizan tanto en el arte como en la
+// ciencia y en la tecnología. Por tanto, el único objetivo de la criptografía era
+// conseguir la confidencialidad de los mensajes, para lo cual se diseñaban sistemas de
+// cifrado y códigos, y la única criptografía existente era la llamada criptografía
+// clásica.
+
+// La aparición de la informática y el uso masivo de las comunicaciones digitales, han
+// producido un número creciente de problemas de seguridad. Las transacciones que se
+// realizan a través de la red pueden ser interceptadas, y por tanto, la seguridad de
+// esta información debe garantizarse. Este desafío ha generalizado los objetivos de la
+// criptografía para ser la parte de la criptología que se encarga del estudio de los
+// algoritmos, protocolos (se les llama protocolos criptográficos), y sistemas que se
+// utilizan para proteger la información y dotar de seguridad a las comunicaciones
+// y a las entidades que se comunican.
+
+// Para ello los criptógrafos investigan, desarrollan y aprovechan técnicas matemáticas
+// que les sirven como herramientas para conseguir sus objetivos. Los grandes avances
+// producidos en el mundo de la criptografía, han sido posibles gracias a la evolución
+// que se han producido en el campo de la matemática y la informática. 
+
+// Fuente: https://es.wikipedia.org/wiki/Criptograf%C3%ADa
+
+#######################
+##### Criptología #####
+#######################
+
+// La criptología es, tradicionalmente, la disciplina que se dedica al estudio de la escritura
+// secreta, es decir, estudia los mensajes que, procesados de cierta manera, se convierten
+// en difíciles o imposibles de leer por entidades no autorizadas.
+
+// Con la aparición de las tecnologías de la información y la comunicación y el uso masivo de
+// las comunicaciones digitales, se han producido un número creciente de problemas de seguridad.
+// El objetivo de la criptología se ha generalizado para estudiar las técnicas que se encargan
+// de proporcionar seguridad a la información.
+
+// Fuente: https://es.wikipedia.org/wiki/Criptolog%C3%ADa
+
+##########################
+##### Criptoanálisis #####
+##########################
+
+// El criptoanálisis es la parte de la criptología que se dedica al estudio de
+// sistemas criptográficos con el fin de encontrar debilidades en los sistemas
+// y romper su seguridad sin el conocimiento de información secreta. En el lenguaje
+// no técnico, se conoce esta práctica como romper o forzar el código, aunque esta
+// expresión tiene un significado específico dentro del argot técnico. A las
+// personas que se dedican al criptoanálisis se llaman criptoanalistas. 
+
+// Fuente: https://es.wikipedia.org/wiki/Criptoan%C3%A1lisis
+
+##################################
+##### Encriptación o Cifrado #####
+##################################
+
+// Con frecuencia a los procesos de cifrado y descifrado se les denomina encriptado
+// y desencriptado, ambos anglicismos de los términos ingleses encrypt y decrypt.
+// La Real Academia Española recogió esa acepción en la edición de su diccionario
+// de 2014. Por su parte La Fundación del Español Urgente defiende que encriptar
+// es un término válido y que no hay razón para censurar su uso.
+
+// Fuente: https://es.wikipedia.org/wiki/Cifrado_(criptograf%C3%ADa)
+
+###################
+##### Cifrado #####
+###################
+
+// Cifrado, en la criptografía.
+
+// El cifrado es un procedimiento que utiliza un algoritmo de cifrado
+// con cierta clave (clave de cifrado) para transformar un mensaje, sin
+// atender a su estructura lingüística o significado, de tal forma que
+// sea incomprensible o, al menos, difícil de comprender a toda persona
+// que no tenga la clave secreta (clave de descifrado) del algoritmo.
+// Las claves de cifrado y de descifrado pueden ser iguales
+// (criptografía simétrica), distintas (criptografía asimétrica) o
+// de ambos tipos (criptografía híbrida).
+
+// ¿Cómo funciona el cifrado?
+
+// Los métodos de cifrado actuales se basan en fórmulas matemáticas
+// complejas. Se utilizan estos dos tipos de sistemas:
+
+// El cifrado simétrico y asimétrico.
+
+// En el cifrado simétrico, ciframos el archivo con una clave X
+// Para descifrarlo y obtener el archivo original, utilizamos la misma clave X.
+
+// El cifrado asimétrico es más complicado. Aquí no tenemos una sola
+// clave común. En su lugar cada persona tiene dos claves, una
+// pública y una privada. Para enviarle un archivo a un amigo lo
+// cifras con su clave pública. De esta forma, sólo lo puede
+// descifrar él con su clave privada. Es más seguro que el cifrado
+// simétrico, ya que la clave de descifrado (la privada) nunca se
+// comparte, siempre la tiene el receptor.
+
+// Ejemplo: Sabiendo lo anterior, si queremos que tres compañeros de
+// trabajo nos manden un archivo cifrado debemos de mandarle nuestra
+// clave pública (que está vinculada a la privada) y nos podrán mandar
+// de forma confidencial ese archivo que solo nosotros podremos
+// descifrar con la clave privada.
+
+// Fuente: https://es.wikipedia.org/wiki/Cifrado_(criptograf%C3%ADa)
+// Fuente: https://www.genbeta.com/desarrollo/tipos-de-criptografia-simetrica-asimetrica-e-hibrida
+
+#########################
+##### Firma digital #####
+#########################
+
+// La firma digital consiste en la creación de un código, a través de la
+// utilización de una llave privada, de modo que la persona o entidad que
+// recibe un mensaje conteniendo este código pueda verificar si el remitente
+// es quien dice ser e identificar cualquier mensaje que pueda haber sido modificado.
+
+#############################
+##### Firma Electrónica #####
+#############################
+
+// Es un método criptográfico que asocia la identidad de una persona o de un
+// equipo informático al mensaje o documento. En Función del tipo de firma,
+// se puede, además, asegurar la integridad del documento o mensaje.
+
+#################################################################################
+##### Cifrado de ficheros gpg, cifrado simétrico, asimétrico, firma digital #####
+#################################################################################
+
+// Revisar si está instalado gnupg
+
+$ aptitude search gnupg
+
+##### ¿Qué es GnuPG? (GNU Privacy Guard) #####
+
+// Es un derivado libre de PGP y su utilidad es la de cifrar
+// y firmar digitalmente, siendo además multiplataforma (podéis
+// descargarlo desde la página oficial) aunque viene incorporado
+// en algunos sistemas Linux, como en Ubuntu o Debian.
+
+// GnuPG es una herramienta de GNU para la comunicación y el
+// almacenamiento de datos de manera segura. Se puede utilizar para
+// cifrar datos y para crear firmas digitales. Incluye capacidad
+// avanzada de gestión de claves y cumple con el estándar de
+// Internet OpenPGP propuesto tal como se describe en el RFC 4880.
+
+##### Anillo de claves #####
+
+// GPG tiene un repositorio de claves (anillo de claves) donde guarda
+// todas las que tenemos almacenadas en nuestro sistema, ya sean
+// privadas o públicas (como comenté, con la clave pública cifraremos
+// un mensaje que solo podrá descifrar el que posee la clave privada).
+
+// Más adelante cuando veamos un anillo de claves debemos de recordar
+// que pub hace referencia a la clave pública y sub hace referencia a
+// la privada (y que tenemos que tener a buen recaudo).
+
+##### Servidores de claves #####
+
+// Para que nos cifren un mensaje tenemos que compartir la clave pública
+// de nuestro par de claves para cifrar, y como es un poco engorroso
+// difundir una clave a muchas personas existen los servidores de claves
+// PGP (compatibles con GPG), donde subiré una clave pública para el que
+// quiera probar los ejemplos. Unos ejemplos de servidores son
+// estos: pgp.rediris.es (español, aunque falla algunas veces)
+// o pgp.mit.edu (americano, del MIT y a mi no me ha dado problemas).
+
+##### El cifrado simétrico y asimétrico #####
+
+// -En el cifrado simétrico, ciframos el archivo con una clave X
+// Para descifrarlo y obtener el archivo original, utilizamos la misma clave X.
+
+// -El cifrado asimétrico es más complicado. Aquí no tenemos una sola
+// clave común. En su lugar cada persona tiene dos claves, una
+// pública y una privada. Para enviarle un archivo a un amigo lo
+// cifras con su clave pública. De esta forma, sólo lo puede
+// descifrar él con su clave privada. Es más seguro que el cifrado
+// simétrico, ya que la clave de descifrado (la privada) nunca se
+// comparte, siempre la tiene el receptor.
+
+// Ejemplo: Sabiendo lo anterior, si queremos que tres compañeros de
+// trabajo nos manden un archivo cifrado debemos de mandarle nuestra
+// clave pública (que está vinculada a la privada) y nos podrán mandar
+// de forma confidencial ese archivo que solo nosotros podremos
+// descifrar con la clave privada.
+
+##### Cifrado simétrico #####
+
+// El cifrado simétrico es el tipo de cifrado más sencillo que hay, es
+// más rápido de procesar y por desgracia menos seguro que
+// el cifrado asimétrico.
+
+// Crear un fichero cualquiera de ejemplo
+
+$ touch prueba.txt
+
+// Dentro del fichero copiaremos algún texto de prueba para comprobar
+// luego con el descifrado, luego en el shell escribimos el comando
+// gpg con el parámetro -c para cifrar y -d para descifrar.
+
+##### Parámetros básicos de gpg #####
+
+// Encrypt with a symmetric cipher using a passphrase. The default symmetric cipher used is CAST5,
+-c
+
+// Decrypt the file given on the command line
+-d
+
+// El comando gpg -c nombre_fichero nos aparecerá un cuadro que nos pide la contraseña
+luego una confirmacion de la misma, luego  generará un archivo .gpg
+
+$ gpg -c prueba.txt
+
+// Para descifrarlo usamos el comando gpg -d notas.txt.gpg introduciendo la contraseña
+// correcta para poder decifrarlo.
+
+// Descifrar el fichero, nos permitira mirar el contenido.
+
+$ gpg -d prueba.txt.gpg
+
+// Ver el Manual de gpg
+
+$ man gpg
+
+##### Cifrado asimétrico #####
+
+// Generar las claves
+
+// Para poder cifrar asimétricamente primero tenemos que crear la
+// pareja de claves (pública y privada) con el comando gpg --gen-key
+
+$ gpg --gen-key
+gpg (GnuPG) 1.4.12; Copyright (C) 2012 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Por favor seleccione tipo de clave deseado:
+(1) RSA and RSA (default)
+(2) DSA and Elgamal
+(3) DSA (sólo firmar)
+(4) RSA (sólo firmar)
+Su elección:
+
+// GPG nos permite elegir el tipo de clave que queremos usar, hay opciones
+// que solo permiten firmar y otras que permiten firmar y cifrar, en este caso
+// usaremos DSA y Elgamal.
+
+// Las claves DSA pueden tener entre 1024 y 3072 bits de longitud.
+// ¿De qué tamaño quiere la clave? (2048)
+
+// Nos pedirá el tamaño de la clave que puede variar entre 1024 bits y 3072
+// esto es de libre elección, tomarémos el que propone por defecto (2048).
+
+// Nos pide la fecha en la que expirará la clave, la información del emisor
+// de la clave (nombre, mail y algunos datos extra que queramos dar) y por
+// último nos pedirá la contraseña que salvaguarda la clave privada.
+
+// Tras generar las claves podemos verlas con el comando gpg -k que nos muestra nuestro
+// anillo de claves, lo importante de este paso es que veremos la identificación de cada una
+// que es necesaria para poderlas exportar y enviar.
+
+// Visualizar anillo de claves públicas importadas
+
+$ gpg -k
+
+ó
+
+$ gpg --list-key
+
+// Eso nos muestra por pantalla lo siguiente:
+
+/home/user/.gnupg/pubring.gpg
+--------------------------------
+
+pub   1559C/88651986 2017-01-01
+uid                  username_lastname (Enunciado de la clave) <username@email.com>
+sub   2048g/55GD33FG 2017-01-01
+
+// 88651986, Éste es el ID de la llave pública.
+
+// 55GD33FG, Éste es el ID de la llave privada.
+
+// Visualizar anillo de claves privadas importadas, si no hay nada entonces
+// debo importar mis llave/s privadas.
+
+$ gpg --list-secret-key
+
+// Para poder usar mi llave privada debo copiar mi directorio /home/my_user/.gnupg
+// que es donde la genere, eso si quiero usarla en otro equipo.
+
+##### Exportar y enviar la clave pública #####
+
+// El objetivo de esta pareja de claves es que cualquiera nos pueda mandar un
+// archivo cifrado que solo veremos nosotros y esto se hace difundiendo la clave
+// pública que acabamos de crear (la pública, nunca la privada), para exportarla
+// en un archivo usaremos el comando:
+
+// La clave pública generada antes tiene la ID 88651986).
+
+$ gpg -output [archivo destino] --export [ID de a clave pública]
+
+$ gpg --output ClavePublica_username.gpg --export 88651986
+
+// Fichero generado que contiene la clave pública
+
+$ ls
+ClavePublica_username.gpg
+
+// Este archivo ahora se puede difundir por el medio que queramos.
+
+##### Subir una clave pública a un servidor de claves #####
+
+// Los servidores de claves suelen ser de acceso público (al no haber
+// mucho problema por difundir una clave pública) y en este caso
+// subiremos una clave a los servidores del MIT (pgp.mit.edu) usando el comando:
+
+// Al igual que antes la ID es 88651986)
+
+$ gpg --send-keys --keyserver [Dirección del servidor] [ID de la clave pública]
+
+$ gpg --send-keys --keyserver pgp.mit.edu 88651986
+
+// Entramos a --> https://pgp.mit.edu/ y buscamos nuestra clave pública por El Nombre
+// y Apellido que añadimos cuando la estuvimos creando.
+
+##### Importar la clave desde el archivo o servidor de claves #####
+
+// Para poder usar la clave pública para cifrar o comprobar la identidad del
+// remitente tenemos que importar previamente la clave, desde un archivo
+// debemos de usar el comando gpg --import [Archivo de la clave pública]
+
+$ gpg --import CPub.gpg
+
+// Eso nos mostrará lo siguiente:
+
+/home/user/.gnupg/pubring.gpg
+--------------------------------
+pub   2048R/XXXXXX XXXX-XX-XX
+uid                  My User <My email>
+sub   2048R/XXXX XXX-XX-XX
+
+// Para realizar la importación desde el servidor tenemos que usar el comando
+
+$ gpg --keyserver [Dirección del servidor] --recv-keys [ID de la clave]
+
+$ gpg --keyserver pgp.mit.edu --recv-keys 5616846865
+
+##### Borrar una clave de mi anillo de claves #####
+
+// Pasamos el id de la clave que queremos borrar.
+
+$ gpg --delete-keys id_pub_key
+
+$ gpg --delete-keys 23484556
+
+##### Cifrar un fichero #####
+
+// Creamos el fichero, lo llenamos con algo de texto para la prueba, lo guardamos.
+
+$ vim x.txt
+
+// Cifrar con una clave pública.
+
+$ gpg --encrypt --recipient [ID de la clave] [Archivo]
+
+// Ciframos el fichero con la clave publica creada para la prueba.
+
+$ gpg --encrypt --recipient 88651986 x.txt
+
+// Fichero cifrado con la clave pública
+
+// Nos creará un fichero: x.txt.gpg
+
+##### Descifrar un archivo con la clave privada #####
+
+$ gpg -d [Archivo]
+
+$ gpg -d x.txt.gpg
+
+// Si las llaves con que se cifro el fichero están en el anillo de claves entonces
+// se podrá descifrar el contenido.
+
+// Si las claves no han sido importadas entonces mostrará lo siguiente:
+
+gpg: cifrado con clave RSA, ID XXXXXXXX
+gpg: descifrado fallido: clave secreta no disponible
+
+// Si importamos nuestra llave/s privadas copiando /home/aosorio/.gnupg a
+una nueva máquina, si así fuera el caso, nos mostrará:
+
+Necesita una frase contraseña para desbloquear la clave secreta
+del usuario: "Name_user Last_name (comment) <mail@mail.xxx>"
+clave RSA de 2048 bits, ID 88651986, creada el 201x-xx-xx(ID de clave primaria 5F829889)
+
+Introduzca frase contraseña:
+
+// La contraseña es la clave privada, la cual solo tendremos nosotros y
+// nunca compartiremos, pues es la que nos permite descifrar los ficheros
+// que fueron cifrados con nuestra clave publica.
+
+##### Firmar archivos #####
+
+// Una de las medidas de seguridad básicas al pasar un mensaje o fichero es
+// asegurarnos que el emisor es quien dice ser, para asegurarnos de esto
+// digitalmente existe la firma digital, podemos cifrar y a su vez
+// firmar ficheros, que es lo que haremos con el comando:
+
+$ gpg -u [ID de la clave] --output [Archivo resultante] --sign [Archivo para firmar]
+
+...e introduciendo la contraseña de la clave privada.
+
+$ gpg -u 88651986 --output x_firmado.txt.gpg --sign x.txt
+
+...
+
+Necesita una frase contraseña para desbloquear la clave secreta
+del usuario: "xxx xxx (xx) <mail@mail.xxx>"
+clave RSA de 2048 bits, ID 88651986, creada el 201x-xx-xx
+
+Introduzca frase contraseña: 
+
+...
+
+nos generará el fichero:
+
+x_firmado.txt.gpg
+
+##### Verificar y descifrar un archivo firmado #####
+
+Cualquiera con la clave pública asociada a la que ha firmado el documento puede
+leerlo, de la misma forma que desciframos un archivo (gpg -d [Archivo]) o
+verificándolo únicamente con el comando gpg --verify [Archivo].
+
+$ gpg --verify x_firmado.txt.gpg 
+
+muestra...
+
+gpg: Firmado el xxx xx xx 201x xx:xx:xx VET usando clave RSA ID 88651986
+gpg: Firma correcta de "User_name Last_name (comment) <user@mail.xxx>"
+
+##### Exportar la clave privada #####
+
+Si queremos verificar o firmar desde otro equipo con nuestra clave privada
+tenemos que tener nuestra clave privada en ese equipo, para eso es necesario
+copiar el directorio .gnupg que está en el /home/user de la máquina en la cual
+creamos la clave privada a la nueva máquina.
+
+#####################################
+##### Configurar sudo en Debian #####
+#####################################
+
+En Debian no viene instalado y configurado por defecto.
+
+$ aptitude install sudo
+
+Una vez con el sudo instalado deberemos agregar nuestro usuario en la sección "User privilege specification"
+en el archivo /etc/sudoers, de tal forma que la sección quede así:
+
+User privilege specification
+root ALL=(ALL) ALL
+tu_usuario ALL=(ALL) ALL
+
+Una vez configurado esto, ya podremos ejecutar acciones de administrador desde una terminal común, anteponiendo el sudo a la acción a realizar.
+
+###################################################################
+##### Lista de fuentes de los paquetes de debian sources.list #####
+###################################################################
+
+----- Apt -----
+
+Apt (Advanced Package Tool) es un set de herramientas del núcleo de Debian. Apt hace posible:
+instalar, eliminar, mantener sus aplicaciones al día y mucho más... 
+
+Apt, que basicamente resuelve problemas de dependencias y busca los paquetes solicitados, trabaja con dpkg, otra herramienta
+que maneja la instalación y eliminación de paquetes (aplicaciones). Apt es muy poderoso, y se usa frecuentemente desde la línea
+de comandos o consola/terminal. Sin embargo, hay muchas herramientas GUI/Gráficas para ayudarle a usar Apt sin tener
+que tocar la línea de comando.
+
+Al presente, aptitude es la herramienta recomendada para interactuar con la suite APT. Las herramientas APT deben ser usadas
+especificamente para manejar acciones que no puedan ser manejadas por aptitude, o dónde se necesite mayor control de las dependencias. 
+
+/etc/apt/sources.list // APT utiliza un archivo que enlista las "fuentes" en donde se encuentran los paquetes. Este archivo es: /etc/apt/sources.list
+
+El contenido de este archivo, normalmente sigue este formato:
+deb http://host/debian distribución sección1 sección2 sección3
+deb-src http://host/debian distribución sección1 sección2 sección3
+
+Los renglones arriba mencionados son ficticios y no deberán ser usados. La primera palabra en cada línea, deb o deb-src, indican
+el tipo del archivo: ya sea que contenga paquetes binarios (deb), esto es, los paquetes pre-compilados que normalmente se usan
+o los paquetes fuente (deb-src), que son los códigos originales, más el archivo de control de Debian (.dsc) y el diff.gz que
+contienen los cambios necesarios para "debianizar" el programa.
+
+Generalmente se encuentra lo siguiente por defecto en el archivo sources.list:
+
+# See sources.list(5) for more information, especialy
+# Remember that you can only use http, ftp or file URIs
+# CDROMs are managed through the apt-cdrom tool.
+deb http://http.us.debian.org/debian stable main contrib non-free
+deb http://non-us.debian.org/debian-non-US stable/non-US main contrib non-free
+deb http://security.debian.org stable/updates main contrib non-free
+
+# Uncomment if you want the apt-get source function to work
+#deb-src http://http.us.debian.org/debian stable main contrib non-free
+#deb-src http://non-us.debian.org/debian-non-US stable/non-US main contrib non-free
+
+Éstas son las líneas necesarias para una instalación básica de Debian. La primer línea deb apunta al archivo en el servidor oficial
+la segunda línea apunta hacia el archivo del servidor non-US y la tercera línea apunta hacia el archivo del servidor de
+actualizaciones de seguridad.
+
+Las dos últimas líneas están deshabilitadas (con un "#" al inicio), así que apt-get las ignora. Éstas son las líneas de deb-src
+esto es, apuntan hacia los paquetes fuente de Debian. Si frecuentemente descarga paquetes fuente para probar o recompilar
+habilítelas (borrando el "#" al inicio de la línea).
+
+El archivo /etc/apt/sources.list puede contener varios tipos de líneas. APT sabe como interpretar líneas del tipo http,
+ftp, file (archivos locales, p.e., un directorio que contiene un CD-ROM) y ssh, según mis conocimientos.
+
+No olvide ejecutar el comando apt-get update después de modificar el archivo /etc/apt/sources.list. Debe hacer
+esto para permitir a APT obtener la lista de paquetes de las fuentes que especificó.
+
+#################################################
+##### Enlaces físicos y simbólicos en Linux #####
+#################################################
+
+##### Enlaces físicos #####
+
+Un enlace físico no es más que una etiqueta o un nuevo nombre asociado a un archivo. Es una forma de identificar el mismo
+contenido con diferentes nombres. Éste enlace no es una copia separada del archivo anterior sino un nombre diferente
+para exactamente el mismo contenido.
+
+$ ln archivo.txt nuevo_nombre.txt // Para crear un enlace físico en Linux del archivo archivo.txt a nuevo_nombre.txt
+
+El enlace aparecerá como otro archivo más en el directorio y apuntará al mismo contenido de archivo.txt.
+Cualquier cambio que se haga se reflejará de la misma manera tanto para archivo.txt como para nuevo_nombre.txt.
+
+Un enlace se puede borrar usando el comando rm de la misma manera en que se borra un archivo, sin embargo el contenido del
+iniodo no se eliminará mientras haya un enlace físico que le haga referencia. Esto puede tener varias ventajas, pero también
+puede complicar la tarea de seguimiento de los archivos.
+
+Un enlace físico tampoco puede usarse para hacer referencia a directorios o a archivos en otros equipos.
+
+##### Enlaces simbólicos #####
+
+Un enlace simbólico también puede definirse como una etiqueta o un nuevo nombre asociado a un archivo pero a diferencia de los enlaces físicos
+el enlace simbólico no contiene los datos del archivo, simplemente apunta al registro del sistema de archivos donde se encuentran los datos.
+Tiene mucha similitud a un acceso directo en guindows o un alias en OS X.
+
+// Situados en "b" crearemos un enlace simbólico del fichero x.txt que está en la carpeta "a".
+b$ ln -s ../a/x.txt
+
+Éste enlace también aparecerá como otro archivo más en el directorio y apuntará al mismo contenido de archivo.txt, reflejando todos los cambios
+que se hagan tanto para archivo.txt como para nuevo_nombre.txt.
+
+Sobre un enlace simbólico también se pueden usar todos los comandos básicos de archivos (rm, mv, cp, etc). sin embargo cuando el archivo original
+es borrado o movido a una ubicación diferente el enlace dejará de funcionar y se dice que el enlace está roto.
+
+Un enlace simbólico permite enlazar directorios y, usando NFS, también permite enlazar archivos fuera del equipo.
+
+########################
+##### jaula chroot #####
+########################
+
+Con los programas chroot y debootstrap, es posible configurar un sistema Debian aislado en el cual poder entrar
+y hacer pruebas, sin temor alguno a destruir su sistema principal.
+
+Definimos un directorio en la raíz del sistema donde se ejecutará el sistema enjaulado, en este ejemplo lo mostrare para
+debían Wheezy pero siguiendo la misma secuencia y sustituyendo adecuadamente se puede instalar cualquier versión de debían.
+
+$ sudo mkdir /home/user/jaulas/wheezy
+
+Instalamos la aplicación necesaria para ejecutar la jaula:
+
+$ sudo apt-get install debootstrap
+
+Creamos la jaula 
+
+$ sudo debootstrap wheezy /home/user/jaulas/wheezy http://ftp.us.debian.org/debian/
+
+o usamos un repo local o mas cercano para que las descarga de los ficheros sea mas rápida
+
+$ sudo debootstrap wheezy /home/user/jaulas/wheezy http://debian.cenditel/debian/
+
+Cuando termine, dependiendo de la velocidad de descarga, habrá creado todo el sistema básico para correr
+debían wheezy en el directorio definido.
+
+Antes de ejecutar la jaula se deben montar algunos directorios:
+
+$ sudo mount -o bind /proc /home/user/jaulas/wheezy/proc 
+
+Si senecesita conexión a periféricos como un módem usb o una impresora estos se guardan en el directorio /dev/
+por ende tambien se debe montar.
+
+$ sudo mount -o bind /dev/ /home/user/jaulas/wheezy/dev/ 
+
+$ sudo mount -o bind /dev/pts/ /home/user/jaulas/wheezy/dev/pts/
+
+$ sudo mount -o bind /sys/ /home/user/jaulas/wheezy/sys/ 
+
+o creamos un script para montar los directorios, creamos el script: montar.sh
+
+---
+
+#!/bin/bash
+mount -o bind /proc /home/user/jaulas/wheezy/proc
+mount -o bind /dev/ /home/user/jaulas/wheezy/dev/
+mount -o bind /dev/pts/ /home/user/jaulas/wheezy/dev/pts/
+mount -o bind /sys/ /home/user/jaulas/wheezy/sys/
+
+---
+
+y lo ejecutamos con:
+
+# ./montar.sh
+
+Para desmontar por alguna razón (borrar la jaula por ejemplo), creamos un desmontar.sh:
+
+---
+
+#!/bin/bash
+umount /home/user/jaulas/wheezy/proc
+umount /home/user/jaulas/wheezy/dev/
+umount /home/user/jaulas/wheezy/dev/pts/
+umount /home/user/jaulas/wheezy/sys/
+
+---
+
+# ./desmontar
+
+A partir de este momento ya tienes el sistema listo y puedes hacer cualquier tipo de prueba sin que corra riesgo
+tu sistema base para salir de la jaula y continuar con tu sistema solo debes ejecutar:
+
+# exit
+
+// Para accecer a la jaula o ejecutarla debes ser usuario root o usar sudo
+# chroot /home/user/jaulas/wheezy
+
+##### Nota #####
+Este sistema solo puede ejecutar aplicaciones en el terminal si se requiere interfaz gráfica se debe utilizar una
+aplicación como Xnest que su utilización te detallo a continuación:
+
+$ sudo apt-get xnest
+
+Ejecución:
+
+En terminal 1 ejecutas 
+
+$ Xnest -ac -geometry 800x600 :1 
+
+en un segundo terminal inicias la jaula 
+
+# sudo chroot /jaulas/wheezy 
+
+y dentro de la jaula ejecutas 
+
+# export DISPLAY=localhost:1 
+
+En este momento toda aplicación que ejecutes en dicha jaula que posea interfaz gráfica se mostrara en la pantalla
+mostrada por Xnest adicionalmente cabe destacar que puedes colocar cualquier geometria de ventana al ejecutar xnest 
+
+- Cada ves que reinicies la pc debes volver a montar los directorios /proc, /dev/pts y /dev, esto lo puedes automatizar
+agregando las siguientes siguientes lineas en el archivo /etc/fstab o corriendo un script con esas sentencias.
+
+/proc      /home/user/jaulas/wheezy/proc/        auto     bind 0       0
+/dev       /home/user/jaulas/wheezy/dev/pts/     auto     bind 0       0
+/dev/pts   /home/user/jaulas/wheezy/dev/pts/     auto     bind 0       0
+/sys       /home/aosorio/jaulas/wheezy/sys/      auto     bind 0       0
+
+Descargamos los paquetes locales y locales-all y ejecutamos:
+
+$ dpkg-reconfigure locales 
+
+Escogemos las configuraciones regionales que desea generar:
+
+es_VE.UTF-8 UTF-8
+
+Configuración regional predeterminada para el entorno del sistema:
+es_VE.UTF-8
+
+Listo, jaula de wheezy lista!
+
+##### Remover un entorno chroot #####
+
+Desmontar los directorios montados y borrar el directorio de que alverga la jaulea (wheezzy)
+
+####################################################################
+##### codecs de audio y video para GNU/Linux Debian 7 (Wheezy) #####
+####################################################################
+
+# apt-get install ffmpeg flashplugin-nonfree libcurl3 freepats gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly  libaccess-bridge-java libcdaudio1 libdc1394-22 libdvdnav4 libfftw3-3 libgif4 libid3tag0 libiptcdata0 libmms0  libmpeg2-4 libneon27-gnutls libofa0 libsidplay1 libsndfile1 libswscale0  openjdk-7-jre openjdk-7-jre-headless openjdk-7-jre-lib rhino ttf-arphic-uming ttf-baekmuk ttf-bengali-fonts ttf-devanagari-fonts ttf-gujarati-fonts ttf-indic-fonts ttf-kannada-fonts ttf-kochi-gothic ttf-liberation ttf-malayalam-fonts ttf-mscorefonts-installer ttf-oriya-fonts ttf-punjabi-fonts ttf-sazanami-mincho ttf-tamil-fonts ttf-telugu-fonts tzdata-java
+
+###############################
+##### Variables de entorno ####
+###############################
+
+Las variables de entorno contienen información a la que se accede a través del nombre de la
+variable (al igual que ocurre en los lenguajes de programación).
+
+Por ejemplo, PWD es una variable de entorno. Algo que puedo comprobar así:
+
+$ echo $PWD
+/home/user
+
+(lo que significa que el comando "pwd" es una llamada a "echo $PWD"
+
+// Consultar todas mis variables de entorno.
+$ env
+$ printenv
+
+// Crear una variable de entorno
+$ export name_var=Value
+
+// Eliminar una variable de entorno
+$ export name_var=
+
+########################
+##### Terminal tty #####
+########################
+
+tty es la consola que nos permite en GNU/Linux acceder a nuestro sistema operativo fuera de su entorno gráfico (X-Window).
+En general disponemos de hasta seis terminales, para acceder:
+
+Ctrl + Alt + F1 para acceder a la primera, F2 para la segunda y así hasta F6 para la sexta y F7 para volver al entorno gráfico.
+
+No debemos confundir las consolas tty con la que habitualmente usamos sobre el entorno gráfico X-Window.
+
+###################
+##### tasksel #####
+###################
+
+El paquete Tasksel proporciona una interfaz sencilla para los usuarios que quieren configurar su sistema para realizar una tarea específica. Este programa es utilizado durante el proceso de instalación, pero los usuarios puede usarlo también en cualquier momento.
+
+##### Entorno de escritorio #####
+
+Después de instalar un sistema básico, usted puede instalar el DesktopEnvironment utilizando tasksel. La orden tasksel (ingresado como root) le muestra algunas opciones (de alto nivel de abstraccion) para instalar paquetes. Podría usted simplemente marcar la opción Desktop environment. Instalará los paquetes de Gnome y algunos paquetes considerados como estándar para un escritorio Debian.
+
+################
+##### dhcp #####
+################
+
+DHCP (siglas en inglés de Dynamic Host Configuration Protocol, en español «protocolo de configuración dinámica de host») es un servidor
+que usa protocolo de red de tipo cliente/servidor en el que generalmente un servidor posee una lista de direcciones IP dinámicas y las
+va asignando a los clientes conforme éstas van quedando libres, sabiendo en todo momento quién ha estado en posesión de esa IP, cuánto
+tiempo la ha tenido y a quién se la ha asignado después. Así los clientes de una red IP pueden conseguir sus parámetros de configuración
+automáticamente.
+
+##### Asignación de direcciones IP #####
+
+Cada dirección IP debe configurarse manualmente en cada dispositivo y, si el dispositivo se mueve a otra subred, se debe configurar otra
+dirección IP diferente. El DHCP le permite al administrador supervisar y distribuir de forma centralizada las direcciones IP necesarias
+y, automáticamente, asignar y enviar una nueva IP si fuera el caso en que el dispositivo es conectado en un lugar diferente de la red.
+
+El protocolo DHCP incluye tres métodos de asignación de direcciones IP:
+
+// Asignación manual o estática
+Asigna una dirección IP a una máquina determinada. Se suele utilizar cuando se quiere controlar la asignación
+de dirección IP a cada cliente, y evitar, también, que se conecten clientes no identificados.
+
+// Asignación automática
+Asigna una dirección IP a una máquina cliente la primera vez que hace la solicitud al servidor DHCP y hasta que
+el cliente la libera. Se suele utilizar cuando el número de clientes no varía demasiado.
+
+// Asignación dinámica
+El único método que permite la reutilización dinámica de las direcciones IP. El administrador de la red determina un
+rango de direcciones IP y cada dispositivo conectado a la red está configurado para solicitar su dirección IP al servidor
+cuando la tarjeta de interfaz de red se inicializa. El procedimiento usa un concepto muy simple en un intervalo de tiempo
+controlable. Esto facilita la instalación de nuevas máquinas clientes.
+
+Algunas implementaciones de DHCP pueden actualizar el DNS asociado con los servidores para reflejar las nuevas direcciones IP
+mediante el protocolo de actualización de DNS establecido en RFC 2136 (Inglés).
+
+El DHCP es una alternativa a otros protocolos de gestión de direcciones IP de red, como el BOOTP (Bootstrap Protocol). DHCP es un
+protocolo más avanzado, pero ambos son los usados normalmente.
+
+##################################
+##### Configuración del grub #####
+##################################
+
+Fichero de configuración donde se define el tiempo de espera del grup para mostrar
+la lista de SO disponibles y sus opciones.
+
+/etc/default/grub
+
+#################################################
+##### w3m - Nnavegador web desde la consola #####
+#################################################
+
+w3m es un navegador web basados en texto/paginador.
+
+# apt-get install w3m
+
+$ w3m https://www.debian.org // Para iniciar el navegador en modo interactivo
+
+$ w3m https://www.debian.org -dump // Volcado de una página con formato de salida estándar
+
+##### Atajos de teclado en modo interactivo #####
+
+Salir del navegador: q
+Página anterior: B
+Descargar página actual: a
+Ir a inicio: g
+Saltar al final: G
+Desplazarse hacia arriba una página: -
+Desplazarse hacia abajo una página: +
+Abrir URL: U
+
+#####################################################
+##### apg - generador automático de contraseñas #####
+#####################################################
+
+apg (Automatic Password Generator)
+
+// Instalación:
+
+# apt-get install apg
+
+// Apg es capaz de generar un listado de contraseñas.
+
+// Usa un algoritmo para generar contraseñas pronunciables e impronunciables
+// también permite generar contraseñas aleatorias definidas a partir de conjuntos
+// de símbolos definidos por el usuario (dígitos, letras mayúsculas y minúsculas, y símbolos especiales.)
+// Por defecto, apg genera 6 contraseñas con caracteres alfanuméricos que además son pronunciables (en inglés)
+
+$ apg
+
+Please enter some random data (only first 16 are significant)
+(eg. your old password):>
+OrwefdyetEc6 (Or-wef-dyet-Ec-SIX)
+9ovCaulvac5 (NINE-ov-Caulv-ac-FIVE)
+EryidribMeb7 (Er-yi-drib-Meb-SEVEN)
+beoddIcox2 (be-odd-Ic-ox-TWO)
+Oamyalirl6 (Oam-yal-irl-SIX)
+IgPiham1 (Ig-Pi-ham-ONE)
+
+// Ahora generemos 4 contraseñas con una longitud mínima de 8 caracteres, máxima de 12
+// y que además sean impronunciables, usan el segundo algoritmo:
+
+// -n x = Número de contraseñas a generar.
+// -m x = Mínimo de caractéres que deberá tener la contraseña.
+// -x x = Máximo de caractéres que deberá tener la contraseña.
+
+$ apg -n 4 -m 8 -x 8 -a 1
+
+// Mínimo 8 máximo 12, incluyendo caractéres especiales
+$ apg -n 4 -m 8 -x 12 -a 1
+
+// Mínimo 8 máximo 12, incluyendo caractéres especiales en menor medida
+$ apg -n 4 -m 8 -x 12 -a 0
+
+###############################################################
+##### Actualizar la versión de GNU/Linux Debian instalada #####
+###############################################################
+
+// En este ejemplo actualizaremos la versión GNU/Linux Debian 8 a la 9.
+
+// Actualizamos el fichero source.list con los repositorios de GNU/Linux Debian 9 Stretch.
+// Como usuario root editamos y comentamos todo su contenido, los comentarios en
+// ese fichero comienzan con #.
+
+# nano /etc/apt/sources.list
+
+// Una vez que todo esté comentado, agregamos lo siguiente:
+
+##### Debian GNU/Linux 9 Stretch #####
+
+deb http://deb.debian.org/debian stretch main
+deb-src http://deb.debian.org/debian stretch main
+
+deb http://security.debian.org/debian-security/ stretch/updates main
+deb-src http://security.debian.org/debian-security/ stretch/updates main
+
+deb http://deb.debian.org/debian stretch-updates main
+deb-src http://deb.debian.org/debian stretch-updates main
+
+// Actualizamos la lista de los repositorios con:
+
+# apt-get update
+
+// Actualizamos los paquetes del sistema, para que instale las versiones de GNU/Linux Debian 9 Stretch:
+
+# apt-get upgrade
+
+// Finalmente actualizamos todo de manera inteligente y segura:
+
+# apt-get dist-upgrade
+
+// Ahora Reiniciamos el sistema, con eso ya deberíamos estar en GNU/Linux Debian 9 Stretch:
+
+# reboot
+
+// Hay que estar pendiente de la consola, porque seguro va a pedir revisión
+// manual de algunos paquetes, donde te dirá si quieres conservar la versión
+// y configuración actual, como ssh, vim, postgresql, otros...
+
+#################################
+##### sources.list example  #####
+#################################
+
+**The format is
+deb <respository server/mirror> <repository name> <sub branches of the repo>
+
+#----------------------------------
+
+##### Debian GNU/Linux Testing & Unstable #####
+
+# Testing repository - main, contrib and non-free branches
+#deb http://http.us.debian.org/debian testing main non-free contrib
+#deb-src http://http.us.debian.org/debian testing main non-free contrib
+
+# Testing security updates repository
+#deb http://security.debian.org/ testing/updates main contrib non-free
+#deb-src http://security.debian.org/ testing/updates main contrib non-free
+
+# Unstable repo main, contrib and non-free branches, no security updates here
+#deb http://http.us.debian.org/debian unstable main non-free contrib
+#deb-src http://http.us.debian.org/debian unstable main non-free contrib
+
+#----------------------------------
+
+##### Debian GNU/Linux 9 (Stretch) Updates #####
+
+deb http://deb.debian.org/debian stretch main
+deb-src http://deb.debian.org/debian stretch main
+
+deb http://security.debian.org/debian-security/ stretch/updates main
+deb-src http://security.debian.org/debian-security/ stretch/updates main
+
+deb http://deb.debian.org/debian stretch-updates main
+deb-src http://deb.debian.org/debian stretch-updates main
+
+##### Non free #####
+
+#deb http://deb.debian.org/debian stretch main contrib non-free
+#deb-src http://deb.debian.org/debian stretch main contrib non-free
+
+#----------------------------------
+
+##### Debian GNU/Linux 8 (Jessie) Estable #####
+
+# Repositorio Oficial
+deb http://http.us.debian.org/debian/ jessie main contrib non-free
+deb-src http://http.us.debian.org/debian/ jessie main contrib non-free
+deb http://httpredir.debian.org/debian/ jessie main
+deb-src http://httpredir.debian.org/debian/ jessie main
+
+# jessie-updates, previously known as 'volatile'
+deb http://httpredir.debian.org/debian/ jessie-updates main
+deb-src http://httpredir.debian.org/debian/ jessie-updates main
+
+# Repositorio de Seguridad
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://security.debian.org/ jessie/updates main contrib non-free
+deb http://security.debian.org/ jessie/updates main
+deb-src http://security.debian.org/ jessie/updates main
+
+#----------------------------------
+
+##### Debian GNU/Linux 7 (Wheezy) Estable #####
+
+#Repositorio Oficial
+deb http://ftp.us.debian.org/debian/ wheezy main contrib
+deb-src http://ftp.us.debian.org/debian/ wheezy main contrib
+
+#Actualizaciones de Seguridad
+deb http://security.debian.org/ wheezy/updates main contrib
+deb-src http://security.debian.org/ wheezy/updates main contrib
+
+#Actualizaciones de Wheezy
+deb http://ftp.debian.org/debian wheezy-updates main contrib non-free
+deb-src http://ftp.debian.org/debian wheezy-updates main contrib non-free
+
+#Backports
+deb http://ftp.debian.org/debian/ wheezy-backports main
+
+#----------------------------------
+
+##### Debian GNU/Linux 8 (Jessie) Multimedia repo #####
+
+deb http://www.deb-multimedia.org jessie main non-free
+#or
+#deb ftp://ftp.deb-multimedia.org jessie main non-free
+#or
+#deb http://www.deb-multimedia.org stable main non-free
+#or
+#deb ftp://ftp.deb-multimedia.org stable main non-free
+
+#----------------------------------
+
+##### Debian GNU/Linux 7 (Wheezy) Multimedia repo #####
+
+deb http://www.deb-multimedia.org wheezy main
+#or
+#deb ftp://ftp.deb-multimedia.org wheezy main
+#or
+#deb http://www.deb-multimedia.org oldstable main
+#or
+#deb ftp://ftp.deb-multimedia.org oldstable main
+
+#----------------------------------
+
+##### CENDITEL mirror - Debian GNU/Linux 9 (Stretch) #####
+
+deb http://debian.cenditel/debian stretch main contrib non-free
+deb-src http://debian.cenditel/debian stretch main contrib non-free
+
+deb http://debian.cenditel/debian stretch-updates main contrib non-free
+deb-src http://debian.cenditel/debian stretch-updates main contrib non-free
+
+deb http://debian.cenditel/debian-security stretch/updates main contrib non-free
+deb-src http://debian.cenditel/debian-security stretch/updates main contrib non-free
+
+#----------------------------------
+
+##### CENDITEL mirror - Debian GNU/Linux 8 (Jessie) Estable #####
+
+deb http://debian.cenditel/debian/ jessie main contrib non-free
+deb-src http://debian.cenditel/debian/ jessie main contrib non-free
+
+# jessie-updates, previously known as 'volatile'
+deb http://debian.cenditel/debian/ jessie-updates main contrib non-free
+deb-src http://debian.cenditel/debian/ jessie-updates main contrib non-free
+
+#deb http://repositorio.cenditel.gob.ve/debian/ jessie main contrib non-free
+#deb http://tibisay.cenditel.gob.ve/repositorio jessie main contrib non-free
+
+# Agregar la llave del repositorio al sistema, como root escribimos:
+# wget -q -O- http://repositorio.cenditel.gob.ve/debian/repositorio_cenditel.asc | apt-key add -
+
+#----------------------------------
+
+##### CENDITEL mirror - Debian GNU/Linux 7 (Wheezy) Estable #####
+
+deb http://debian.cenditel/debian/ wheezy main
+deb-src http://debian.cenditel/debian/ wheezy main
+
+# wheezy-updates, previously known as 'volatile'
+deb http://debian.cenditel/debian/ wheezy-updates main
+deb-src http://debian.cenditel/debian/ wheezy-updates main
+
+##################################
+##### Repositorios de Debian #####
+##################################
+
+En el siguiente enlace podemos encontrar un espejo
+donde poder descargar los paquetes de todas las versiones
+de Debian --> http://archive.debian.org/debian/README
+
+O simplemente agregando el repositorio en el source.list, por ejemplo:
+
+#deb http://archive.debian.org/debian/ squeeze main contrib
+#deb http://archive.debian.org/debian/ wheezy main contrib
+deb http://archive.debian.org/debian/ jessie main contrib
+
+########################################################
+##### Recommended installation packages for Debian #####
+########################################################
+
+Actualizar el source.list 
+
+# apt-get update
+
+Si da problemas con el fichero dir/dir/lock por ejemplo, lo borramos
+
+# rm -f dir/dir/lock
+
+No se pudo bloquear /var/lib/dpkg/lock - open (11: Recurso no disponible temporalmente)
+
+Solución...
+
+$ sudo fuser -vki  /var/lib/dpkg/lock
+
+luego seguimos con...
+
+##### Programas para el Sistema #####
+
+terminator (Configurar, luego)
+vim (Configurarlo)
+
+.bashrc (Configurarlo, alias, etc...)
+alias ll='ls -l --color'
+alias buscar='grep --color -n -Ir'
+
+sudo (Configurar y Probar)
+aptitude (Probar)
+ssh (Configurar y Probar)
+git (Configurarlo, Probarlo)
+vlc player
+apache (Probar)
+postgresql (Probar)
+Virtual Box (Opcional)
+Paquete para dar formatos a unidades usb
+rsync
+meld
+audacity
+
+tree // Muestra un árbol de directorios con sangría, en color.
+
+screenfetch // Busca y muestra información sobre el sistema operativo que estemos utilizando, datos
+como el tipo de distribución, kernel, entorno de escritorio, windows manager, CPU, themes, RAM, etc… 
+
+#####  Para compilacion y construcción de paquetes #####
+
+build-essential
+gcc
+dpkg-dev
+fakeroot
+cmake
+devscripts
+autoconf
+automake
+dh-make
+debhelper
+autotools-dev
+gnupg
+lintian
+quilt
+packaging-dev
+
+##### Desarrollo #####
+
+curl
+Sublime (Instalar el .deb de la página o buscar en los repos, > a v2.)
+python (Probarlo)
+python-pip
+virtualenv
+virtualenvwrapper
+python-requests
+django (Opcional)
+    pip install django-compressor (Opcional)
+    pip install south (Opcional)
+    pip install django-extensions (Opcional)
+
+ruby (Probarlo)
+ruby on rails (Opcional)
+Qt-Creator (Opcional)
+
+##### Navegador Web Firefox #####
+
+# apt-get install firefox-esr-l10n-es-es // Poner firefox en español
+# apt-get install libreoffice-l10n-es // Poner el libreoffice en español
+# apt-get install libreoffice-l10n-ve // Poner el libreoffice en español de venezuela
+
+Adblock --> https://addons.mozilla.org/es/firefox/addon/adblock-plus/
+
+Private Tab --> https://addons.mozilla.org/es/firefox/addon/private-tab/
+
+Firebug --> https://addons.mozilla.org/es/firefox/addon/firebug/
+
+Youtube Video Downloader --> https://addons.mozilla.org/es/firefox/addon/download-youtube/
+
+Youtube - Ver videos mientras se leen comentarios --> https://addons.mozilla.org/es/firefox/addon/pop-up-play/
+
+Save as PDF --> https://addons.mozilla.org/es/firefox/addon/save-as-pdf/
+
+Google Translator for Firefox --> https://addons.mozilla.org/es/firefox/addon/google-translator-for-firefox/?src=userprofile ó
+http://translatorforfirefox.blogspot.com/
+
+######################
+##### Virtualbox #####
+######################
+
+// Entrar en tty1 desde la máquina virtual, lo mismo para ttyn...
+RightCtrl + F1
+
+##### Instalar Guest Additions de Virtual Box en Debian #####
+
+Primero instalamos los siguientes paquetes:
+
+# apt-get install build-essential
+
+# apt-get install linux-headers-$(uname -r)
+
+En el menú de VirtualBox de la máquina “guest” con Debian pulsamos en Dispositivos / Insertar imagen
+de CD de las Guest Additions.
+
+Por lo general, Virtualbox trae integrada entre sus ficheros las Guest Additions en una imágen .iso, siguiendo
+el paso anterior esa imagen debería montarse automáticamente, ahora solo queda ejecutar el script de instalación:
+
+# bash /media/cdrom0/VboxLinuxAdditions.run
+
+Si no hay problemas con la instalación, reiniciamos la máquina virtual y ya se debería poder usar el modo pantalla
+completa, el modo fluido o la función de las carpetas compartidas.
+
+############################
+##### Debian Backports #####
+############################
+
+Proporciona paquetes para nuevas versiones de determinadas aplicaciones que se van incluyendo a lo largo
+del periodo de vida de la versión. Sin embargo desde el sitio oficial (http://backports.debian.org/Instructions/)
+recomiendan utilizar este repositorio con precaución ya que en ocasiones pueden existir incompatibilidades
+de dependencias entre estos paquetes y los estables. 
+
+#################
+##### bind9 #####
+#################
+
+El Nombre de Dominio de Internet de Berkeley (BIND) implementa un servidor de nombres de dominio de Internet.
+BIND es el servidor de nombres más ampliamente utilizado en Internet, y tiene el
+respaldo del Consorcio de «Software» de Internet, www.isc.org.
+Este paquete proporciona el servidor y los archivos de configuración relacionados. 
+
+// Instalación del paquete bind9
+# apt-get install bind9 bind9-doc
+
+// Editamos /etc/resolv.conf para que lea el localhost
+nameserver 127.0.0.1
+
+En /etc/bind están los archivos de configuración del paquete.
+
+################
+##### vlan #####
+################
+
+Una VLAN, acrónimo de virtual LAN (Red de área local virtual), es un método para crear redes lógicas
+independientes dentro de una misma red física.
+
+Varias VLAN pueden coexistir en un único conmutador físico o en una única red física. Son útiles para
+reducir el tamaño del dominio de difusión y ayudan en la administración de la red, separando segmentos
+lógicos de una red de área local (los departamentos de una empresa, por ejemplo) que no deberían
+intercambiar datos usando la red local (aunque podrían hacerlo a través de un enrutador
+o un conmutador de capa 3 y 4).
+
+Una VLAN consiste en dos o más redes de computadoras que se comportan como si estuviesen conectados
+al mismo conmutador, aunque se encuentren físicamente conectados a diferentes segmentos de una
+red de área local (LAN). Los administradores de red configuran las VLAN mediante software en
+lugar de hardware, lo que las hace extremadamente fuertes.
+
+###############
+##### vpn #####
+###############
+
+Una red privada virtual (en inglés: Virtual Private Network (VPN)) es una tecnología de red de computadoras que
+permite una extensión segura de la red de área local (LAN) sobre una red pública o no controlada como Internet.
+
+Permite que la computadora en la red envíe y reciba datos sobre redes compartidas o públicas como si fuera una
+red privada con toda la funcionalidad, seguridad y políticas de gestión de una red privada.
+
+Esto se realiza estableciendo una conexión virtual punto a punto mediante el uso de conexiones dedicadas, cifrado
+o la combinación de ambos métodos.
+
+Ejemplos comunes son la posibilidad de conectar dos o más sucursales de una empresa utilizando como vínculo Internet, permitir
+a los miembros del equipo de soporte técnico la conexión desde su casa al centro de cómputo, o que un usuario pueda acceder
+a su equipo doméstico desde un sitio remoto, como por ejemplo un hotel. Todo ello utilizando la infraestructura de Internet.
+
+La conexión VPN a través de Internet es técnicamente una unión wide area network (WAN) entre los sitios pero al usuario le
+parece como si fuera un enlace privado— de allí la designación "virtual private network".
+
+###############################################
+##### Desactivar actualización en firefox #####
+###############################################
+
+Probado en Firefox 55 o menor. 
+
+La desactivación la podemos hacer desde la interfáz del navegador
+pero para hacerla a nivel de codigo editamos el fichero:
+
+firefox/defaults/pref/channel-prefs.js
+
+Nos quedará así:
+
+---
+
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/*pref("app.update.channel", "release");*/
+pref("app.update.channel", "false");
+
+---
+
+Guardamos, reiniciamos el firefox y listo, actualizaciones desactivadas.
+
+#################################
+##### Reiniciar un servicio #####
+#################################
+
+Funcional para GNU/Linux Debian 7 Wheezy
+
+user@debian7:~$ /etc/init.d/ssh 
+force-reload  reload        restart       start         status        stop          try-restart   
+user@debian7:~$ /etc/init.d/ssh restart
+
+######################################################################
+##### Instalar esto para porder descargar repositorios con https #####
+######################################################################
+
+# apt-get install apt-transport-https
+
+#############################################################
+##### Winetricks, Instalando librerias (DLLs) para Wine #####
+#############################################################
+
+Fuente: https://ubuntulife.wordpress.com/2008/10/16/winetricks-instalando-librerias-dlls-para-wine/
+
+Wine es la aplicacion que generalmente empleamos para ejecutar aplicaciones de Windows en Linux, pero muchas veces, la aplicacion falla porque no tenemos una determinada libreria de enlace dinamico (DLL) instalada.
+Winetricks es un script que nos va a ayudar un poco en esta faena, con este script podemos descargar e instalar en wine, las principales librerias que nos solicitan los programas windows.
+
+Para instalarlo:
+
+$ wget http://www.kegel.com/wine/winetricks
+
+Le damos permisos de ejecucion:
+
+$ chmod +x ./winetricks
+
+Y si quisieramos ya instalar una determinada libreria, podriamos hacerlo directamente. Por ejemplo:
+
+$ sh winetricks corefonts vcrun6
+
+Para instalar unas fuentes de texto, y el runtime de VisualC.
+
+Si lo ejecutamos sin parametros, se abre una ventana y nos permite seleccionar las librerias a instalar.
+
+#################
+##### xkill #####
+#################
+
+Probado en gnome-desktop
+
+xkill permite formar el cierre de programas rebeldes desde la interfáz gráfica, con solo escribir
+xkill en la consola el cursor del mouse se transforma en una calavera, acto seguido podemos cliquear
+derecho sobre alguna ventana para matar ese proceso.
+
+$ xkill
+
+###############################
+##### Instalar Unetbootin #####
+###############################
+
+UNetbootin le permite crear unidades USB Live de Ubuntu y otras distribuciones de Linux sin necesidad de grabar un CD.
+
+Página para descarga: https://unetbootin.github.io/linux_download.html
+
+// Podemos descargamos directamente el .bin, este enlace es para arquitecturas de 64bits
+$ wget -c https://github.com/unetbootin/unetbootin/releases/download/657/unetbootin-linux64-657.bin
+
+Eso nos descargara el fichero unetbootin-linux64-657.bin
+
+// Instalamos lo siguiente, que son unas herramientas para manipular archivos MSDOS.
+# apt-get install mtools
+
+// Para correrlo
+# ./unetbootin-linux64-657.bin
+
+Listo, se nos debería ejecutar la ventana del programa.
+
+########################################################
+##### Instalar Google Chrome en GNU/Linux Debian 8 #####
+########################################################
+
+// Primero hay que añadir un repositorio de google en el  /etc/apt/sources.list, es el siguiente:
+
+# Chrome de 64bits
+deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+
+// Ahora añadimos la llave pública del repositorio “Google Chrome stable” a apt.
+
+# gpg --keyserver keys.gnupg.net --recv-key A040830F7FAC5991
+
+# gpg --export --armor A040830F7FAC5991 | apt-key add -
+
+// Actualizamos la lista de paquetes de los repositorios.
+
+# apt-get update
+
+// Si sale el siguiente error:
+
+W: No existe ninguna clave pública disponible para los siguientes identificadores de clave:
+1397BC53640DB551
+
+// Ejecutamos los siguiente:
+
+# wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+
+// Actualizamos la lista de paquetes de los repositorios.
+
+# apt-get update
+
+// Ahora instalamos Google Chrome stable con:
+
+# apt-get install google-chrome-stable
+
+// Si toda va bien, debería estar disponible en la sección internet de nuestro GNU/Linux Debian 8 o 9
+
+###############################################
+##### Instalar extensiones en LIbreOffice #####
+###############################################
+
+# apt-get install myspell-es // Este es el diccionario de español para usar con el corrector ortográfico myspell, que actualmente se usa en OpenOffice.org y el corrector ortográfico de mozilla. Al parecer con esto basta pero a mi no me funciono esa mierda, entonces hice lo siguiente:
+
+Hay que bajarse un .oxt, investigarlo, luego en desde el LibreOffice
+
+Herramientas > Gestor de extensiones > Buscar el .oxt descargado
+
+En este caso lo he probado con spanish-dictionary.oxt que es la extensión para que funcione la correción de errores.
+
+##################
+##### cheese #####
+##################
+
+# apt-get install cheese
+
+A webcam application that supports image and video capture.
+
+Paquete para probar la cámara web de la computadoras/laptop en debian.
+
+#######################
+##### pavucontrol #####
+#######################
+
+# apt-get install pavucontrol
+
+PulseAudio Volume Control (pavucontrol) es una herramienta de control de
+volumen basada en GTK + (mezclador) para el servidor de sonido PulseAudio.
+A diferencia de las herramientas de mezclador clásicas, esta le permite
+controlar tanto el volumen de los dispositivos de hardware como los de
+cada secuencia de reproducción por separado. También le permite redirigir
+una secuencia de reproducción a otro dispositivo de salida sin interrumpir
+la reproducción.
+
+#################################################
+##### Debian 8 (live cd) login and password #####
+#################################################
+
+username "user" and the default password "live".
+
+############################################################
+##### Resetear password del usuario root desde el grub #####
+############################################################
+
+// Fuente: http://primeros-pasos-linux.blogspot.com/2013/03/guia-pasoa-apaso-recuperar-contrasena.html
+
+// Cuando inicia la pc y estando en el grub, seleccionamos editar presionando la letra e
+// Esto nos abre un fichero que podemos editar, ubicamos la parte que dice:
+
+linux /boot/vmlinuz-3.2.0-4-xxx-xxx root=UUID=04064ae3XXXXXXXX ro quiet
+
+// y agregamos al final de esa línea lo siguiente: init=/bin/bash y nos quedará así:
+
+linux /boot/vmlinuz-3.2.0-4-xxx-xxx root=UUID=04064ae3XXXXXXXX ro quiet init=/bin/bash
+
+// Presionamos f10 para que se guarden los cambios y continúe con la carga del sistema, luegos nos
+// aparece la terminal o consola, como root.
+
+// Escribiremos el siguiente comando para montar el sistema de ficheros:
+
+# mount -o remount -rw /
+
+// Luego ya procedemos a cambiar la contraseña de root, ejecutamos el comando:
+
+# passwd root
+
+// El sistema nos pide la nueva contraseña, luego nos pide que la volvamos a
+// escribir la nueva contraseña y validara que sea iguales. (cuando ponemos
+// la contraseña por seguridad en linux no aparece lo que tecleamos y al
+// terminar de poner la contraseña pulsamos enter y ¡listo! Contraseña del
+// usuario root cambiada.
+
+##############################################
+##### Encriptar directorios con Ecryptfs #####
+##############################################
+
+// Fuente: https://ubuntulife.wordpress.com/2008/08/07/crea-un-directorio-privado-encriptado-con-ecryptfs/
+// y https://blog.desdelinux.net/cifra-directorios-en-gnulinux-con-ecryptfs/
+
+// ECryptfs es una herramienta que nos permite encriptar la informacion contenida en un directorio.
+
+// Instalamos ecryptfs:
+
+# apt-get install ecryptfs-utils
+
+// Creamos el directorio a encriptar
+
+$ mkdir private
+
+// Asignamos permisos para que solo nuestro usuario pueda acceder
+
+$ chmod 700 private
+
+// Montamos el nuevo filesystem eCryptfs en la nueva carpeta creada:
+
+# mount -t ecryptfs private private
+
+// Nos hara una serie de preguntas como la palabra secreta a
+// utilizar. Por defecto usa la encriptación AES, con una longitud
+// de 16 bytes de longitud.
+// En resumen, las preguntas que nos hace son:
+// La passphrase o la clave para la encriptación.
+// El algoritmo de cifrado que de manera predeterminada es AES.
+// Magnitud de la clave, que es de 16 bytes de manera predeterminada
+// Plaintext passthrough para poder llegar a ficheros que no están cifrados.
+// filename encryption o encriptar los nombres de los ficheros, esta opción
+// me ha dado algunos problemas, me falta seguir probandola bien para poder
+// recomendarla, por ahora no la usaremos.
+
+# mount -t ecryptfs private private
+Select key type to use for newly created files:
+ 1) tspi
+ 2) passphrase
+Selection: 2
+Passphrase:
+Select cipher:
+ 1) aes: blocksize = 16; min keysize = 16; max keysize = 32
+ 2) blowfish: blocksize = 8; min keysize = 16; max keysize = 56
+ 3) des3_ede: blocksize = 8; min keysize = 24; max keysize = 24
+ 4) twofish: blocksize = 16; min keysize = 16; max keysize = 32
+ 5) cast6: blocksize = 16; min keysize = 16; max keysize = 32
+ 6) cast5: blocksize = 8; min keysize = 5; max keysize = 16
+Selection [aes]: 1
+Select key bytes:
+ 1) 16
+ 2) 32
+ 3) 24
+Selection [16]: 1
+Enable plaintext passthrough (y/n) [n]: n
+Enable filename encryption (y/n) [n]: n
+Attempting to mount with the following options:
+  ecryptfs_unlink_sigs
+  ecryptfs_key_bytes=16
+  ecryptfs_cipher=aes
+  ecryptfs_sig=5e2dd35dd40f619a
+Mounted eCryptfs
+
+// Ahora ya podemos crear archivos, moverlos, trabajar dentro del directorio private
+// Cuando terminemos de trabajar con el directorio private, desmontamos el sistema de ficheros
+
+# umount private
+
+// Si ahora accedemos a la carpeta, veremos los nombres de los ficheros y directorios, pero
+// si intentamos abrirlos veremos que estan encriptados y no podemos ver la informacion.
+// Podemos usar un editor hexadecimal para ver su contenido, pero no sera legible.
+
+// Si queremos volver a acceder a los archivos, tendremos que montar de nuevo el filesystem
+
+# mount -t ecryptfs private private
+
+// Nos pedira la frase de paso para poder desencriptar, tambien que respondamos a las otras preguntas
+// que respondimos cuando hicimos la primera encriptación, pero podemos dar enter a todas(usar los valores
+// por defecto), si todo esta bien nos debe mostrar el mensaje: Mounted eCryptfs.
+
+###################################################
+##### Reducir tamaño de ficheros mp3 con Lame #####
+###################################################
+
+// Lame es una biblioteca de codificación MP3
+
+// Fuentes: http://www.kacharreando.com/ubuntu/reducir-mp3/
+// y http://www.comograbar.com/conceptos-basicos/diferencia-entre-mono-y-stereo/
+
+// Un poco de teoría primero
+
+// Mono
+// Una señal monofónica es una señal grabada con un solo micrófono.
+// Al escuchar la grabación con dos altavoces o auriculares, la señal
+// se duplica y oímos lo mismo por la izquierda que por la derecha.
+// Al grabar una voz con un solo micrófono, lo haremos en una
+// pista mono de nuestro programa de grabación.
+
+// Stereo
+// En cambio, una señal estereofónica es una señal grabada con un "par stereo"
+// (pareja de dos micrófonos iguales). Al escuchar la grabación, por la izquierda
+// oímos la grabación de un micrófono y por la derecha la del otro. Al grabar
+// un ambiente la diferencia entre mono y stereo se nota muchísimo. Una grabación
+// en stereo es mucho más realista ya que los humanos lo escuchamos todo por
+// dos oídos. Cuando grabamos una batería acústica, utilizamos un par stereo (aereos)
+// para captar los platos y un poco de ambiente.
+
+// Debes saber que…
+// Un archivo en stereo “pesa” aproximadamente el doble que el mismo archivo en
+// mono, siempre que sea la misma señal de audio. Cuando digo que un archivo "pesa"
+// me refiero al espacio que dicho archivo ocupa en el disco duro de tu ordenador.
+
+// El archivo mono solo contiene una pista mientras que el archivo en stereo
+// contiene dos, una para la señal izquierda y otra para la
+// derecha, y se tienen que guardar el doble de datos.
+
+// Instalamos lame:
+
+# apt-get install lame
+
+// Entre los parámetros que podemos usar están:
+// -b 90 es el BitRate, si deseamos otro distinto lo modificamos.
+// -q 0 puede ser sustituida por -h (-q 2), hay que tener en cuenta que
+// cuanto menor sea la calidad, mayor es la velocidad de conversión, el rango va del 0 al 9.
+// -a mono channel
+// -s stereo channel
+
+// Con el siguiente comando las canciones se comprimen pero resultan en canal mono:
+
+$ lame -a -h -b 90 -q 0 archivo_a_reducir.mp3 archivo_resultante.mp3
+
+// Con el siguiente comando las canciones se comprimen pero resultan en canal stereo:
+
+$ lame -s -h -b 90 -q 0 archivo_a_reducir.mp3 archivo_resultante.mp3
+
+// y listo, la compresión es cerda del 50% en relación al peso anterior y no se nota
+// en la calidad del audio, mejor dicho, es casi imperceptible un cambio o
+// baja en al calidad del audio.
