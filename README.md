@@ -66,6 +66,12 @@
 - Si gestionas servidores dedicados en linux es de gran utilidad.
 - incluímos algunas guías para administradores de entornos Windows.
 
+### Flujo de elaboración de la documentación
+
+- Desarrollos internos en TeraSpain
+
+![](https://github.com/flowese/MetaDevGuias/blob/master/img/flow-tsp-docs.png?raw=true)
+
 ### Comunicación
 
 - Servidor TeamSpeak3: teraspain.com
