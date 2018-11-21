@@ -13,7 +13,7 @@
 
 - Aprende y comprende los básicos de los lenguajes.
 - Refresca tus conocimientos.
-- 100% Recomendable para administradores de Sistemas Linux.
+- 100% Recomendable para Sistemas Linux y Windows.
 - Información Actualizada.
 - Todo en un mismo lugar.
 - Resuelve dudas sobre tus proyectos.
